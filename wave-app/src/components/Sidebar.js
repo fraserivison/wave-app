@@ -1,9 +1,9 @@
 import React from 'react';
-import './Sidebar.css';
+import css from './Sidebar.module.css';
 
 function Sidebar() {
   return (
-    <nav className="sidebar bg-dark text-light p-3">
+    <nav className={`${css.sidebar} bg-dark text-light p-3`}>
       <h3 className="text-neon-blue">Wave</h3>
       <ul className="nav flex-column">
         <li className="nav-item">
