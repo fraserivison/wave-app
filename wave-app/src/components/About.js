@@ -1,10 +1,8 @@
 import React from 'react';
 
 const About = () => {
-  console.log("About component rendered");
-  
   return (
-    <div className="about-container">
+    <div> 
       <h2>About Us</h2>
       <p>
         Welcome to Wave! We are dedicated to providing the best music experience
@@ -16,3 +14,5 @@ const About = () => {
 };
 
 export default About;
+
+//className="about-container"

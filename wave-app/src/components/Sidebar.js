@@ -11,16 +11,16 @@ function Sidebar() {
           <Link to="/" className="nav-link text-light">Home</Link>
         </li>
         <li className="nav-item">
-          <Link to="/" className="nav-link text-light">Discover</Link>
+          <Link to="/discover" className="nav-link text-light">Discover</Link>
         </li>
         <li className="nav-item">
-          <Link to="/" className="nav-link text-light">Profile</Link>
+          <Link to="/profile" className="nav-link text-light">Profile</Link>
         </li>
         <li className="nav-item">
-          <Link to="/" className="nav-link text-light">Settings</Link>
+          <Link to="/settings" className="nav-link text-light">Settings</Link>
         </li>
         <li className="nav-item">
-          <Link to="/" className="nav-link text-light">Support</Link>
+          <Link to="/support" className="nav-link text-light">Support</Link>
         </li>
       </ul>
     </nav>
