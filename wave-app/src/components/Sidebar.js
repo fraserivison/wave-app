@@ -13,7 +13,13 @@ function Sidebar() {
           <a href="#link2" className="nav-link text-light">Discover</a>
         </li>
         <li className="nav-item">
-          <a href="#link3" className="nav-link text-light">Projects</a>
+          <a href="#link3" className="nav-link text-light">Profile</a>
+        </li>
+        <li className="nav-item">
+          <a href="#link3" className="nav-link text-light">Settings</a>
+        </li>
+        <li className="nav-item">
+          <a href="#link3" className="nav-link text-light">Support</a>
         </li>
       </ul>
     </nav>
