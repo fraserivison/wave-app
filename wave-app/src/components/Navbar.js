@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './Navbar.module.css';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isSignedIn: false,
-      welcomeMessage: 'Welcome, plesde sign in!'
+      welcomeMessage: 'Welcome, please sign in!'
     };
   }
 
@@ -23,11 +24,15 @@ class Navbar extends Component {
         <div className="container-fluid">
             <span className="navbar-brand">My Logo</span>
             <button className="btn btn-outline-light" onClick={this.toggleSignIn}>
-                {this.state.isSignedIn ? 'Sign Out' : 'Sign In'} 
-            </button>
-            <span className="navbar-text">
+            {this.state.isSignedIn ? 'Sign Out' : 'Sign In'} 
+          </button>
+          <span className="navbar-text">
             {this.state.welcomeMessage}
           </span>
+          <div className="navbar-nav ms-auto">
+            <Link className="nav-link" to="/about">About</Link>
+            <Link className="nav-link" to="/contact">Contact Us</Link>
+          </div>
         </div>
       </nav>
     );
