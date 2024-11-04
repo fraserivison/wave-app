@@ -1,13 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FunctionalGreeting from './components/FunctionalGreeting';
 import HooksCounter from './components/HooksCounter';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import About from './components/About';
+import Contact from './components/Contact';
 import './App.css';
 
 
 function App() {
   return (
+    <Router>
     <div className="App">
       <Navbar />
       <Sidebar />
@@ -16,7 +20,12 @@ function App() {
         <FunctionalGreeting name="Mr DJ"/>
         <HooksCounter />
       </header>
+      <Routes>
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+        </Routes>
     </div>
+    </Router>
   );
 }
 
