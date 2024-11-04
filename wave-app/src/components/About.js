@@ -1,6 +1,8 @@
 import React from 'react';
 
 const About = () => {
+  console.log("About component rendered");
+  
   return (
     <div className="about-container">
       <h2>About Us</h2>
