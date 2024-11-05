@@ -1,12 +1,13 @@
 import React from 'react';
 import FunctionalGreeting from './FunctionalGreeting';
-
+import HooksCounter from './HooksCounter';
 
 const Home = () => {
     return (
         <div>
-            <h2>Home Page</h2>
+            <h2>This is the Home Page</h2>
             <FunctionalGreeting name="Mr DJ" />
+            <HooksCounter />
             <p>Home Page Test</p>
         </div>
     );
