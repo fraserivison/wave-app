@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.module.css';
+import SignInForm from './SignInForm';
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isSignedIn: false,
-      welcomeMessage: 'Welcome, please sign in!'
+      welcomeMessage: 'Welcome, please sign in!',
+      isSignInFormVisible: false,
     };
   }
+
+  toggleSignInForm = () => {
+    this.setState((prevState) => ({
+      isSignInFormVisible: !prevState.isSignInFormVisible,
+    }));
+  };
 
   toggleSignIn = () => {
     this.setState((prevState) => ({
       isSignedIn: !prevState.isSignedIn,
-      welcomeMessage: prevState.isSignedIn ? 'Welcome, please sign in!' : 'Welcome back, DJ!'
+      welcomeMessage: prevState.isSignedIn
+        ? 'Welcome, please sign in!'
+        : 'Welcome back, DJ!',
     }));
-  }; 
+  };
 
   render() {
     return (
+      <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
             <Link className="navbar-brand" to="/">My Logo</Link>
@@ -43,13 +54,21 @@ class Navbar extends Component {
               <span className="navbar-text me-3">
                 {this.state.welcomeMessage}
               </span>
-              <button className="btn btn-outline-light" onClick={this.toggleSignIn}>
+              <button className="btn btn-outline-light" onClick={this.toggleSignInForm}>
                 {this.state.isSignedIn ? 'Sign Out' : 'Sign In'} 
               </button>
             </div>
           </div>
         </div>
       </nav>
+    
+    {/* Render the SignInForm if isSignInFormVisible is true */}
+    {this.state.isSignInFormVisible && (
+          <div className="container mt-3">
+            <SignInForm />
+          </div>
+        )}
+      </>
     );
   }
 }

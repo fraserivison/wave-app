@@ -1,4 +1,27 @@
 .navbar {
     padding: 1rem;
   }
-  
+
+.signin-form-container {
+  position: fixed;
+  top: 70px;
+  right: 10px;
+  z-index: 1000;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .signin-form-container {
+    width: 80%;
+    right: 0;
+    top: 50px;
+  }
+}
