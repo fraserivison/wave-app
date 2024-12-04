@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.module.css';
+import SignUpForm from './SignUpForm';
 import SignInForm from './SignInForm';
 
 class Navbar extends Component {
@@ -10,12 +11,21 @@ class Navbar extends Component {
       isSignedIn: false,
       welcomeMessage: 'Welcome, please sign in!',
       isSignInFormVisible: false,
+      isSignUpFormVisible: false,
     };
   }
+
+  toggleSignUpForm = () => {
+    this.setState((prevState) => ({
+      isSignUpFormVisible: !prevState.isSignUpFormVisible,
+      isSignInFormVisible: false,
+    }));
+  };
 
   toggleSignInForm = () => {
     this.setState((prevState) => ({
       isSignInFormVisible: !prevState.isSignInFormVisible,
+      isSignUpFormVisible: false,
     }));
   };
 
@@ -57,6 +67,9 @@ class Navbar extends Component {
               <button className="btn btn-outline-light" onClick={this.toggleSignInForm}>
                 {this.state.isSignedIn ? 'Sign Out' : 'Sign In'} 
               </button>
+              <button className="btn btn-outline-light" onClick={this.toggleSignUpForm}>
+                  Sign Up
+              </button>
             </div>
           </div>
         </div>
@@ -66,6 +79,13 @@ class Navbar extends Component {
     {this.state.isSignInFormVisible && (
           <div className="container mt-3">
             <SignInForm />
+          </div>
+        )}
+
+    {/* Render the SignUpForm if isSignUpFormVisible is true */}
+    {this.state.isSignUpFormVisible && (
+          <div className="container mt-3">
+            <SignUpForm />
           </div>
         )}
       </>
