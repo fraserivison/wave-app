@@ -5,9 +5,16 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+  }
+  setError('');
     console.log('Sign-Up Submitted:', { username, email, password });
   };
 
@@ -47,6 +54,18 @@ const SignUpForm = () => {
                         required
                     />
                 </div>
+                <div className="mb-3">
+                    <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        className="form-control"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                {error && <p className="text-danger">{error}</p>}
                 <button type="submit" className={`btn btn-primary ${styles.button}`}>Sign Up</button>
             </form>
         </div>
