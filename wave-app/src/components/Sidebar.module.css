@@ -9,8 +9,21 @@
   overflow: hidden;
 }
 
-.sidebar:hover {
-  width: 200px;
+.sidebar.expanded {
+  width: 200px; /* Expanded state */
+}
+
+.sidebarToggle {
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.sidebarToggle:hover {
+  color: #9933ff;
 }
 
 .sidebar a {
@@ -18,10 +31,14 @@
   display: block;
   padding: 10px;
   transition: color 0.3s;
+  opacity: 0; /* Hide links when collapsed */
+  visibility: hidden; /* Hide links when collapsed */
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
-.sidebar a:hover {
-  color: #9933ff !important;
+.sidebar.expanded a {
+  opacity: 1; /* Show links when expanded */
+  visibility: visible; /* Show links when expanded */
 }
 
 .sidebar h3 {
@@ -31,13 +48,10 @@
   transition: opacity 0.3s ease;
 }
 
-.sidebar:hover h3 {
-  opacity: 1;
+.sidebar.expanded h3 {
+  opacity: 1; /* Show the header when expanded */
 }
 
 .sidebar .nav-item {
   margin-top: 10px;
 }
-
-
-  

@@ -1,11 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import css from './Sidebar.module.css';
+import { Link } from 'react-router-dom';
 
 function Sidebar() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <nav className={css.sidebar}>
-      <h3>Wave</h3>
+    <nav className={`${css.sidebar} ${isExpanded ? css.expanded : ''}`}>
+      <h3 onClick={toggleSidebar} className={css.sidebarToggle}>
+        {isExpanded ? <FaArrowLeft /> : <FaArrowRight />}
+      </h3>
       <ul className="nav flex-column">
         <li className="nav-item">
           <Link to="/" className="nav-link text-light">Home</Link>
@@ -25,4 +34,6 @@ function Sidebar() {
 }
 
 export default Sidebar;
+
+
 
