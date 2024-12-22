@@ -1,8 +1,8 @@
 .sidebar {
   position: fixed;
   height: 100%;
-  width: 60px; /* Start with a small width */
-  background-color: black !important;
+  width: 60px;
+  background-color: #343a40 !important;
   color: white !important;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
   transition: width 0.3s ease;
@@ -10,7 +10,7 @@
 }
 
 .sidebar.expanded {
-  width: 200px; /* Expanded state */
+  width: 200px;
 }
 
 .sidebarToggle {
@@ -27,18 +27,18 @@
 }
 
 .sidebar a {
-  color: #66ff66 !important;
+  color: white !important;
   display: block;
   padding: 10px;
   transition: color 0.3s;
-  opacity: 0; /* Hide links when collapsed */
-  visibility: hidden; /* Hide links when collapsed */
+  opacity: 0;
+  visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
 }
 
 .sidebar.expanded a {
-  opacity: 1; /* Show links when expanded */
-  visibility: visible; /* Show links when expanded */
+  opacity: 1;
+  visibility: visible;
 }
 
 .sidebar h3 {
@@ -49,7 +49,7 @@
 }
 
 .sidebar.expanded h3 {
-  opacity: 1; /* Show the header when expanded */
+  opacity: 1;
 }
 
 .sidebar .nav-item {
