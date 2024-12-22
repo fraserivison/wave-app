@@ -6,7 +6,11 @@ const Profile = () => {
     username: "DJAwesome",
     profilePicture: "https://placekitten.com/200/200",
     bio: "I love mixing beats!",
-    projects: [{ id: 1, name: "Track 1" }, { id: 2, name: "Track 2" }],
+    highlights: [
+      "Performed at Tomorrowland 2023",
+      "Winner of DJ Battle 2022",
+      "Featured in DJ Mag Top 100 DJs"
+    ],
     gigs: [
       { id: 1, name: "Club Neon", city: "Manchester", date: "25th Dec" },
       { id: 2, name: "Bass Fest", city: "London", date: "31st Dec" }
@@ -33,6 +37,22 @@ const Profile = () => {
         />
         <h1 className="mb-2">{userData.username}</h1>
         <p className="text-muted">{userData.bio}</p>
+      </div>
+
+      {/* Highlights */}
+      <div className="mb-5">
+        <h2 className="text-center mb-4">Highlights</h2>
+        <div className="d-flex flex-column align-items-center">
+          {userData.highlights.length > 0 ? (
+            userData.highlights.map((highlight, index) => (
+              <div key={index} className="mb-2 p-3 border rounded">
+                <p>{highlight}</p>
+              </div>
+            ))
+          ) : (
+            <p>No highlights added yet.</p>
+          )}
+        </div>
       </div>
 
       {/* Upcoming Gigs */}
