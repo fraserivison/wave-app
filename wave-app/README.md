@@ -226,3 +226,10 @@ Key files:
 ## End.
 
 [Back to TOP](#table-of-contents)
+
+
+### Colours
+#343a40
+#ffffff
+#9933ff
+#00ffcc 

@@ -20,10 +20,10 @@ function Sidebar() {
           <Link to="/" className="nav-link text-light">Home</Link>
         </li>
         <li className="nav-item">
-          <Link to="/discover" className="nav-link text-light">Discover</Link>
+          <Link to="/profile" className="nav-link text-light">Profile</Link>
         </li>
         <li className="nav-item">
-          <Link to="/profile" className="nav-link text-light">Profile</Link>
+          <Link to="/discover" className="nav-link text-light">Discover</Link>
         </li>
         <li className="nav-item">
           <Link to="/support" className="nav-link text-light">Support</Link>
