@@ -69,6 +69,23 @@ const Profile = () => {
         </div>
       </div>
 
+
+      {/* Upcoming Gigs */}
+      <div className="mb-5">
+        <h2 className="text-center mb-4">Upcoming Gigs</h2>
+        <div className="d-flex flex-wrap justify-content-center gap-4">
+          {userData.gigs.map((gig) => (
+            <div key={gig.id} className="gig-container text-center">
+              <div className="gig-content">
+                <h5 className="gig-venue">{gig.venue}</h5>
+                <p className="gig-date">{gig.date}</p>
+                <p className="gig-city">{gig.city}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* My Music */}
       <div className="mb-5">
         <h2 className="text-center mb-4">My Music</h2>
