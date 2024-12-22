@@ -89,7 +89,7 @@ const Profile = () => {
       {/* My Music */}
       <div className="mb-5">
         <h2 className="text-center mb-4">My Music</h2>
-        <div className="row">
+        <div className="row d-flex justify-content-center">
           {/* Map through music from context */}
           {music.map((track) => (
             <div key={track.id} className="col-md-3 mb-3">

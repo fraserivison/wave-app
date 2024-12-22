@@ -8,10 +8,10 @@ function Discover() {
     <div className="container mt-5">
       <h1>Discover New Music</h1>
       <p>Browse and discover exciting music projects from DJs and producers!</p>
-       <div className="row">
+       <div className="row d-flex justify-content-center">
         {music.length > 0 ? (
           music.map((track) => (
-            <div key={track.id} className="col-md-6 mb-3">
+            <div key={track.id} className="col-md-3 mb-3">
               <div className="card shadow-sm">
                 <div className="card-body text-center">
                   <h5 className="card-title">{track.name}</h5>
