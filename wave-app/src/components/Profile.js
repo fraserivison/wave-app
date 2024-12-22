@@ -92,7 +92,7 @@ const Profile = () => {
         <div className="row">
           {/* Map through music from context */}
           {music.map((track) => (
-            <div key={track.id} className="col-md-6 mb-3">
+            <div key={track.id} className="col-md-3 mb-3">
               <div className="card shadow-sm">
                 <div className="card-body text-center">
                   <h5 className="card-title">{track.name}</h5>
