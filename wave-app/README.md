@@ -159,6 +159,10 @@ For each feature, specific acceptance criteria will be established to ensure tha
 
 ## Features
 
+### Features Removed
+
+Removed the settings feature in the Sidebar as it would be too much work right now- go in to detail.
+
 ### Features To Be Implemented
 
 ---

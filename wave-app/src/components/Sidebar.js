@@ -4,8 +4,8 @@ import css from './Sidebar.module.css';
 
 function Sidebar() {
   return (
-    <nav className={`${css.sidebar} bg-dark text-light p-3`}>
-      <h3 className="text-neon-blue">Wave</h3>
+    <nav className={css.sidebar}>
+      <h3>Wave</h3>
       <ul className="nav flex-column">
         <li className="nav-item">
           <Link to="/" className="nav-link text-light">Home</Link>
@@ -17,9 +17,6 @@ function Sidebar() {
           <Link to="/profile" className="nav-link text-light">Profile</Link>
         </li>
         <li className="nav-item">
-          <Link to="/settings" className="nav-link text-light">Settings</Link>
-        </li>
-        <li className="nav-item">
           <Link to="/support" className="nav-link text-light">Support</Link>
         </li>
       </ul>
@@ -28,3 +25,4 @@ function Sidebar() {
 }
 
 export default Sidebar;
+
