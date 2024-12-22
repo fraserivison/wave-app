@@ -159,6 +159,8 @@ For each feature, specific acceptance criteria will be established to ensure tha
 
 ## Features
 
+Users can upload their tracks which will then automaticaly get posted to the discovery page.
+
 ### Features Removed
 
 Removed the settings feature in the Sidebar as it would be too much work right now- go in to detail.

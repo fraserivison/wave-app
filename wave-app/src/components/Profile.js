@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Profile.css';
+import { MusicContext } from '../contexts/MusicContext';
 
 const Profile = () => {
-  const [userData] = useState({
+  const { music, addMusic } = useContext(MusicContext); // Use music from context
+  const [newSong, setNewSong] = useState({ name: '', link: '' });
+
+  // Static user data
+  const userData = {
     username: "DJAwesome",
     profilePicture: "https://picsum.photos/200/200",
     bio: "I love mixing beats!",
@@ -15,15 +20,24 @@ const Profile = () => {
       { id: 1, name: "Club Neon", city: "Manchester", date: "25th Dec" },
       { id: 2, name: "Bass Fest", city: "London", date: "31st Dec" }
     ],
-    playlists: [
-      { id: 1, name: "Party Mix", link: "https://example.com/playlist1" },
-      { id: 2, name: "Chill Vibes", link: "https://example.com/playlist2" }
-    ],
     socialMedia: [
       { platform: "Instagram", url: "https://instagram.com/djawesome" },
       { platform: "SoundCloud", url: "https://soundcloud.com/djawesome" }
     ]
-  });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewSong((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    if (newSong.name && newSong.link) {
+      addMusic({ id: Date.now(), name: newSong.name, link: newSong.link }); // Use addMusic from context
+      setNewSong({ name: '', link: '' }); // Clear form
+    }
+  };
 
   return (
     <div className="container mt-5">
@@ -55,33 +69,18 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* Upcoming Gigs */}
+      {/* My Music */}
       <div className="mb-5">
-        <h2 className="text-center mb-4">Upcoming Gigs</h2>
-        <div className="d-flex flex-wrap justify-content-center gap-4">
-          {userData.gigs.map((gig) => (
-            <div key={gig.id} className="gig-container text-center">
-              <div className="gig-content">
-                <h5 className="gig-venue">{gig.venue}</h5>
-                <p className="gig-date">{gig.date}</p>
-                <p className="gig-city">{gig.city}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Featured Playlists */}
-      <div className="mb-5">
-        <h2 className="text-center mb-4">Featured Playlists</h2>
+        <h2 className="text-center mb-4">My Music</h2>
         <div className="row">
-          {userData.playlists.map((playlist) => (
-            <div key={playlist.id} className="col-md-6 mb-3">
+          {/* Map through music from context */}
+          {music.map((track) => (
+            <div key={track.id} className="col-md-6 mb-3">
               <div className="card shadow-sm">
                 <div className="card-body text-center">
-                  <h5 className="card-title">{playlist.name}</h5>
+                  <h5 className="card-title">{track.name}</h5>
                   <a
-                    href={playlist.link}
+                    href={track.link}
                     className="btn btn-primary"
                     target="_blank"
                     rel="noreferrer"
@@ -93,10 +92,38 @@ const Profile = () => {
             </div>
           ))}
         </div>
+
+        {/* Upload New Song */}
+        <div className="mt-4">
+          <h3 className="text-center">Upload a New Song</h3>
+          <form onSubmit={handleUpload} className="d-flex flex-column align-items-center">
+            <input
+              type="text"
+              name="name"
+              placeholder="Song Name"
+              value={newSong.name}
+              onChange={handleInputChange}
+              className="form-control mb-3"
+              style={{ maxWidth: "400px" }}
+              required
+            />
+            <input
+              type="url"
+              name="link"
+              placeholder="Song Link"
+              value={newSong.link}
+              onChange={handleInputChange}
+              className="form-control mb-3"
+              style={{ maxWidth: "400px" }}
+              required
+            />
+            <button type="submit" className="btn btn-success">Upload</button>
+          </form>
+        </div>
       </div>
 
-     {/* Social Media Links */}
-     <div className="text-center">
+      {/* Social Media Links */}
+      <div className="text-center">
         <h2 className="mb-4">Connect with Me</h2>
         <div className="d-flex justify-content-center">
           {userData.socialMedia.map((social, index) => (
@@ -118,4 +145,6 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
 
