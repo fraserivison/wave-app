@@ -4,7 +4,7 @@ import './Profile.css';
 const Profile = () => {
   const [userData] = useState({
     username: "DJAwesome",
-    profilePicture: "https://placekitten.com/200/200",
+    profilePicture: "https://picsum.photos/200/200",
     bio: "I love mixing beats!",
     highlights: [
       "Performed at Tomorrowland 2023",
