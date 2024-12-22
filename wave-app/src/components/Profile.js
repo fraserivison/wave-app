@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Profile.css';
 
 const Profile = () => {
   const [userData] = useState({
@@ -7,85 +8,94 @@ const Profile = () => {
     bio: "I love mixing beats!",
     projects: [{ id: 1, name: "Track 1" }, { id: 2, name: "Track 2" }],
     gigs: [
-      { id: 1, name: "Club XYZ", date: "25th Dec" },
-      { id: 2, name: "Festival ABC", date: "31st Dec" }
+      { id: 1, name: "Club Neon", city: "Manchester", date: "25th Dec" },
+      { id: 2, name: "Bass Fest", city: "London", date: "31st Dec" }
     ],
     playlists: [
       { id: 1, name: "Party Mix", link: "https://example.com/playlist1" },
       { id: 2, name: "Chill Vibes", link: "https://example.com/playlist2" }
     ],
-    socialLinks: {
-      instagram: "https://instagram.com/djawesome",
-      soundcloud: "https://soundcloud.com/djawesome"
-    }
+    socialMedia: [
+      { platform: "Instagram", url: "https://instagram.com/djawesome" },
+      { platform: "SoundCloud", url: "https://soundcloud.com/djawesome" }
+    ]
   });
 
   return (
-    <div className="profile">
-      <h1>{userData.username}'s Profile</h1>
-      <img src={userData.profilePicture} alt="Profile" />
-      <p>{userData.bio}</p>
+    <div className="container mt-5">
+      {/* Profile Header */}
+      <div className="text-center mb-5">
+        <img
+          src={userData.profilePicture}
+          alt="Profile"
+          className="rounded-circle img-fluid mb-3"
+          style={{ width: "150px", height: "150px" }}
+        />
+        <h1 className="mb-2">{userData.username}</h1>
+        <p className="text-muted">{userData.bio}</p>
+      </div>
 
-      <h2>Recent Projects</h2>
-      <ul>
-          {userData.projects && userData.projects.length > 0 ? (
-            userData.projects.map((project) => (
-              <li key={project.id}>{project.name}</li>
-            ))
-          ) : (
-          <li>No projects to display</li>
-          )}
-      </ul>
+      {/* Upcoming Gigs */}
+      <div className="mb-5">
+        <h2 className="text-center mb-4">Upcoming Gigs</h2>
+        <div className="d-flex flex-wrap justify-content-center gap-4">
+          {userData.gigs.map((gig) => (
+            <div key={gig.id} className="gig-container text-center">
+              <div className="gig-content">
+                <h5 className="gig-venue">{gig.venue}</h5>
+                <p className="gig-date">{gig.date}</p>
+                <p className="gig-city">{gig.city}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-      <h2>Upcoming Gigs</h2>
-      <ul>
-        {userData.gigs && userData.gigs.length > 0 ? (
-          userData.gigs.map((gig) => (
-            <li key={gig.id}>
-              {gig.name} - {gig.date}
-            </li>
-          ))
-        ) : (
-          <li>No upcoming gigs</li>
-        )}
-      </ul>
+      {/* Featured Playlists */}
+      <div className="mb-5">
+        <h2 className="text-center mb-4">Featured Playlists</h2>
+        <div className="row">
+          {userData.playlists.map((playlist) => (
+            <div key={playlist.id} className="col-md-6 mb-3">
+              <div className="card shadow-sm">
+                <div className="card-body text-center">
+                  <h5 className="card-title">{playlist.name}</h5>
+                  <a
+                    href={playlist.link}
+                    className="btn btn-primary"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Listen Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-      <h2>Featured Playlists</h2>
-      <ul>
-        {userData.playlists && userData.playlists.length > 0 ? (
-          userData.playlists.map((playlist) => (
-            <li key={playlist.id}>
-              <a href={playlist.link} target="_blank" rel="noopener noreferrer">
-                {playlist.name}
-              </a>
-            </li>
-          ))
-        ) : (
-          <li>No playlists available</li>
-        )}
-      </ul>
-
-      <h2>Connect with Me</h2>
-      <ul>
-        {userData.socialLinks ? (
-          <>
-            <li>
-              <a href={userData.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a href={userData.socialLinks.soundcloud} target="_blank" rel="noopener noreferrer">
-                SoundCloud
-              </a>
-            </li>
-          </>
-        ) : (
-          <li>No social media links available</li>
-        )}
-      </ul>
+     {/* Social Media Links */}
+     <div className="text-center">
+        <h2 className="mb-4">Connect with Me</h2>
+        <div className="d-flex justify-content-center">
+          {userData.socialMedia.map((social, index) => (
+            <a
+              key={index}
+              href={social.url}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-outline-secondary mx-2"
+              style={{ minWidth: "120px" }}
+            >
+              {social.platform}
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Profile;
+

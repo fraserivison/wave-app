@@ -1,0 +1,35 @@
+/* General Styling for Gigs Section */
+.gig-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #1e1e2c, #282840);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .gig-container:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.6), -10px -10px 25px rgba(255, 255, 255, 0.2);
+  }
+  
+  .gig-content {
+    color: #fff;
+    text-align: center;
+  }
+  
+  .gig-venue {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .gig-date,
+  .gig-city {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  
