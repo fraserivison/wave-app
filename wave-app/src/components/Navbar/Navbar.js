@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.module.css';
-import SignUpForm from './SignUpForm';
-import SignInForm from './SignInForm';
+import './navbar/Navbar.module.css';
+import SignUpForm from '../Authentication/SignUpForm';
+import SignInForm from '../Authentication/SignInForm';
 
 class Navbar extends Component {
   constructor(props) {

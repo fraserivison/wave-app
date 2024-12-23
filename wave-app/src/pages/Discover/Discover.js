@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { MusicContext } from '../contexts/MusicContext';
+import { MusicContext } from '../../contexts/MusicContext';
 
 function Discover() {
   const { music } = useContext(MusicContext);

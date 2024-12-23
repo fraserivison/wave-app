@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import './Profile.css';
-import { MusicContext } from '../contexts/MusicContext';
+import './Profile.module.css';
+import { MusicContext } from '../../contexts/MusicContext';
 
 const Profile = () => {
   const { music, addMusic } = useContext(MusicContext); // Use music from context

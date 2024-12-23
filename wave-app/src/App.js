@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Sidebar from './components/Sidebar';
-import Navbar from './components/Navbar';
-import About from './components/About';
-import Contact from './components/Contact';
-import Home from './components/Home';
-import Profile from './components/Profile';
-import Discover from './components/Discover';
-import Support from './components/Support';
+import Layout from './components/Layout/Layout';
+import Sidebar from './components/Sidebar/Sidebar';
+import Navbar from './components/Navbar/Navbar';
+import About from './pages/About/About';
+import Contact from './pages/Contact/Contact';
+import Home from './pages/Home/Home ';
+import Profile from './pages/ProfilePage/Profile';
+import Discover from './pages/Discover/Discover';
+import Support from './pages/Support/Support';
 import './App.css';
 
 function App() {

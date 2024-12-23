@@ -1,7 +1,7 @@
 import React from 'react';
 import FunctionalGreeting from './FunctionalGreeting';
 import HooksCounter from './HooksCounter';
-import LogoText from './LogoText';
+import LogoText from './Logo/LogoText';
 
 const Home = () => {
     return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-import css from './Sidebar.module.css';
+import './sidebar/Sidebar.module.css';
 import { Link } from 'react-router-dom';
 
 function Sidebar() {
