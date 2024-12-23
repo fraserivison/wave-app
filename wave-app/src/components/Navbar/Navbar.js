@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './navbar/Navbar.module.css';
+import './Navbar.module.css';
 import SignUpForm from '../Authentication/SignUpForm';
 import SignInForm from '../Authentication/SignInForm';
 

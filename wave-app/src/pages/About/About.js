@@ -14,5 +14,3 @@ const About = () => {
 };
 
 export default About;
-
-//className="about-container"
