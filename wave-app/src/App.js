@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import About from './components/About';
@@ -17,6 +18,7 @@ function App() {
         <Navbar />
         <Sidebar />
         <main>
+        <Layout>
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
@@ -25,6 +27,7 @@ function App() {
               <Route path="/discover" element={<Discover />} />
               <Route path="/support" element={<Support />} />
           </Routes>
+          </Layout>
         </main>
       </div>
     </Router>

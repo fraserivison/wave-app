@@ -79,6 +79,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     - [Structure](#structure)
     - [Skeleton](#skeleton)
     - [Surface](#surface)
+    - [Colour Palette](#colour-palette)
     - [User Experience Enhancements](#user-experience-enhancements)
 3. [Agile Development](#agile-development)
     - [Epics](#epics)
@@ -131,6 +132,13 @@ A wireframe of the application is designed to visualise the layout of each compo
 ### Surface
 The design will employ a modern aesthetic with a clean layout, using a dark-themed colour palette to resonate with the electronic music culture. Bootstrap will be utilised to ensure a responsive design across devices.
 
+### Colour Palette
+The primary colour scheme for Wave includes:
+- **#343a40**: A dark grey tone used for the background.
+- **#ffffff**: White for text and accents.
+- **#9933ff**: A vibrant purple used for highlights and buttons.
+- **#00ffcc**: Neon blue used for interactive elements and accents.
+
 ### User Experience Enhancements
 To enhance user experience, the app will include:
 - Intuitive navigation and user interface design
@@ -159,17 +167,25 @@ For each feature, specific acceptance criteria will be established to ensure tha
 
 ## Features
 
-Users can upload their tracks which will then automaticaly get posted to the discovery page.
+- **Profile Creation and Editing**: Users can create and edit their profiles to showcase their work and music.
+- **Music Sharing**: Users can upload and share their music, which is automatically posted to the discovery page.
+- **Discovery Page**: A page where users can discover and listen to tracks shared by other users.
+- **Follow Users**: Users can follow other DJs and producers to stay updated on their new uploads and projects.
+- **Track Rating**: Users can rate tracks shared by others, providing feedback for improvement.
 
 ### Features Removed
 
-Removed the settings feature in the Sidebar as it would be too much work right now- go in to detail.
+- **Settings Feature**: The settings feature has been removed from the Sidebar at this time. This decision was made due to time constraints and the complexity of implementing user-specific settings in the current iteration. It is planned for future development, where users will be able to modify their personal preferences, notifications, and account settings.
 
 ### Features To Be Implemented
 
 ---
 
 ## Project Iteration Focus
+
+- Focus on **user profile creation** and **music sharing functionality**.
+- Finalise the **real-time features**.
+- Implement the **search functionality** for users and tracks.
 
 ## Database Schema
 
@@ -178,11 +194,20 @@ Removed the settings feature in the Sidebar as it would be too much work right n
 
 ### Description of Entities
 
+- **User**: Represents a user of the platform, with fields for username, email, genre, and bio.
+- **Track**: Represents a music track uploaded by the user, with fields for title, genre, and file URL.
+- **Project**: Represents a collaborative music project, which can involve multiple users.
+- **Rating**: Represents feedback given by users on tracks, including a score and comment.
+
 ## Testing
 
 ### Automated Testing
 
 ### Manual Testing
+
+- **Profile Creation**: Test that users can create a profile and add their music correctly.
+- **Track Sharing**: Ensure that uploaded tracks appear on the discovery page and are playable.
+- **Follow Users**: Test that users can follow other users and receive notifications for new uploads.
 
 ### Bug Fixes
 
@@ -228,10 +253,3 @@ Key files:
 ## End.
 
 [Back to TOP](#table-of-contents)
-
-
-### Colours
-#343a40
-#ffffff
-#9933ff
-#00ffcc 
