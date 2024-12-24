@@ -23,29 +23,36 @@ function Sidebar() {
         {isExpanded ? <FaArrowLeft /> : <FaArrowRight />}
       </h3>
       <ul className="nav flex-column gap-4">
-        {" "}
         <li className="nav-item">
           <Link to="/" className="nav-link text-light">
-            <FaHome className="icon" style={{ color: "#00ffcc" }} />
-            {isExpanded && " Home"}
+            <div className="icon-container">
+              <FaHome className="icon" style={{ color: "#00ffcc" }} />
+            </div>
+            {isExpanded && <div className="text-container">Home</div>}
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/profile" className="nav-link text-light">
-            <FaUser className="icon" style={{ color: "#00ffcc" }} />
-            {isExpanded && " Profile"}
+            <div className="icon-container">
+              <FaUser className="icon" style={{ color: "#00ffcc" }} />
+            </div>
+            {isExpanded && <div className="text-container">Profile</div>}
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/discover" className="nav-link text-light">
-            <FaSearch className="icon" style={{ color: "#00ffcc" }} />
-            {isExpanded && " Discover"}
+            <div className="icon-container">
+              <FaSearch className="icon" style={{ color: "#00ffcc" }} />
+            </div>
+            {isExpanded && <div className="text-container">Discover</div>}
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/support" className="nav-link text-light">
-            <FaQuestion className="icon" style={{ color: "#00ffcc" }} />
-            {isExpanded && " Support"}
+            <div className="icon-container">
+              <FaQuestion className="icon" style={{ color: "#00ffcc" }} />
+            </div>
+            {isExpanded && <div className="text-container">Support</div>}
           </Link>
         </li>
       </ul>

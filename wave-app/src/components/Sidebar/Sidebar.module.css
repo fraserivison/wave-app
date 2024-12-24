@@ -5,18 +5,18 @@
   background-color: #343a40 !important;
   color: #ffffff !important;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-  transition: width 0.3s ease;
+  transition: width 0.3s ease box-shadow 0.3s ease, font-size 0.3s ease;
   overflow: hidden;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 20px;
-
 }
 
 .sidebar.expanded {
   width: 150px;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+  font-size: 14px;
 }
 
 .sidebarToggle {
