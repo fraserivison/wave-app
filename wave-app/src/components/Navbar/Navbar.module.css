@@ -1,32 +1,45 @@
 .customNavbar {
-  padding: 1rem;
-  background-color: #343a40 !important; /* Overriding Bootstrap bg-dark */
-}
-
-.navbar-toggler {
-  border-color: #00ffcc !important;
+  background-color: #343a40 !important;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .navLink {
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: #00ffcc !important;
-  padding: 10px 20px;
-  text-decoration: none; /* Remove the underline from the links */
+  padding: 5px 8px;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  background-color: #495057;
+  color: #ffffff !important;
 }
 
 .brand {
   color: #00ffcc !important;
-  font-size: 24px;
+  font-size: 1rem;
 }
 
-@media (max-width: 768px) {
-  .customNavbar {
-    padding: 0.5rem 1rem;
+.btn {
+  font-size: 1rem; /* Default button size */
+  padding: 0.375rem 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .navLink {
+    font-size: 0.70rem; /* Shrink the font size for smaller screens */
   }
 
-  .signin-form-container {
-    width: 80%;
-    right: 0;
-    top: 50px;
+  .btn {
+    font-size: 0.70rem; /* Shrink button font size */
+    padding: 0.25rem 0.5rem; /* Adjust button padding */
+  }
+
+  .brand {
+    font-size: 0.70rem; /* Smaller logo size for small screens */
+  }
+
+  .ms-2 {
+    margin-left: 0.5rem; /* Margin for spacing between buttons */
   }
 }

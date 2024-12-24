@@ -45,14 +45,14 @@ class Navbar extends Component {
             {/* Navbar items on the right */}
             <div className="d-flex align-items-center ms-auto flex-wrap">
               <Link className={`${styles.navLink}`} to="/about">About</Link>
-              <Link className={`${styles.navLink}`} to="/contact">Contact Us</Link>
+              <Link className={`${styles.navLink}`} to="/contact">Contact</Link>
               {this.state.isSignedIn && (
                 <span className="navbar-text me-3">Welcome back, DJ!</span>
               )}
-              <button className="btn btn-outline-light" onClick={this.toggleSignInForm}>
+              <button className="btn btn-outline-light btn-sm" onClick={this.toggleSignInForm}>
                 {this.state.isSignedIn ? 'Sign Out' : 'Sign In'} 
               </button>
-              <button className="btn btn-outline-light" onClick={this.toggleSignUpForm}>
+              <button className="btn btn-outline-light ms-2 btn-sm" onClick={this.toggleSignUpForm}>
                 Sign Up
               </button>
             </div>
