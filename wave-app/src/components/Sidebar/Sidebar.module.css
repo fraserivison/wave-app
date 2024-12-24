@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .sidebar.expanded {
@@ -32,29 +33,31 @@
   color: #9933ff;
 }
 
-.sidebar .nav-link {
+.nav-link {
   color: #00ffcc !important;
   padding: 20px 5px 20px 0;
   font-size: 16px;
   display: flex;
   align-items: center;
+  justify-content: center; /* Ensure items are horizontally centered */
   transition: all 0.3s ease;
+  text-align: center;
 }
 
-.sidebar .nav-link:hover {
+.nav-link:hover {
   background-color: #495057;
   color: #ffffff !important;
   border-radius: 5px;
 }
 
-.sidebar .nav-link .icon {
-  margin-right: 10px;
+.icon {
   font-size: 20px;
   color: #00ffcc;
 }
 
-.sidebar.expanded .nav-link {
-  justify-content: flex-start;
+.text {
+  margin-left: 10px; /* Space between icon and text */
+  display: inline-block;
 }
 
 .sidebar h3 {
@@ -65,11 +68,6 @@
 
 .sidebar.expanded h3 {
   opacity: 1;
-}
-
-.icon {
-  margin-top: 50px;
-  font-size: 18px;
 }
 
 @media (max-width: 768px) {

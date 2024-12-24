@@ -24,35 +24,27 @@ function Sidebar() {
       </h3>
       <ul className="nav flex-column gap-4">
         <li className="nav-item">
-          <Link to="/" className="nav-link text-light">
-            <div className="icon-container">
-              <FaHome className="icon" style={{ color: "#00ffcc" }} />
-            </div>
-            {isExpanded && <div className="text-container">Home</div>}
+          <Link to="/" className={`${styles.navLink} nav-link text-light`}>
+            <FaHome className={styles.icon} />
+            {isExpanded && <span className={styles.text}>Home</span>}
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/profile" className="nav-link text-light">
-            <div className="icon-container">
-              <FaUser className="icon" style={{ color: "#00ffcc" }} />
-            </div>
-            {isExpanded && <div className="text-container">Profile</div>}
+          <Link to="/profile" className={`${styles.navLink} nav-link text-light`}>
+            <FaUser className={styles.icon} />
+            {isExpanded && <span className={styles.text}>Profile</span>}
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/discover" className="nav-link text-light">
-            <div className="icon-container">
-              <FaSearch className="icon" style={{ color: "#00ffcc" }} />
-            </div>
-            {isExpanded && <div className="text-container">Discover</div>}
+          <Link to="/discover" className={`${styles.navLink} nav-link text-light`}>
+            <FaSearch className={styles.icon} />
+            {isExpanded && <span className={styles.text}>Discover</span>}
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/support" className="nav-link text-light">
-            <div className="icon-container">
-              <FaQuestion className="icon" style={{ color: "#00ffcc" }} />
-            </div>
-            {isExpanded && <div className="text-container">Support</div>}
+          <Link to="/support" className={`${styles.navLink} nav-link text-light`}>
+            <FaQuestion className={styles.icon} />
+            {isExpanded && <span className={styles.text}>Support</span>}
           </Link>
         </li>
       </ul>
