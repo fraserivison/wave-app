@@ -1,0 +1,9 @@
+.App {
+    font-family: "Funnel", sans-serif;
+    background-color: #ffffff;
+    min-height: 100vh;
+  }
+
+.Main {
+    padding-top: 81px;
+}
