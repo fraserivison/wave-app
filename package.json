@@ -17,7 +17,9 @@
     "react-scripts": "^4.0.3",
     "react-transition-group": "^4.4.5",
     "serve": "^14.2.4",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "msw": "^0.35.0"
   },
   "scripts": {
     "heroku-prebuild": "npm install -g serve",
@@ -43,10 +45,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "msw": "^0.35.0"
   },
   "engines": {
     "node": "16.19.1",
