@@ -1,2 +1,2 @@
 web: gunicorn backend.wsgi --log-file -
-frontend: npm run start
+frontend: npm --prefix wave-app-frontend start
