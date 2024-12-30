@@ -1,5 +1,5 @@
 {
-  "name": "moments",
+  "name": "wave-app-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,6 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "heroku-prebuild": "npm install -g serve",
     "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
