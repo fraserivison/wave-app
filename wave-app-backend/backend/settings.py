@@ -13,6 +13,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '8000-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io',
+    'wave-django-backend.herokuapp.com',
     ]
 
 CSRF_TRUSTED_ORIGINS = [
