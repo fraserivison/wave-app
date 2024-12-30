@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import styles from "../../styles/SignInUpForm.module.css";
+import styles from "../../styles/SignUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
@@ -16,41 +16,56 @@ import {
 import axios from "axios";
 
 const SignUpForm = () => {
-  const [signUpData, setSignUpData] = useState({
+  const [formData, setFormData] = useState({
     username: "",
-    password1: "",
-    password2: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
-  const { username, password1, password2 } = signUpData;
+  const { username, email, password, confirmPassword } = formData;
 
   const [errors, setErrors] = useState({});
-
   const history = useHistory();
 
   const handleChange = (event) => {
-    setSignUpData({
-      ...signUpData,
+    setFormData({
+      ...formData,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    // Check if all fields are filled
+    if (!formData.username || !formData.email || !formData.password || !formData.confirmPassword) {
+      alert("Please fill in all fields");
+      return;
+    }
+  
+    // Check if passwords match
+    if (formData.password !== formData.confirmPassword) {
+      setErrors({ password: ["Passwords do not match"] });
+      return;
+    }
+  
     try {
-      await axios.post("/dj-rest-auth/registration/", signUpData);
+      await axios.post("/dj-rest-auth/registration/", formData);
       history.push("/signin");
     } catch (err) {
       setErrors(err.response?.data);
     }
   };
+  
 
   return (
     <Row className={`${styles.Row} d-flex justify-content-center align-items-center`}>
       <Col className="d-flex justify-content-center align-items-center" md={6} sm={10} xs={12}>
         <Container className={`${appStyles.Content} p-4`}>
-          <h1 className={styles.Header}>sign up</h1>
+          <h1 className={styles.Header}>Sign Up</h1>
 
           <Form onSubmit={handleSubmit}>
+            {/* Username field */}
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
@@ -68,35 +83,55 @@ const SignUpForm = () => {
               </Alert>
             ))}
 
-            <Form.Group controlId="password1">
+            {/* Email field */}
+            <Form.Group controlId="email">
+              <Form.Label className="d-none">Email</Form.Label>
+              <Form.Control
+                className={styles.Input}
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            {errors.email?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+
+            {/* Password field */}
+            <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="password"
                 placeholder="Password"
-                name="password1"
-                value={password1}
+                name="password"
+                value={password}
                 onChange={handleChange}
               />
             </Form.Group>
-            {errors.password1?.map((message, idx) => (
+            {errors.password?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
               </Alert>
             ))}
 
-            <Form.Group controlId="password2">
+            {/* Confirm Password field */}
+            <Form.Group controlId="confirmPassword">
               <Form.Label className="d-none">Confirm password</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="password"
-                placeholder="Confirm password"
-                name="password2"
-                value={password2}
+                placeholder="Confirm Password"
+                name="confirmPassword"
+                value={confirmPassword}
                 onChange={handleChange}
               />
             </Form.Group>
-            {errors.password2?.map((message, idx) => (
+            {errors.confirmPassword?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
               </Alert>
@@ -115,7 +150,7 @@ const SignUpForm = () => {
               </Alert>
             ))}
           </Form>
-          
+
           {/* 'Already have an account?' link */}
           <Container className={`mt-3 ${appStyles.Content} ${styles.SmallPaddingContainer}`}>
             <Link className={styles.Link} to="/signin">
