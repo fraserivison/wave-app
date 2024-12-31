@@ -1,4 +1,4 @@
-web: serve -s build
+web: gunicorn wave-app.wsgi:application
 
 
 
