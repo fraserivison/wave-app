@@ -1,1 +1,48 @@
-node_modules
+# Node.js/React dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Node.js/React testing
+/coverage
+
+# Node.js/React production
+/build
+
+# Node.js/React misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python/Django
+core.Microsoft*
+core.mongo*
+core.python*
+env.py
+__pycache__/
+*.py[cod]
+
+# Common Python/Django dependencies
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.env
+
+# Ignore virtual environments
+venv/
+ENV/
+env/
+.env/
+
+# GitHub configuration
+.github/
+
+# Miscellaneous
+cloudinary_python.txt

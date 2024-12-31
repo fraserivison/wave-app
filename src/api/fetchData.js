@@ -1,4 +1,4 @@
-import axios from "./axiosDefault";
+import axios from "./axiosDefaults";
 
 export const fetchData = async () => {
   try {
