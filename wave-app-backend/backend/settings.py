@@ -1,4 +1,6 @@
 from pathlib import Path
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,11 +12,11 @@ SECRET_KEY = 'django-insecure-1(se90@#nr)_ad32l6g8*^dgl6#*rxlq+5r1qk0a2qfb-=$n=$
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '8000-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io',
-    'wave-django-backend.herokuapp.com',
-    ]
+    'wave-django-backend-69f2b8961b57.herokuapp.com',  # Heroku backend URL
+    'wave-react-frontend-e9f1c747c897.herokuapp.com',  # Frontend URL
+    '8080-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io',  # Gitpod dev URL
+    'localhost',  # For local development
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io',
@@ -25,7 +27,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://8080-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io",
     "https://wave-react-frontend-e9f1c747c897.herokuapp.com",
 ]
-
 
 INSTALLED_APPS = [
     # Django core apps
@@ -63,13 +64,12 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / '../wave-app-frontend/build'],
+        'DIRS': [BASE_DIR / '../wave-app-frontend/build'],  # Adjust if necessary
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,63 +84,43 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'wave-app-frontend/build/static'),
+    BASE_DIR / '../wave-app-frontend/build/static',
 ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
