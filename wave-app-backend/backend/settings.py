@@ -18,12 +18,14 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io',
+    'https://wave-react-frontend-e9f1c747c897.herokuapp.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "https://8080-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io",
     "https://wave-react-frontend-e9f1c747c897.herokuapp.com",
 ]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,16 +42,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
-CORS_ALLOW_ALL_ORIGINS = True 
 
 ROOT_URLCONF = 'backend.urls'
 
