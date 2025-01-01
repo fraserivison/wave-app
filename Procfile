@@ -1,4 +1,4 @@
-web: gunicorn backend.wsgi:application
+web: gunicorn wave-app-backend.backend.wsgi
 
 
 
