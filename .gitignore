@@ -6,9 +6,6 @@
 # Node.js/React testing
 /coverage
 
-# Node.js/React production
-/build
-
 # Node.js/React misc
 .DS_Store
 .env.local
