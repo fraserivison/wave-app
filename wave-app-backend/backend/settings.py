@@ -58,6 +58,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+
+    # Cloudinary apps
+    'cloudinary_storage',
+    'cloudinary',
     
     # Your custom apps
     'api',
