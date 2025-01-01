@@ -25,22 +25,26 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+GITPOD_WORKSPACE_URL = os.environ.get('GITPOD_WORKSPACE_URL', '')
+GITPOD_HOST = GITPOD_WORKSPACE_URL.replace('https://', '').replace('http://', '')
+
 ALLOWED_HOSTS = [
-    'wave-django-backend-69f2b8961b57.herokuapp.com',  # Heroku backend URL
-    'wave-react-frontend-e9f1c747c897.herokuapp.com',  # Frontend URL
-    '8080-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io',  # Gitpod dev URL
-    'localhost',  # For local development
+    'wave-django-backend-69f2b8961b57.herokuapp.com',
+    'wave-react-frontend-e9f1c747c897.herokuapp.com',
+    GITPOD_HOST,
+    'localhost',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io',
+    f'https://{GITPOD_HOST}',
     'https://wave-react-frontend-e9f1c747c897.herokuapp.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://8080-fraserivison-waveapp-g8rmuaifqj9.ws-eu117.gitpod.io",
-    "https://wave-react-frontend-e9f1c747c897.herokuapp.com",
+    f'https://{GITPOD_HOST}',
+    'https://wave-react-frontend-e9f1c747c897.herokuapp.com',
 ]
+
 
 # Cloudinary settings (importing from env.py)
 CLOUDINARY_STORAGE = {
