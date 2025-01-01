@@ -19,7 +19,6 @@ else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-    print('connected')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-1(se90@#nr)_ad32l6g8*^dgl6#*rxlq+5r1qk0a2qfb-=$n=$'
