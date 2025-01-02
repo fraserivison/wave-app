@@ -1,1 +1,1 @@
-web: cd wave-app-frontend && serve -s build
+web: cd wave-app-frontend && npm start
