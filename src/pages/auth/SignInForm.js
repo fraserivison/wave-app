@@ -28,19 +28,35 @@ function SignInForm() {
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("Submitting form with data:", signInData);
 
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      console.log("Login successful, received data:", data);
+
       setCurrentUser(data.user);
+      console.log("User set in context:", data.user);
+
       history.push("/");
     } catch (err) {
-      setErrors(err.response?.data);
+      console.error("Login failed with error:", err);
+
+      if (err.response) {
+        console.error("Error response data:", err.response.data);
+      } else {
+        console.error("No response received or error unrelated to response");
+      }
+
+      setErrors(err.response?.data || { non_field_errors: ["An unexpected error occurred."] });
     }
   };
 
   const handleChange = (event) => {
+    console.log("Input changed:", event.target.name, "=", event.target.value);
+
     setSignInData({
       ...signInData,
       [event.target.name]: event.target.value,
