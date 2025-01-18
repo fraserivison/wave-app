@@ -119,11 +119,23 @@ function TrackCreateForm() {
       <Form.Group>
         <Form.Label>Genre</Form.Label>
         <Form.Control
-          type="text"
+          as="select"
           name="genre"
           value={genre}
           onChange={handleChange}
-        />
+        >
+          <option value="">Select a genre</option>
+          <option value="house">House</option>
+          <option value="tech_house">Tech House</option>
+          <option value="trance">Trance</option>
+          <option value="dubstep">Dubstep</option>
+          <option value="drum_and_bass">Drum and Bass</option>
+          <option value="techno">Techno</option>
+          <option value="electro">Electro</option>
+          <option value="progressive_house">Progressive House</option>
+          <option value="chillout">Chillout</option>
+          <option value="other">Other</option>
+        </Form.Control>
       </Form.Group>
       {errors?.genre?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -138,7 +150,10 @@ function TrackCreateForm() {
         >
           Cancel
         </Button>
-        <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+          type="submit"
+        >
           Create
         </Button>
       </div>
@@ -201,7 +216,11 @@ function TrackCreateForm() {
               {album_cover ? (
                 <>
                   <figure>
-                    <Image className={appStyles.Image} src={album_cover} rounded />
+                    <Image
+                      className={appStyles.Image}
+                      src={album_cover}
+                      rounded
+                    />
                   </figure>
                   <div>
                     <Form.Label
@@ -249,15 +268,3 @@ function TrackCreateForm() {
 }
 
 export default TrackCreateForm;
-
-
-
-
-
-
-
-
-
-
-
-  
