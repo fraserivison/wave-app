@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import TrackCreateForm from "./pages/tracks/TrackCreateForm";
+import DiscoveryPage from "./pages/discovery/DiscoveryPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/tracks/create" render={() => <TrackCreateForm />} />
+          <Route exact path="/discovery/:id" render={() => <DiscoveryPage />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
