@@ -35,6 +35,17 @@ const NavBar = () => {
       <i className="far fa-plus-square"></i>Add track
     </NavLink>
   );
+
+  const addEventIcon = (
+    <NavLink
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/events/create"
+    >
+      <i className="far fa-plus-square"></i>Add event
+    </NavLink>
+  );
+
   const loggedInIcons = (
     <>
       <NavLink
@@ -62,6 +73,7 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
   const loggedOutIcons = (
     <>
       <NavLink
@@ -94,7 +106,12 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
-        {currentUser && addTrackIcon}
+        {currentUser && (
+          <>
+            {addTrackIcon}
+            {addEventIcon}
+          </>
+        )}
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}
