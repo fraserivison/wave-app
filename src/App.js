@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import TrackCreateForm from "./pages/tracks/TrackCreateForm";
+import EventCreateForm from "./pages/events/EventCreateForm";
 import TrackPage from "./pages/tracks/TrackPage";
 import TracksPage from "./pages/tracks/TracksPage";
 import TrackEditForm from "./pages/tracks/TrackEditForm";
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/tracks/create" render={() => <TrackCreateForm />} />
+          <Route exact path="/events/create" render={() => <EventCreateForm />} />
           <Route exact path="/tracks/:id" render={() => <TrackPage />} />
           <Route exact path="/tracks/:id/edit" render={() => <TrackEditForm />} />
           <Route render={() => <p>Page not found!</p>} />
