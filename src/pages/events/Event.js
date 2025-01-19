@@ -10,7 +10,6 @@ const Event = (props) => {
     id,
     owner,
     profile_id,
-    profile_image,
     genre,
     updated_at,
     date,
