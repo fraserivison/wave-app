@@ -14,16 +14,21 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function EventsPage({ message, filter = "" }) {
   const [events, setEvents] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
+  
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const { data } = await axiosReq.get(`/events/?${filter}`);
+        // Adjust the API request to include the query for search
+        const { data } = await axiosReq.get(`/events/?${filter}search=${query}`);
         setEvents(data);
         setHasLoaded(true);
       } catch (err) {
@@ -32,19 +37,47 @@ function EventsPage({ message, filter = "" }) {
     };
 
     setHasLoaded(false);
-    fetchEvents();
-  }, [filter, pathname]);
+    const timer = setTimeout(() => {
+      fetchEvents();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filter, query, pathname]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular events mobile</p>
+
+        {/* Search bar */}
+        <i className={`fas fa-search ${styles.SearchIcon}`} />
+        <Form
+          className={styles.SearchBar}
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <Form.Control
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            type="text"
+            className="mr-sm-2"
+            placeholder="Search events"
+          />
+        </Form>
+
         {hasLoaded ? (
           <>
             {events.results.length ? (
-              events.results.map((event) => (
-                <Event key={event.id} {...event} setEvents={setEvents} />
-              ))
+              <InfiniteScroll
+                children={events.results.map((event) => (
+                  <Event key={event.id} {...event} setEvents={setEvents} />
+                ))}
+                dataLength={events.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!events.next}
+                next={() => fetchMoreData(events, setEvents)}
+              />
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
