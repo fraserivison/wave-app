@@ -1,10 +1,18 @@
 import React from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip, Dropdown, DropdownButton } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {
+  Card,
+  Media,
+  OverlayTrigger,
+  Tooltip,
+  Dropdown,
+  DropdownButton,
+} from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Track = (props) => {
   const {
@@ -26,6 +34,20 @@ const Track = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/tracks/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/tracks/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleRate = async (rating) => {
     try {
@@ -85,7 +107,12 @@ const Track = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && trackPage && "..."}
+            {is_owner && trackPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>
@@ -95,7 +122,11 @@ const Track = (props) => {
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         {description && <Card.Text>{description}</Card.Text>}
-        {genre && <Card.Text className="text-muted text-center">Genre: {genre}</Card.Text>}
+        {genre && (
+          <Card.Text className="text-muted text-center">
+            Genre: {genre}
+          </Card.Text>
+        )}
         {audio_file && (
           <div className="text-center">
             <audio controls>
@@ -154,9 +185,3 @@ const Track = (props) => {
 };
 
 export default Track;
-
-
-
-
-
-
