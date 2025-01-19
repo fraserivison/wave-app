@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import heroImage from "../../assets/hero.png";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -50,7 +51,11 @@ function SignInForm() {
         console.error("No response received or error unrelated to response");
       }
 
-      setErrors(err.response?.data || { non_field_errors: ["An unexpected error occurred."] });
+      setErrors(
+        err.response?.data || {
+          non_field_errors: ["An unexpected error occurred."],
+        }
+      );
     }
   };
 
@@ -127,7 +132,8 @@ function SignInForm() {
       >
         <Image
           className={`${appStyles.FillerImage}`}
-          src={"https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero.jpg"}
+          src={heroImage}
+          alt="Hero"
         />
       </Col>
     </Row>

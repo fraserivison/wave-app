@@ -49,7 +49,6 @@ function EventsPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular events mobile</p>
 
         {/* Search bar */}
         <i className={`fas fa-search ${styles.SearchIcon}`} />
@@ -91,7 +90,6 @@ function EventsPage({ message, filter = "" }) {
         )}
       </Col>
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <p>Popular events for desktop</p>
       </Col>
     </Row>
   );
