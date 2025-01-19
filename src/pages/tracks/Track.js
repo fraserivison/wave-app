@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip, Dropdown, DropdownButton } from "react-bootstrap";
@@ -21,26 +21,31 @@ const Track = (props) => {
     album_cover,
     updated_at,
     discoveryPage,
-    setTracks
+    setTracks,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  
-  const [ratingValue, setRatingValue] = useState(null); // For tracking the selected rating
 
   const handleRate = async (rating) => {
     try {
       const { data } = await axiosRes.post("/ratings/", { title: id, rating }); // Send rating value
-      setTracks((prevTracks) => ({
-        ...prevTracks,
-        results: prevTracks.results.map((track) => {
-          return track.id === id
-            ? { ...track, ratings_count: track.ratings_count + 1, rating_id: data.id }
-            : track;
-        }),
-      }));
-      setRatingValue(rating); // Update the local rating value
+      setTracks((prevTracks) => {
+        return {
+          ...prevTracks,
+          results: prevTracks.results.map((track) => {
+            if (track.id === id) {
+              const newRatingsCount = track.ratings_count + 1;
+              return {
+                ...track,
+                ratings_count: newRatingsCount,
+                rating_id: data.id,
+              };
+            }
+            return track;
+          }),
+        };
+      });
     } catch (err) {
       console.log(err);
     }
@@ -49,15 +54,22 @@ const Track = (props) => {
   const handleUnrate = async () => {
     try {
       await axiosRes.delete(`/ratings/${rating_id}/`);
-      setTracks((prevTracks) => ({
-        ...prevTracks,
-        results: prevTracks.results.map((track) => {
-          return track.id === id
-            ? { ...track, ratings_count: track.ratings_count - 1, rating_id: null }
-            : track;
-        }),
-      }));
-      setRatingValue(null);
+      setTracks((prevTracks) => {
+        return {
+          ...prevTracks,
+          results: prevTracks.results.map((track) => {
+            if (track.id === id) {
+              const newRatingsCount = track.ratings_count - 1;
+              return {
+                ...track,
+                ratings_count: newRatingsCount,
+                rating_id: null,
+              };
+            }
+            return track;
+          }),
+        };
+      });
     } catch (err) {
       console.log(err);
     }
@@ -93,49 +105,58 @@ const Track = (props) => {
           </div>
         )}
         <div className={styles.TrackBar}>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't rate your own track!</Tooltip>}
-            >
-              <i className="far fa-star" />
-            </OverlayTrigger>
-          ) : rating_id ? (
-            <span onClick={handleUnrate}>
-              <i className={`fas fa-star ${styles.Star}`} />
-            </span>
-          ) : currentUser ? (
-            <DropdownButton
-              id="rating-dropdown"
-              title={`Rate: ${ratingValue || "Select Rating"}`}
-              onSelect={(rating) => handleRate(rating)}
-            >
-              {[1, 2, 3, 4, 5].map((value) => (
-                <Dropdown.Item key={value} eventKey={value}>
-                  {value} Star{value > 1 ? "s" : ""}
-                </Dropdown.Item>
-              ))}
-            </DropdownButton>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to rate tracks!</Tooltip>}
-            >
-              <i className="far fa-star" />
-            </OverlayTrigger>
-          )}
-          {ratings_count}
-          <Link to={`/tracks/${id}`}>
-            <i className="far fa-comments" />
-          </Link>
-          {comments_count}
+          <div className="d-flex align-items-center">
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't rate your own track!</Tooltip>}
+              >
+                <i className="far fa-star" />
+              </OverlayTrigger>
+            ) : rating_id ? (
+              <span onClick={handleUnrate}>
+                <i className={`fas fa-star ${styles.Star}`} />
+              </span>
+            ) : currentUser ? (
+              <DropdownButton
+                id="rating-dropdown"
+                title={`Rate: Select Rating`}
+                onSelect={(rating) => handleRate(rating)}
+                variant="link"
+              >
+                {[1, 2, 3, 4, 5].map((value) => (
+                  <Dropdown.Item key={value} eventKey={value}>
+                    {value} Star{value > 1 ? "s" : ""}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to rate tracks!</Tooltip>}
+              >
+                <i className="far fa-star" />
+              </OverlayTrigger>
+            )}
+            {ratings_count}
+          </div>
+
+          <div className="d-flex align-items-center ml-3">
+            <Link to={`/tracks/${id}`}>
+              <i className="far fa-comments" />
+            </Link>
+            {comments_count}
+          </div>
         </div>
-        {ratingValue && <div className={styles.RatingNumber}>{ratingValue}</div>} {/* Display rating number */}
       </Card.Body>
     </Card>
   );
 };
 
 export default Track;
+
+
+
+
 
 
