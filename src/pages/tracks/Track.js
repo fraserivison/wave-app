@@ -32,26 +32,31 @@ const Track = (props) => {
     setTracks,
   } = props;
 
+  console.log("Track props:", props); // Debug log for the props passed to Track
+
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
   const handleEdit = () => {
+    console.log("Navigating to edit page for track:", id); // Debug log when edit is triggered
     history.push(`/tracks/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
+      console.log("Deleting track:", id); // Debug log when delete is triggered
       await axiosRes.delete(`/tracks/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      console.log("Error deleting track:", err); // Debug log for delete error
     }
   };
 
   const handleRate = async (rating) => {
+    console.log("Rating track:", id, "with rating:", rating); // Debug log for rating action
     try {
-      const { data } = await axiosRes.post("/ratings/", { title: id, rating }); // Send rating value
+      const { data } = await axiosRes.post("/ratings/", { title: id, rating });
       setTracks((prevTracks) => {
         return {
           ...prevTracks,
@@ -69,11 +74,12 @@ const Track = (props) => {
         };
       });
     } catch (err) {
-      console.log(err);
+      console.log("Error rating track:", err); // Debug log for rating error
     }
   };
 
   const handleUnrate = async () => {
+    console.log("Removing rating for track:", id); // Debug log for unrating action
     try {
       await axiosRes.delete(`/ratings/${rating_id}/`);
       setTracks((prevTracks) => {
@@ -93,7 +99,7 @@ const Track = (props) => {
         };
       });
     } catch (err) {
-      console.log(err);
+      console.log("Error removing rating:", err); // Debug log for unrating error
     }
   };
 
@@ -185,3 +191,4 @@ const Track = (props) => {
 };
 
 export default Track;
+

@@ -8,11 +8,12 @@ import SignInForm from "./pages/auth/SignInForm";
 import TrackCreateForm from "./pages/tracks/TrackCreateForm";
 import TrackPage from "./pages/tracks/TrackPage";
 import TracksPage from "./pages/tracks/TracksPage";
+import TrackEditForm from "./pages/tracks/TrackEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
   const currentUser = useCurrentUser();
-  const profile_id = currentUser?.profile_id || ""; // Ensure profile_id is available
+  const profile_id = currentUser?.profile_id || "";
 
   return (
     <div className={styles.App}>
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/tracks/create" render={() => <TrackCreateForm />} />
           <Route exact path="/tracks/:id" render={() => <TrackPage />} />
+          <Route exact path="/tracks/:id/edit" render={() => <TrackEditForm />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>

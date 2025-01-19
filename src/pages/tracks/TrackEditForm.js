@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -16,10 +16,10 @@ import styles from "../../styles/TrackCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function TrackCreateForm() {
+function TrackEditForm() {
   const [errors, setErrors] = useState({});
 
   const [trackData, setTrackData] = useState({
@@ -31,10 +31,32 @@ function TrackCreateForm() {
   });
   const { title, description, genre, audio_file, album_cover } = trackData;
 
+  const [setIsOwner] = useState(false);
+
   const albumCoverInput = useRef(null);
   const audioFileInput = useRef(null);
-
   const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/tracks/${id}/`);
+        console.log(data);
+        const { title, description, genre, audio_file, album_cover, is_owner } = data;
+  
+        if (is_owner) {
+          setTrackData({ title, description, genre, audio_file, album_cover });
+          setIsOwner(true);
+        } else {
+          setIsOwner(false);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleMount();
+  }, [history, id, setIsOwner]);
 
   const handleChange = (event) => {
     setTrackData({
@@ -69,19 +91,27 @@ function TrackCreateForm() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("genre", genre);
-    formData.append("album_cover", albumCoverInput.current.files[0]);
-    formData.append("audio_file", audioFileInput.current.files[0]);
+    if (albumCoverInput?.current?.files[0]) {
+      formData.append("album_cover", albumCoverInput.current.files[0]);
+    }
+    
+    if (audioFileInput?.current?.files[0]) {
+      formData.append("audio_file", audioFileInput.current.files[0]);
+    }
+    
 
     try {
-      const { data } = await axiosReq.post("/tracks/", formData);
-      history.push(`/tracks/${data.id}`);
+      const response = await axiosReq.put(`/tracks/${id}/`, formData);
+      const updatedTrack = response.data;
+      history.push(`/tracks/${updatedTrack.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
     }
-  };
+  }
+    
 
   const textFields = (
     <div className="text-center">
@@ -154,7 +184,7 @@ function TrackCreateForm() {
           className={`${btnStyles.Button} ${btnStyles.Blue}`}
           type="submit"
         >
-          Create
+          Save
         </Button>
       </div>
     </div>
@@ -267,4 +297,4 @@ function TrackCreateForm() {
   );
 }
 
-export default TrackCreateForm;
+export default TrackEditForm;
