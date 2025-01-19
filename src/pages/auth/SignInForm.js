@@ -40,7 +40,7 @@ function SignInForm() {
       setCurrentUser(data.user);
       console.log("User set in context:", data.user);
 
-      history.push("/");
+      history.push("/discover");
     } catch (err) {
       console.error("Login failed with error:", err);
 

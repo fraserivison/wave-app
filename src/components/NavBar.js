@@ -2,11 +2,8 @@ import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
-import { NavLink } from "react-router-dom";
-import {
-  useCurrentUser,
-  useSetCurrentUser,
-} from "../contexts/CurrentUserContext";
+import { NavLink, useHistory } from "react-router-dom"; // Import useHistory
+import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
@@ -14,6 +11,7 @@ import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const history = useHistory(); // Initialize useHistory
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
@@ -21,6 +19,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      history.push("/signin"); // Redirect to the sign-in page
     } catch (err) {
       console.log(err);
     }
@@ -51,16 +50,16 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/feed"
+        to="/discover"
       >
-        <i className="fas fa-stream"></i>Feed
+        <i className="fas fa-music"></i>Discover
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/liked"
+        to="/events"
       >
-        <i className="fas fa-heart"></i>Liked
+        <i className="fas fa-calendar-alt"></i>Events
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
@@ -119,15 +118,6 @@ const NavBar = () => {
         />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
-            <NavLink
-              exact
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/"
-            >
-              <i className="fas fa-home"></i>Home
-            </NavLink>
-
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
@@ -137,3 +127,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
+
+
