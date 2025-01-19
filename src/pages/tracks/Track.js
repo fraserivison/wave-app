@@ -20,7 +20,7 @@ const Track = (props) => {
     audio_file,
     album_cover,
     updated_at,
-    discoveryPage,
+    trackPage,
     setTracks,
   } = props;
 
@@ -85,7 +85,7 @@ const Track = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && discoveryPage && "..."}
+            {is_owner && trackPage && "..."}
           </div>
         </Media>
       </Card.Body>
