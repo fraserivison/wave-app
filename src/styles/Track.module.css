@@ -1,24 +1,32 @@
-.Post {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
-    border-radius: 2px;
-    margin-bottom: 16px;
-    text-align: center;
-  }
+.Track {
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.Track figure,
+h5 {
+  margin: 0 0;
+}
+
+.Star {
+  color: #f85032;
+}
+
+.Star:hover {
+  color: #2142b2;
+}
+
+.StarOutline:hover {
+  color: #f85032;
+}
+
+.RatingNumber {
+  font-weight: bold;
+  margin-left: 5px;
+  font-size: 1rem;
+}
+
   
-  .Post figure,
-  h5 {
-    margin: 0 0;
-  }
-  
-  .Heart {
-    color: #f85032;
-  }
-  
-  .Heart:hover {
-    color: #2142b2;
-  }
-  
-  .HeartOutline:hover {
-    color: #f85032;
-  }
