@@ -32,13 +32,10 @@ function TrackPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
         <Track {...track.results[0]} setTracks={setTrack} trackPage />
-        <p>Track component</p>
         <Container className={appStyles.Content}>Comments</Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular profiles for desktop
       </Col>
     </Row>
   );

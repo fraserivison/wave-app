@@ -5,8 +5,9 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
-import TrackCreateForm from "./pages/tracks/TrackCreateForm";
 import EventCreateForm from "./pages/events/EventCreateForm";
+import EventPage from "./pages/events/EventPage";
+import TrackCreateForm from "./pages/tracks/TrackCreateForm";
 import TrackPage from "./pages/tracks/TrackPage";
 import TracksPage from "./pages/tracks/TracksPage";
 import TrackEditForm from "./pages/tracks/TrackEditForm";
@@ -53,6 +54,7 @@ function App() {
           <Route exact path="/tracks/create" render={() => <TrackCreateForm />} />
           <Route exact path="/events/create" render={() => <EventCreateForm />} />
           <Route exact path="/tracks/:id" render={() => <TrackPage />} />
+          <Route exact path="/events/:id" render={() => <EventPage />} />
           <Route exact path="/tracks/:id/edit" render={() => <TrackEditForm />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
