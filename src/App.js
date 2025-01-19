@@ -14,29 +14,44 @@ import TracksPage from "./pages/tracks/TracksPage";
 import TrackEditForm from "./pages/tracks/TrackEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
+// PrivateRoute component
+function PrivateRoute({ component: Component, ...rest }) {
+  const currentUser = useCurrentUser();
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        currentUser ? <Component {...props} /> : <Redirect to="/signin" />
+      }
+    />
+  );
+}
+
 function App() {
   const currentUser = useCurrentUser();
-  const profile_id = currentUser?.profile_id || "";
 
   return (
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/discover" />} />
-
+          {/* Public Routes */}
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
-          <Route exact path="/tracks/create" render={() => <TrackCreateForm />} />
-          <Route exact path="/events/create" render={() => <EventCreateForm />} />
-          <Route exact path="/tracks/:id" render={() => <TrackPage />} />
-          <Route exact path="/events/:id" render={() => <EventPage />} />
-          <Route exact path="/tracks/:id/edit" render={() => <TrackEditForm />} />
-          
-          <Route path="/events" component={EventsPage} />
 
-          <Route path="/discover" component={TracksPage} />
-          
+          {/* Redirect unauthenticated users */}
+          <Route exact path="/" render={() => <Redirect to="/discover" />} />
+
+          {/* Private Routes */}
+          <PrivateRoute exact path="/tracks/create" component={TrackCreateForm} />
+          <PrivateRoute exact path="/events/create" component={EventCreateForm} />
+          <PrivateRoute exact path="/tracks/:id" component={TrackPage} />
+          <PrivateRoute exact path="/events/:id" component={EventPage} />
+          <PrivateRoute exact path="/tracks/:id/edit" component={TrackEditForm} />
+          <PrivateRoute path="/events" component={EventsPage} />
+          <PrivateRoute path="/discover" component={TracksPage} />
+
+          {/* Fallback Route */}
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
@@ -45,4 +60,5 @@ function App() {
 }
 
 export default App;
+
 

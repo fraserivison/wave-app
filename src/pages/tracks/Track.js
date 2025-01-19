@@ -1,14 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import {
-  Card,
-  Media,
-  OverlayTrigger,
-  Tooltip,
-  Dropdown,
-  DropdownButton,
-} from "react-bootstrap";
+import { Card, Media, OverlayTrigger, Tooltip, Dropdown, DropdownButton } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -32,20 +25,34 @@ const Track = (props) => {
     setTracks,
   } = props;
 
-  console.log("Track props:", props);
-
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  // This will hold the current average rating
+  const [averageRating, setAverageRating] = useState(null);
+
+  useEffect(() => {
+    // Fetch the track details when the component mounts or when the rating changes
+    const fetchTrackData = async () => {
+      try {
+        const response = await axiosRes.get(`/tracks/${id}/`);
+        const track = response.data;
+        setAverageRating(track.average_rating);  // Set the initial average rating
+      } catch (error) {
+        console.error("Error fetching track data:", error);
+      }
+    };
+
+    fetchTrackData();
+  }, [id]);
+
   const handleEdit = () => {
-    console.log("Navigating to edit page for track:", id);
     history.push(`/tracks/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
-      console.log("Deleting track:", id);
       await axiosRes.delete(`/tracks/${id}/`);
       history.goBack();
     } catch (err) {
@@ -54,18 +61,25 @@ const Track = (props) => {
   };
 
   const handleRate = async (rating) => {
-    console.log("Rating track:", id, "with rating:", rating);
     try {
+      // Post the rating to the backend
       const { data } = await axiosRes.post("/ratings/", { title: id, rating });
+
+      // Fetch the updated track data with the new average_rating
+      const trackResponse = await axiosRes.get(`/tracks/${id}/`);
+      const updatedTrack = trackResponse.data;
+
+      // Update the frontend with the new average rating
+      setAverageRating(updatedTrack.average_rating);
       setTracks((prevTracks) => {
         return {
           ...prevTracks,
           results: prevTracks.results.map((track) => {
             if (track.id === id) {
-              const newRatingsCount = track.ratings_count + 1;
               return {
                 ...track,
-                ratings_count: newRatingsCount,
+                ratings_count: updatedTrack.ratings_count,
+                average_rating: updatedTrack.average_rating, // Update average_rating with the latest from backend
                 rating_id: data.id,
               };
             }
@@ -79,18 +93,25 @@ const Track = (props) => {
   };
 
   const handleUnrate = async () => {
-    console.log("Removing rating for track:", id);
     try {
+      // Remove the rating
       await axiosRes.delete(`/ratings/${rating_id}/`);
+
+      // Fetch the updated track data with the new average_rating after removing the rating
+      const trackResponse = await axiosRes.get(`/tracks/${id}/`);
+      const updatedTrack = trackResponse.data;
+
+      // Update the frontend with the new average rating
+      setAverageRating(updatedTrack.average_rating);
       setTracks((prevTracks) => {
         return {
           ...prevTracks,
           results: prevTracks.results.map((track) => {
             if (track.id === id) {
-              const newRatingsCount = track.ratings_count - 1;
               return {
                 ...track,
-                ratings_count: newRatingsCount,
+                ratings_count: updatedTrack.ratings_count,
+                average_rating: updatedTrack.average_rating, // Update average_rating with the latest from backend
                 rating_id: null,
               };
             }
@@ -185,10 +206,16 @@ const Track = (props) => {
             {comments_count}
           </div>
         </div>
+        <div className="mt-2">
+          <strong>Average Rating:</strong> {averageRating !== null ? averageRating.toFixed(1) : "Loading..."}
+        </div>
       </Card.Body>
     </Card>
   );
 };
 
 export default Track;
+
+
+
 

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* Reduced from 10px to 5px */
 }
 
 .RatingContainer,
@@ -13,12 +13,13 @@
 
 .RatingNumber {
   font-weight: bold;
-  margin-left: 5px;
-  font-size: 1rem;
+  margin-left: 2.5px; /* Reduced from 5px to 2.5px */
+  font-size: 0.5rem; /* Reduced from 1rem to 0.5rem */
 }
 
 .Star {
   color: #f85032;
+  font-size: 0.5rem; /* Added to scale stars down */
 }
 
 .Star:hover {
