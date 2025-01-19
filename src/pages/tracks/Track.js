@@ -32,29 +32,29 @@ const Track = (props) => {
     setTracks,
   } = props;
 
-  console.log("Track props:", props); // Debug log for the props passed to Track
+  console.log("Track props:", props);
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
   const handleEdit = () => {
-    console.log("Navigating to edit page for track:", id); // Debug log when edit is triggered
+    console.log("Navigating to edit page for track:", id);
     history.push(`/tracks/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
-      console.log("Deleting track:", id); // Debug log when delete is triggered
+      console.log("Deleting track:", id);
       await axiosRes.delete(`/tracks/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log("Error deleting track:", err); // Debug log for delete error
+      console.log("Error deleting track:", err);
     }
   };
 
   const handleRate = async (rating) => {
-    console.log("Rating track:", id, "with rating:", rating); // Debug log for rating action
+    console.log("Rating track:", id, "with rating:", rating);
     try {
       const { data } = await axiosRes.post("/ratings/", { title: id, rating });
       setTracks((prevTracks) => {
@@ -74,12 +74,12 @@ const Track = (props) => {
         };
       });
     } catch (err) {
-      console.log("Error rating track:", err); // Debug log for rating error
+      console.log("Error rating track:", err);
     }
   };
 
   const handleUnrate = async () => {
-    console.log("Removing rating for track:", id); // Debug log for unrating action
+    console.log("Removing rating for track:", id);
     try {
       await axiosRes.delete(`/ratings/${rating_id}/`);
       setTracks((prevTracks) => {
@@ -99,7 +99,7 @@ const Track = (props) => {
         };
       });
     } catch (err) {
-      console.log("Error removing rating:", err); // Debug log for unrating error
+      console.log("Error removing rating:", err);
     }
   };
 
