@@ -1,3 +1,77 @@
+.TrackCard,
+.EventCard {
+  border: none;
+  border-radius: 12px;
+  color: white;
+  background: linear-gradient(135deg, #f79c42, #f39c12); /* Warm orange-yellow gradient for a music vibe */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+
+.TrackCard:hover,
+.EventCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Darker shadow on hover for a cool effect */
+}
+
+h4 {
+  font-size: 1.5rem;  /* Section heading */
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h5 {
+  font-size: 1.1rem;  /* Track/Event title */
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  font-size: 0.875rem;  /* Description */
+  margin: 0.5rem 0;
+  color: #e0e0e0;
+}
+
+p strong {
+  color: #f39c12; /* Highlight strong text (like artist, date, genre) */
+}
+
+.Row {
+  margin: 1rem;
+}
+
+.Row .Col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TrackCard .text-white,
+.EventCard .text-white {
+  color: white;
+}
+
+.CardTile {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.CardTile:hover {
+  transform: translateY(-10px);
+}
+
 .WordBreak {
-    word-break: break-all;
-  }
+  word-break: break-all;
+}
+
+.EventCard {
+  background: linear-gradient(135deg, #6a5acd, #483d8b);
+}
