@@ -12,6 +12,7 @@ import TrackCreateForm from "./pages/tracks/TrackCreateForm";
 import TrackPage from "./pages/tracks/TrackPage";
 import TracksPage from "./pages/tracks/TracksPage";
 import TrackEditForm from "./pages/tracks/TrackEditForm";
+import EventEditForm from "./pages/events/EventEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          {/* Public Routes */}
+          {/* Public Routes (Sign-in and Sign-up) */}
           <Route exact path="/signin">
             {currentUser ? <Redirect to="/discover" /> : <SignInForm />}
           </Route>
@@ -30,7 +31,7 @@ function App() {
             {currentUser ? <Redirect to="/discover" /> : <SignUpForm />}
           </Route>
 
-          {/* Redirect "/" based on authentication */}
+          {/* Redirect Root ("/") to "/signin" if user is not authenticated */}
           <Route exact path="/">
             {currentUser ? <Redirect to="/discover" /> : <Redirect to="/signin" />}
           </Route>
@@ -51,6 +52,9 @@ function App() {
           <Route exact path="/tracks/:id/edit">
             {currentUser ? <TrackEditForm /> : <Redirect to="/signin" />}
           </Route>
+          <Route exact path="/events/:id/edit">
+            {currentUser ? <EventEditForm /> : <Redirect to="/signin" />}
+          </Route>
           <Route path="/events">
             {currentUser ? <EventsPage /> : <Redirect to="/signin" />}
           </Route>
@@ -58,7 +62,7 @@ function App() {
             {currentUser ? <TracksPage /> : <Redirect to="/signin" />}
           </Route>
 
-          {/* Fallback Route */}
+          {/* Fallback Route for "Page Not Found" */}
           <Route>
             <p>Page not found!</p>
           </Route>
@@ -69,5 +73,7 @@ function App() {
 }
 
 export default App;
+
+
 
 

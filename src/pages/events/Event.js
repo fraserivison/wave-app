@@ -17,25 +17,26 @@ const Event = (props) => {
     date,
     location,
     description,
-    eventPage,
+    eventPage = false
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const history = useHistory();  // useHistory for v5
+  const history = useHistory();
 
   const handleEdit = () => {
-    history.push(`/events/${id}/edit`);  // use history.push() for v5
+    history.push(`/events/${id}/edit`);
   };
 
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/events/${id}/`);
-      history.goBack();  // use history.goBack() for v5
+      history.goBack();
     } catch (err) {
       console.log(err);
     }
   };
+  console.log({ eventPage, is_owner, currentUser, owner });
 
   return (
     <Card className={styles.Event}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom"; // Import Link
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -21,14 +21,15 @@ function EventsPage({ message, filter = "" }) {
   const [events, setEvents] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
-  
+
   const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        // Adjust the API request to include the query for search
-        const { data } = await axiosReq.get(`/events/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(
+          `/events/?${filter}search=${query}`
+        );
         setEvents(data);
         setHasLoaded(true);
       } catch (err) {
@@ -49,7 +50,6 @@ function EventsPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-
         {/* Search bar */}
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
@@ -70,7 +70,13 @@ function EventsPage({ message, filter = "" }) {
             {events.results.length ? (
               <InfiniteScroll
                 children={events.results.map((event) => (
-                  <Event key={event.id} {...event} setEvents={setEvents} />
+                  <Link key={event.id} to={`/events/${event.id}`}>
+                    <Event
+                      {...event}
+                      setEvents={setEvents}
+                      eventPage={false}
+                    />
+                  </Link>
                 ))}
                 dataLength={events.results.length}
                 loader={<Asset spinner />}
@@ -89,10 +95,10 @@ function EventsPage({ message, filter = "" }) {
           </Container>
         )}
       </Col>
-      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-      </Col>
+      <Col md={4} className="d-none d-lg-block p-0 p-lg-2"></Col>
     </Row>
   );
 }
 
 export default EventsPage;
+
