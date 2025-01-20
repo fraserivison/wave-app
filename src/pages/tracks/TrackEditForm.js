@@ -26,15 +26,11 @@ function TrackEditForm() {
     title: "",
     description: "",
     genre: "",
-    audio_file: "",
     album_cover: "",
   });
-  const { title, description, genre, audio_file, album_cover } = trackData;
-
-  const [setIsOwner] = useState(false);
+  const { title, description, genre, album_cover } = trackData;
 
   const albumCoverInput = useRef(null);
-  const audioFileInput = useRef(null);
   const history = useHistory();
   const { id } = useParams();
 
@@ -42,21 +38,14 @@ function TrackEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/tracks/${id}/`);
-        console.log(data);
-        const { title, description, genre, audio_file, album_cover, is_owner } = data;
-  
-        if (is_owner) {
-          setTrackData({ title, description, genre, audio_file, album_cover });
-          setIsOwner(true);
-        } else {
-          setIsOwner(false);
-        }
+        const { title, description, genre, album_cover } = data;
+        setTrackData({ title, description, genre, album_cover });
       } catch (err) {
         console.log(err);
       }
     };
     handleMount();
-  }, [history, id, setIsOwner]);
+  }, [id]);
 
   const handleChange = (event) => {
     setTrackData({
@@ -75,15 +64,6 @@ function TrackEditForm() {
     }
   };
 
-  const handleChangeAudio = (event) => {
-    if (event.target.files.length) {
-      setTrackData({
-        ...trackData,
-        audio_file: event.target.files[0].name,
-      });
-    }
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -91,27 +71,20 @@ function TrackEditForm() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("genre", genre);
-    if (albumCoverInput?.current?.files[0]) {
+    if (albumCoverInput.current?.files[0]) {
       formData.append("album_cover", albumCoverInput.current.files[0]);
     }
-    
-    if (audioFileInput?.current?.files[0]) {
-      formData.append("audio_file", audioFileInput.current.files[0]);
-    }
-    
 
     try {
-      const response = await axiosReq.put(`/tracks/${id}/`, formData);
-      const updatedTrack = response.data;
-      history.push(`/tracks/${updatedTrack.id}`);
+      const { data } = await axiosReq.put(`/tracks/${id}/`, formData);
+      history.push(`/tracks/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
     }
-  }
-    
+  };
 
   const textFields = (
     <div className="text-center">
@@ -172,129 +145,67 @@ function TrackEditForm() {
           {message}
         </Alert>
       ))}
+    </div>
+  );
 
-      <div className="text-center">
+  const fileInputs = (
+    <div className="text-center">
+      <Form.Group>
+        <Form.Label>Album Cover</Form.Label>
+        <div>
+          {album_cover ? (
+            <Image src={album_cover} rounded className={appStyles.Image} />
+          ) : (
+            <Image src={Upload} rounded className={appStyles.Image} />
+          )}
+        </div>
+        <Form.File
+          id="album-cover-upload"
+          accept="image/*"
+          onChange={handleChangeImage}
+          ref={albumCoverInput}
+        />
         <Button
-          className={`${btnStyles.Button} ${btnStyles.Blue}`}
-          onClick={() => history.goBack()}
+          className={`${btnStyles.Button} ${btnStyles.Blue} mt-2`}
+          onClick={() => albumCoverInput.current?.click()}
         >
-          Cancel
+          Update Album Cover
         </Button>
-        <Button
-          className={`${btnStyles.Button} ${btnStyles.Blue}`}
-          type="submit"
-        >
-          Save
-        </Button>
-      </div>
+      </Form.Group>
+      {errors?.album_cover?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
     </div>
   );
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+      <Container>
+        <Row>
+          <Col>{textFields}</Col>
+          <Col>{fileInputs}</Col>
+        </Row>
+        <Row className="text-center">
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Blue}`}
+            onClick={() => history.goBack()}
           >
-            {/* Audio File Upload */}
-            <Form.Group className="text-center">
-              {audio_file ? (
-                <>
-                  <div>
-                    <audio controls>
-                      <source src={audio_file} type="audio/mpeg" />
-                      Your browser does not support the audio element.
-                    </audio>
-                  </div>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="audio-upload"
-                    >
-                      Change the audio file
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="audio-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an audio file"
-                  />
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="audio-upload"
-                accept="audio/*"
-                onChange={handleChangeAudio}
-                ref={audioFileInput}
-              />
-            </Form.Group>
-            {errors?.audio_file?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-
-            {/* Album Cover Upload */}
-            <Form.Group className="text-center">
-              {album_cover ? (
-                <>
-                  <figure>
-                    <Image
-                      className={appStyles.Image}
-                      src={album_cover}
-                      rounded
-                    />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="album-cover-upload"
-                    >
-                      Change the album cover
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="album-cover-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an album cover"
-                  />
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="album-cover-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={albumCoverInput}
-              />
-            </Form.Group>
-            {errors?.album_cover?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
+            Cancel
+          </Button>
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Blue}`}
+            type="submit"
+          >
+            Save
+          </Button>
+        </Row>
+      </Container>
     </Form>
   );
 }
 
 export default TrackEditForm;
+
+

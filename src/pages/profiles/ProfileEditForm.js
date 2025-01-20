@@ -10,7 +10,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useProfile } from "../../contexts/ProfileContext";
 import styles from "../../styles/ProfileEditForm.module.css";
 
-function EditProfileForm() {
+function ProfileEditForm() {
   const [errors, setErrors] = useState({});
   const [profileData, setProfileData] = useState({
     dj_name: "",
@@ -182,5 +182,5 @@ function EditProfileForm() {
   );
 }
 
-export default EditProfileForm;
+export default ProfileEditForm;
 
