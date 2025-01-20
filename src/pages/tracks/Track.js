@@ -29,14 +29,16 @@ const Track = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  // This will hold the current average rating
   const [averageRating, setAverageRating] = useState(null);
 
   useEffect(() => {
+    // Fetch the track details when the component mounts or when the rating changes
     const fetchTrackData = async () => {
       try {
         const response = await axiosRes.get(`/tracks/${id}/`);
         const track = response.data;
-        setAverageRating(track.average_rating);
+        setAverageRating(track.average_rating);  // Set the initial average rating
       } catch (error) {
         console.error("Error fetching track data:", error);
       }
@@ -60,11 +62,14 @@ const Track = (props) => {
 
   const handleRate = async (rating) => {
     try {
+      // Post the rating to the backend
       const { data } = await axiosRes.post("/ratings/", { title: id, rating });
 
+      // Fetch the updated track data with the new average_rating
       const trackResponse = await axiosRes.get(`/tracks/${id}/`);
       const updatedTrack = trackResponse.data;
 
+      // Update the frontend with the new average rating
       setAverageRating(updatedTrack.average_rating);
       setTracks((prevTracks) => {
         return {
@@ -74,7 +79,7 @@ const Track = (props) => {
               return {
                 ...track,
                 ratings_count: updatedTrack.ratings_count,
-                average_rating: updatedTrack.average_rating,
+                average_rating: updatedTrack.average_rating, // Update average_rating with the latest from backend
                 rating_id: data.id,
               };
             }
@@ -89,11 +94,14 @@ const Track = (props) => {
 
   const handleUnrate = async () => {
     try {
+      // Remove the rating
       await axiosRes.delete(`/ratings/${rating_id}/`);
 
+      // Fetch the updated track data with the new average_rating after removing the rating
       const trackResponse = await axiosRes.get(`/tracks/${id}/`);
       const updatedTrack = trackResponse.data;
 
+      // Update the frontend with the new average rating
       setAverageRating(updatedTrack.average_rating);
       setTracks((prevTracks) => {
         return {
@@ -120,8 +128,7 @@ const Track = (props) => {
     <Card className={styles.Track}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={currentUser?.profile_image} height={55} />
+          <Link to={`/profiles/${profile_id}`}>            
             {owner}
           </Link>
           <div className="d-flex align-items-center">
