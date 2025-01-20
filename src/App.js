@@ -14,19 +14,6 @@ import TracksPage from "./pages/tracks/TracksPage";
 import TrackEditForm from "./pages/tracks/TrackEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
-// PrivateRoute component
-function PrivateRoute({ component: Component, ...rest }) {
-  const currentUser = useCurrentUser();
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        currentUser ? <Component {...props} /> : <Redirect to="/signin" />
-      }
-    />
-  );
-}
-
 function App() {
   const currentUser = useCurrentUser();
 
@@ -36,23 +23,45 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           {/* Public Routes */}
-          <Route exact path="/signin" render={() => <SignInForm />} />
-          <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/signin">
+            {currentUser ? <Redirect to="/discover" /> : <SignInForm />}
+          </Route>
+          <Route exact path="/signup">
+            {currentUser ? <Redirect to="/discover" /> : <SignUpForm />}
+          </Route>
 
-          {/* Redirect unauthenticated users */}
-          <Route exact path="/" render={() => <Redirect to="/discover" />} />
+          {/* Redirect "/" based on authentication */}
+          <Route exact path="/">
+            {currentUser ? <Redirect to="/discover" /> : <Redirect to="/signin" />}
+          </Route>
 
-          {/* Private Routes */}
-          <PrivateRoute exact path="/tracks/create" component={TrackCreateForm} />
-          <PrivateRoute exact path="/events/create" component={EventCreateForm} />
-          <PrivateRoute exact path="/tracks/:id" component={TrackPage} />
-          <PrivateRoute exact path="/events/:id" component={EventPage} />
-          <PrivateRoute exact path="/tracks/:id/edit" component={TrackEditForm} />
-          <PrivateRoute path="/events" component={EventsPage} />
-          <PrivateRoute path="/discover" component={TracksPage} />
+          {/* Protected Routes */}
+          <Route exact path="/tracks/create">
+            {currentUser ? <TrackCreateForm /> : <Redirect to="/signin" />}
+          </Route>
+          <Route exact path="/events/create">
+            {currentUser ? <EventCreateForm /> : <Redirect to="/signin" />}
+          </Route>
+          <Route exact path="/tracks/:id">
+            {currentUser ? <TrackPage /> : <Redirect to="/signin" />}
+          </Route>
+          <Route exact path="/events/:id">
+            {currentUser ? <EventPage /> : <Redirect to="/signin" />}
+          </Route>
+          <Route exact path="/tracks/:id/edit">
+            {currentUser ? <TrackEditForm /> : <Redirect to="/signin" />}
+          </Route>
+          <Route path="/events">
+            {currentUser ? <EventsPage /> : <Redirect to="/signin" />}
+          </Route>
+          <Route path="/discover">
+            {currentUser ? <TracksPage /> : <Redirect to="/signin" />}
+          </Route>
 
           {/* Fallback Route */}
-          <Route render={() => <p>Page not found!</p>} />
+          <Route>
+            <p>Page not found!</p>
+          </Route>
         </Switch>
       </Container>
     </div>

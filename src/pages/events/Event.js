@@ -2,8 +2,10 @@ import React from "react";
 import styles from "../../styles/Event.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";  // useHistory for v5
 import Avatar from "../../components/Avatar";
+import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Event = (props) => {
   const {
@@ -20,6 +22,20 @@ const Event = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();  // useHistory for v5
+
+  const handleEdit = () => {
+    history.push(`/events/${id}/edit`);  // use history.push() for v5
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/events/${id}/`);
+      history.goBack();  // use history.goBack() for v5
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card className={styles.Event}>
@@ -31,7 +47,12 @@ const Event = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && eventPage && "..."}
+            {is_owner && eventPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>
@@ -60,3 +81,5 @@ const Event = (props) => {
 };
 
 export default Event;
+
+
