@@ -13,6 +13,8 @@ import TrackPage from "./pages/tracks/TrackPage";
 import TracksPage from "./pages/tracks/TracksPage";
 import TrackEditForm from "./pages/tracks/TrackEditForm";
 import EventEditForm from "./pages/events/EventEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
+
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
@@ -62,6 +64,11 @@ function App() {
             {currentUser ? <TracksPage /> : <Redirect to="/signin" />}
           </Route>
 
+          {/* Add the route for ProfilePage */}
+          <Route exact path="/profiles/:id">
+            {currentUser ? <ProfilePage /> : <Redirect to="/signin" />}
+          </Route>
+
           {/* Fallback Route for "Page Not Found" */}
           <Route>
             <p>Page not found!</p>
@@ -73,6 +80,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
