@@ -24,11 +24,10 @@ function TrackEditForm() {
 
   const [trackData, setTrackData] = useState({
     title: "",
-    description: "",
     genre: "",
     album_cover: "",
   });
-  const { title, description, genre, album_cover } = trackData;
+  const { title, genre, album_cover } = trackData;
 
   const albumCoverInput = useRef(null);
   const history = useHistory();
@@ -38,8 +37,8 @@ function TrackEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/tracks/${id}/`);
-        const { title, description, genre, album_cover } = data;
-        setTrackData({ title, description, genre, album_cover });
+        const { title, genre, album_cover } = data;
+        setTrackData({ title, genre, album_cover });
       } catch (err) {
         console.log(err);
       }
@@ -69,7 +68,6 @@ function TrackEditForm() {
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("description", description);
     formData.append("genre", genre);
     if (albumCoverInput.current?.files[0]) {
       formData.append("album_cover", albumCoverInput.current.files[0]);
@@ -98,22 +96,6 @@ function TrackEditForm() {
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-
-      <Form.Group>
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={6}
-          name="description"
-          value={description}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      {errors?.description?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
