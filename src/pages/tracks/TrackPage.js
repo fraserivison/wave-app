@@ -9,6 +9,7 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Track from "./Track";
 
+
 function TrackPage() {
   const { id } = useParams();
   const [track, setTrack] = useState({ results: [] });
@@ -33,7 +34,6 @@ function TrackPage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <Track {...track.results[0]} setTracks={setTrack} trackPage />
-        <Container className={appStyles.Content}>Comments</Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
       </Col>

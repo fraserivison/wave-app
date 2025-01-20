@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Event from "./Event";
 
+
 function EventPage() {
   const { id } = useParams();
   const [event, setEvent] = useState({ results: [] });
@@ -32,7 +33,6 @@ function EventPage() {
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Event details</p>
         <Event {...event.results[0]} setEvents={setEvent} eventPage />
-        <Container className={appStyles.Content}>Comments</Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
       </Col>
