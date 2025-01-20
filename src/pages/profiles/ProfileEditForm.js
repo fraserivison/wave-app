@@ -8,7 +8,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { useProfile } from "../../contexts/ProfileContext";
-import styles from "../../styles/EditProfileForm.module.css";
+import styles from "../../styles/ProfileEditForm.module.css";
 
 function EditProfileForm() {
   const [errors, setErrors] = useState({});

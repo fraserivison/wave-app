@@ -14,7 +14,7 @@ import TracksPage from "./pages/tracks/TracksPage";
 import TrackEditForm from "./pages/tracks/TrackEditForm";
 import EventEditForm from "./pages/events/EventEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
-import EditProfileForm from "./pages/profiles/EditProfileForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 
@@ -70,7 +70,7 @@ function App() {
             {currentUser ? <ProfilePage /> : <Redirect to="/signin" />}
           </Route>
           <Route exact path="/profiles/:id/edit">
-            {currentUser ? <EditProfileForm /> : <Redirect to="/signin" />}
+            {currentUser ? <ProfileEditForm /> : <Redirect to="/signin" />}
           </Route>
 
           {/* Fallback Route for "Page Not Found" */}
