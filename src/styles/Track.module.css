@@ -1,31 +1,116 @@
-.TrackBar {
+.TrackContainer {
+  position: relative;
+  max-width: 300px;
+  margin: 15px;
+  background-color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  color: white;
+}
+
+.TrackImage {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.TrackHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px; /* Reduced from 10px to 5px */
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  color: white !important;
+  
 }
 
-.RatingContainer,
-.CommentsContainer {
+.TrackTitle {
+  font-weight: bold;
+  color: white !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.TrackCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 75px;
+  position: relative;
+}
+
+.PlayButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.TrackFooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.StarRating {
   display: flex;
   align-items: center;
 }
 
-.RatingNumber {
+.AverageRating {
+  font-size: 0.75rem;
   font-weight: bold;
-  margin-left: 2.5px; /* Reduced from 5px to 2.5px */
-  font-size: 0.5rem; /* Reduced from 1rem to 0.5rem */
+  right: 10px;
+  bottom: 10px;
+  color: transparent;
+  background: linear-gradient(45deg, #f7e5ad, #ffeb78, #ffec40);
+  -webkit-background-clip: text;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .Star {
-  color: #f85032;
-  font-size: 0.5rem; /* Added to scale stars down */
+  font-size: 14px;
+  background: linear-gradient(45deg, #f7e5ad, #ffeb78, #ffec40);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.Star:hover {
-  color: #2142b2;
+.fas,
+.far {
+  margin-right: 5px;
 }
 
-.StarOutline:hover {
-  color: #f85032;
+.dropdown-item {
+  font-size: 0.25rem;
+  padding: 5px 10px;
+}
+
+.rating-dropdown .btn-link {
+  font-size: 0.5rem;
+  padding: 5px 10px;
+}
+
+.rating-dropdown .dropdown-menu {
+  font-size: 0.5rem;
+  padding: 0;
+  margin: 0;
+  width: 120px;
+}
+
+.rating-dropdown .dropdown-menu {
+  left: 0 !important;
+  right: auto !important;
+  transform: translateY(5px);
 }

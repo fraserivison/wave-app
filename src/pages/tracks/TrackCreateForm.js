@@ -24,7 +24,6 @@ function TrackCreateForm() {
 
   const [trackData, setTrackData] = useState({
     title: "",
-    description: "",
     genre: "",
     audio_file: "",
     album_cover: "",
@@ -67,7 +66,6 @@ function TrackCreateForm() {
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("description", description);
     formData.append("genre", genre);
     formData.append("album_cover", albumCoverInput.current.files[0]);
     formData.append("audio_file", audioFileInput.current.files[0]);
@@ -95,22 +93,6 @@ function TrackCreateForm() {
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-
-      <Form.Group>
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={6}
-          name="description"
-          value={description}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      {errors?.description?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>

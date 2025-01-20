@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip, Dropdown, DropdownButton } from "react-bootstrap";
+import {
+  Media,
+  OverlayTrigger,
+  Tooltip,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -12,11 +18,9 @@ const Track = (props) => {
     id,
     owner,
     profile_id,
-    comments_count,
     ratings_count,
     rating_id,
     title,
-    description,
     genre,
     audio_file,
     album_cover,
@@ -30,6 +34,8 @@ const Track = (props) => {
   const history = useHistory();
 
   const [averageRating, setAverageRating] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const fetchTrackData = async () => {
@@ -116,14 +122,29 @@ const Track = (props) => {
     }
   };
 
+  const togglePlayPause = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
-    <Card className={styles.Track}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>            
+    <div className={styles.TrackContainer}>
+      <div
+        className={styles.TrackImage}
+        style={{ backgroundImage: `url(${album_cover})` }}
+      >
+        <div className={styles.TrackHeader}>
+          <Link to={`/profiles/${profile_id}`} className={styles.TrackOwner}>
             {owner}
           </Link>
-          <div className="d-flex align-items-center">
+          <span className={styles.TrackTitle}>{title}</span>
+          <div
+            className="d-flex align-items-center"
+          >
             <span>{updated_at}</span>
             {is_owner && trackPage && (
               <MoreDropdown
@@ -132,28 +153,29 @@ const Track = (props) => {
               />
             )}
           </div>
-        </Media>
-      </Card.Body>
-      <Link to={`/tracks/${id}`}>
-        <Card.Img src={album_cover} alt={title} />
-      </Link>
-      <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {genre && (
-          <Card.Text className="text-muted text-center">
-            Genre: {genre}
-          </Card.Text>
-        )}
-        {audio_file && (
-          <div className="text-center">
-            <audio controls>
-              <source src={audio_file} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        )}
-        <div className={styles.TrackBar}>
-          <div className="d-flex align-items-center">
+        </div>
+
+        <div className={styles.TrackCenter}>
+          <button className={styles.PlayButton} onClick={togglePlayPause}>
+            {isPlaying ? (
+              <i
+                className="fas fa-pause-circle"
+                style={{ fontSize: "2.5rem", color: "#ffffff" }}
+              />
+            ) : (
+              <i
+                className="fas fa-play-circle"
+                style={{ fontSize: "2.5rem", color: "#ffffff" }}
+              />
+            )}
+          </button>
+          {/* Audio element for playing the track */}
+          <audio ref={audioRef} src={audio_file} />
+        </div>
+
+        <div className={styles.TrackFooter}>
+          {/* Bottom Left - Star Rating */}
+          <div className={styles.StarRating}>
             {is_owner ? (
               <OverlayTrigger
                 placement="top"
@@ -168,9 +190,12 @@ const Track = (props) => {
             ) : currentUser ? (
               <DropdownButton
                 id="rating-dropdown"
-                title={`Rate: Select Rating`}
+                title={`Select Rating`}
                 onSelect={(rating) => handleRate(rating)}
                 variant="link"
+                size="sm"
+                drop="up"
+                className="rating-dropdown"
               >
                 {[1, 2, 3, 4, 5].map((value) => (
                   <Dropdown.Item key={value} eventKey={value}>
@@ -188,17 +213,17 @@ const Track = (props) => {
             )}
             {ratings_count}
           </div>
+
+          {/* Bottom Right - Average Rating */}
+          <div className={styles.AverageRating}>
+            <strong>Avg. Rating:</strong>{" "}
+            {averageRating !== null ? averageRating.toFixed(1) : "Loading..."}
+          </div>
         </div>
-        <div className="mt-2">
-          <strong>Average Rating:</strong> {averageRating !== null ? averageRating.toFixed(1) : "Loading..."}
-        </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   );
 };
 
 export default Track;
-
-
-
 
