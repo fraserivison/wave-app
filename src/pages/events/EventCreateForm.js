@@ -50,7 +50,7 @@ function EventCreateForm() {
       <Container
         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
       >
-        <h1 className="text-center">Create Event</h1>
+        <h1 className="text-center">Add Event</h1>
         <Form.Group>
           <Form.Label>Event Name</Form.Label>
           <Form.Control

@@ -21,14 +21,13 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 function TrackCreateForm() {
   const [errors, setErrors] = useState({});
-
   const [trackData, setTrackData] = useState({
     title: "",
     genre: "",
     audio_file: "",
     album_cover: "",
   });
-  const { title, description, genre, audio_file, album_cover } = trackData;
+  const { title, genre, audio_file, album_cover } = trackData;
 
   const albumCoverInput = useRef(null);
   const audioFileInput = useRef(null);
@@ -83,6 +82,7 @@ function TrackCreateForm() {
 
   const textFields = (
     <div className="text-center">
+      <h1 className="text-center">Add Track</h1>
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control
@@ -149,94 +149,85 @@ function TrackCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            {/* Audio File Upload */}
-            <Form.Group className="text-center">
-              {audio_file ? (
-                <>
-                  <div>
-                    <audio controls>
-                      <source src={audio_file} type="audio/mpeg" />
-                      Your browser does not support the audio element.
-                    </audio>
-                  </div>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="audio-upload"
-                    >
-                      Change the audio file
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="audio-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an audio file"
-                  />
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="audio-upload"
-                accept="audio/*"
-                onChange={handleChangeAudio}
-                ref={audioFileInput}
-              />
-            </Form.Group>
-            {errors?.audio_file?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
-
-            {/* Album Cover Upload */}
-            <Form.Group className="text-center">
-              {album_cover ? (
-                <>
-                  <figure>
-                    <Image
-                      className={appStyles.Image}
-                      src={album_cover}
-                      rounded
+            {/* Audio File and Album Cover Uploads Side by Side */}
+            <Row className="mb-4">
+              <Col md={6} className="text-center">
+                {audio_file ? (
+                  <>
+                    <div>
+                      <audio controls>
+                        <source src={audio_file} type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                      </audio>
+                    </div>
+                    <div>
+                      <Form.Label
+                        className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                        htmlFor="audio-upload"
+                      >
+                        Change the audio file
+                      </Form.Label>
+                    </div>
+                  </>
+                ) : (
+                  <Form.Label
+                    className="d-flex justify-content-center"
+                    htmlFor="audio-upload"
+                  >
+                    <Asset
+                      src={Upload}
+                      message="Click or tap to upload an audio file"
                     />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="album-cover-upload"
-                    >
-                      Change the album cover
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="album-cover-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an album cover"
-                  />
-                </Form.Label>
-              )}
+                  </Form.Label>
+                )}
 
-              <Form.File
-                id="album-cover-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={albumCoverInput}
-              />
-            </Form.Group>
-            {errors?.album_cover?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+                <Form.File
+                  id="audio-upload"
+                  accept="audio/*"
+                  onChange={handleChangeAudio}
+                  ref={audioFileInput}
+                />
+              </Col>
+
+              <Col md={6} className="text-center">
+                {album_cover ? (
+                  <>
+                    <figure>
+                      <Image
+                        className={appStyles.Image}
+                        src={album_cover}
+                        rounded
+                      />
+                    </figure>
+                    <div>
+                      <Form.Label
+                        className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                        htmlFor="album-cover-upload"
+                      >
+                        Change the album cover
+                      </Form.Label>
+                    </div>
+                  </>
+                ) : (
+                  <Form.Label
+                    className="d-flex justify-content-center"
+                    htmlFor="album-cover-upload"
+                  >
+                    <Asset
+                      src={Upload}
+                      message="Click or tap to upload an album cover"
+                    />
+                  </Form.Label>
+                )}
+
+                <Form.File
+                  id="album-cover-upload"
+                  accept="image/*"
+                  onChange={handleChangeImage}
+                  ref={albumCoverInput}
+                />
+              </Col>
+            </Row>
 
             <div className="d-md-none">{textFields}</div>
           </Container>
@@ -250,3 +241,4 @@ function TrackCreateForm() {
 }
 
 export default TrackCreateForm;
+
