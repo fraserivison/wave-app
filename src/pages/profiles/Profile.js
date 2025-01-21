@@ -105,12 +105,20 @@ const Profile = () => {
         <Col md={{ span: 8, offset: 2 }} className={styles.EventsSection}>
           <h4 className={styles.SectionHeader}>Events</h4>
           {profile.events?.length ? (
-            <div className={styles.EventsList}>
+            <div className="d-flex flex-column gap-3">
               {profile.events.map((event) => (
-                <div key={event.id} className={styles.EventItem}>
-                  <h5 className={styles.EventTitle}>{event.name}</h5>
-                  <p>Date: {new Date(event.date).toLocaleDateString()}</p>
-                  <p>Location: {event.location}</p>
+                <div
+                  key={event.id}
+                  className="d-flex flex-column align-items-center border p-3 rounded-lg shadow-sm bg-white"
+                >
+                  <h5 className={`${styles.EventTitle} mb-2`}>{event.name}</h5>
+                  <p className="text-muted mb-1">
+                    <strong>Date:</strong>{" "}
+                    {new Date(event.date).toLocaleDateString()}
+                  </p>
+                  <p className="text-muted mb-3">
+                    <strong>Location:</strong> {event.location}
+                  </p>
                 </div>
               ))}
             </div>

@@ -130,11 +130,25 @@ function SignInForm() {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
       >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src={heroImage}
-          alt="Hero"
-        />
+        <Col
+          md={6}
+          style={{
+            textAlign: "center",
+            paddingLeft: "150px",
+          }}
+        >
+          <Image
+            className={appStyles.FillerImage}
+            src={heroImage}
+            alt="Hero"
+            style={{
+              width: "250px",
+              height: "250px",
+              borderRadius: "50%",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
+            }}
+          />
+        </Col>
       </Col>
     </Row>
   );

@@ -77,16 +77,15 @@
 }
 
 .SectionHeader {
+  font-family: 'Impact', sans-serif;
   font-size: 2rem;
   color: #333;
   text-align: center;
   margin-bottom: 20px;
-  font-family: 'Impact', sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-weight: bold;
 }
-
 
 .TracksList {
   display: flex;
@@ -127,3 +126,57 @@
   justify-content: flex-start;
 }
 
+.EventsSection {
+  margin-top: 20px;
+}
+
+.EventTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.EventItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.EventItem h5 {
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.EventItem p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.SectionHeader {
+  font-family: 'Impact', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.EventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.EventsSection .no-events {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
