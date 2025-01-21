@@ -1,24 +1,104 @@
-.Event {
-  background-color: #ffffff;
-  border: 1px solid #dadadf;
-  border-radius: 2px;
-  margin-bottom: 16px;
-  text-align: center;
+.EventCardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-.Event figure,
-h5 {
-  margin: 0 0;
+.EventCard {
+  width: 48%;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9;
 }
 
-.Heart {
-  color: #f85032;
+.EventCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.Heart:hover {
-  color: #2142b2;
+.EventImage {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.HeartOutline:hover {
-  color: #f85032;
+.CardBody {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
 }
+
+.EventHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.EventOwner {
+  font-size: 15px;
+  font-weight: bold;
+  color: #3a3a3a;
+}
+
+.EventOwnerName {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.EventTitle {
+  font-size: 12px;
+  font-weight: bold;
+  color: #1e2a47;
+}
+
+.EventDate {
+  font-size: 10px;
+  color: #5a5a5a;
+  padding-right: 10px
+}
+
+.EventDetails {
+  margin-top: 15px;
+}
+
+.EventGenre,
+.EventLocation {
+  font-size: 10px;
+  color: #707070;
+}
+
+.EventDescription {
+  font-size: 8px;
+  color: #333333;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.EventButton {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.EventButton:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+
+.DropdownWrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+

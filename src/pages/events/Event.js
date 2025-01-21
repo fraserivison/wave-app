@@ -1,23 +1,21 @@
-import React from "react";
-import styles from "../../styles/Event.module.css";
+import React, { useState, useEffect } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { Card } from "react-bootstrap";
+import styles from "../../styles/Event.module.css";
 
 const Event = (props) => {
   const {
     id,
     owner,
-    profile_id,
-    name, // Use 'name' as the event title
+    name,
     genre,
-    updated_at,
-    date,
     location,
+    date,
     description,
-    eventPage = false
+    setEvents,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -33,7 +31,7 @@ const Event = (props) => {
       await axiosRes.delete(`/events/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      console.log("Error deleting event:", err);
     }
   };
 
@@ -45,56 +43,57 @@ const Event = (props) => {
   // Format the date to be more readable
   const formattedDate = date ? new Date(date).toLocaleString() : "";
 
-  // Format the location (you can add more logic if needed to simplify or modify the location format)
-  const formattedLocation = location || "";
+  // Generate a random background color for each event
+  const getRandomColor = () => {
+    const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#F1C40F", "#8E44AD"];
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
 
   return (
-    <Card className={styles.Event}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
-            {is_owner && eventPage && (
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
+    <div className={styles.EventCardWrapper}>
+      <Card className={styles.EventCard} style={{ backgroundColor: getRandomColor() }}>
+        <Card.Body className={styles.CardBody}>
+          <div className={styles.EventHeader}>
+            <div className={styles.EventTitle}>
+              <span className={styles.EventName}>{name}</span>
+            </div>
+
+            <div className={styles.EventDate}>
+              <span>{formattedDate}</span>
+            </div>
+
+            {is_owner && (
+              <div className={styles.DropdownWrapper}>
+                <MoreDropdown
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
+                />
+              </div>
             )}
           </div>
-        </Media>
-      </Card.Body>
-      <Link to={`/events/${id}`} />
-      <Card.Body>
-        {/* Display the event name */}
-        {name && (
-          <Card.Title>{name}</Card.Title>
-        )}
-        {description && <Card.Text>{description}</Card.Text>}
-        {formattedGenre && (
-          <Card.Text>
-            <strong>Genre:</strong> {formattedGenre}
-          </Card.Text>
-        )}
-        {formattedDate && (
-          <Card.Text>
-            <strong>Date:</strong> {formattedDate}
-          </Card.Text>
-        )}
-        {formattedLocation && (
-          <Card.Text>
-            <strong>Location:</strong> {formattedLocation}
-          </Card.Text>
-        )}
-        <div className={styles.EventBar}></div>
-      </Card.Body>
-    </Card>
+
+          <div className={styles.EventDetails}>
+            <div className={styles.EventGenre}>
+              <strong>Genre:</strong> {formattedGenre}
+            </div>
+            <div className={styles.EventLocation}>
+              <strong>Location:</strong> {location}
+            </div>
+            <div className={styles.EventDescription}>
+              <strong>Description:</strong> {description}
+            </div>
+          </div>
+        </Card.Body>
+      </Card>
+    </div>
   );
 };
 
 export default Event;
+
+
+
+
 
 
 
