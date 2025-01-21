@@ -1,4 +1,3 @@
-/* Search Bar */
 .SearchBar input {
   border-radius: 20px;
   color: #242a3d;
@@ -22,7 +21,6 @@
   color: #cfced3;
 }
 
-/* Track container row for responsive layout */
 .TrackContainerRow {
   margin-left: -5px;
   margin-right: -5px;
@@ -40,7 +38,7 @@
 .TrackContainer {
   position: relative;
   max-width: 100%;
-  margin: 5px 0; /* Reduced space between cards */
+  margin: 5px 0;
   background-color: #333;
   border-radius: 8px;
   overflow: hidden;
@@ -48,7 +46,6 @@
   box-sizing: border-box;
 }
 
-/* Track image */
 .TrackImage {
   background-size: cover;
   background-position: center;
@@ -57,7 +54,6 @@
   border-radius: 8px;
 }
 
-/* Track header section */
 .TrackHeader {
   display: flex;
   justify-content: space-between;
@@ -76,7 +72,6 @@
   max-width: 50px;
 }
 
-/* Track center area */
 .TrackCenter {
   display: flex;
   justify-content: center;
@@ -102,7 +97,6 @@
   cursor: pointer;
 }
 
-/* Track footer section */
 .TrackFooter {
   position: absolute;
   bottom: 0;
@@ -128,7 +122,6 @@
   color: lightgray;
 }
 
-/* Star rating */
 .StarRating {
   display: flex;
   align-items: center;
@@ -160,7 +153,6 @@
   margin-right: 5px;
 }
 
-/* Dropdown styling */
 .dropdown-item {
   font-size: 0.25rem;
   padding: 5px 10px;
@@ -188,31 +180,25 @@
   flex: 0;
 }
 
-/* Additional styles for responsiveness */
 @media (max-width: 768px) {
-  /* Search bar adjustments for mobile */
   .SearchBar input {
     font-size: 0.9rem;
   }
 
-  /* Track image height adjustment for smaller screens */
   .TrackImage {
     height: 200px;
   }
 
-  /* Track footer font size adjustment for mobile */
   .TrackFooter {
     font-size: 0.7rem;
   }
 }
 
-/* Styles for larger screens */
 @media (min-width: 768px) {
   .TrackCenter {
     padding: 40px;
   }
 
-  /* Adjusting title font size for larger screens */
   .TrackTitle {
     font-size: 1rem;
   }
