@@ -15,7 +15,7 @@ const Event = (props) => {
     location,
     date,
     description,
-    setEvents,
+    setEvents,  // Added to update the events list after delete
   } = props;
 
   const currentUser = useCurrentUser();
@@ -29,21 +29,24 @@ const Event = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/events/${id}/`);
-      history.goBack();
+      if (setEvents) {
+        setEvents(prevEvents => ({
+          ...prevEvents,
+          results: prevEvents.results.filter(event => event.id !== id)
+        }));
+      }
+      history.push('/events');
     } catch (err) {
       console.log("Error deleting event:", err);
     }
   };
 
-  // Format the genre to be more readable (e.g., "dub_step" -> "Dubstep")
   const formattedGenre = genre
     ? genre.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")
     : "";
 
-  // Format the date to be more readable
   const formattedDate = date ? new Date(date).toLocaleString() : "";
 
-  // Generate a random background color for each event
   const getRandomColor = () => {
     const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#F1C40F", "#8E44AD"];
     return colors[Math.floor(Math.random() * colors.length)];
