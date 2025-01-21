@@ -1,7 +1,13 @@
 .App {
   font-family: 'Poppins', sans-serif;
   background-color: #f8f8f8;
+  background-image: url('https://res.cloudinary.com/dmylma7bf/image/upload/v1737499222/cntsplvasl2ad7d5u7pd.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   min-height: 100vh;
+  align-items: center;
 }
 
 .Main {

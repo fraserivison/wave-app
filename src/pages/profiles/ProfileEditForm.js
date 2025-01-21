@@ -169,8 +169,11 @@ function ProfileEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <div className="d-md-flex">
-        <div className="py-2 p-0 p-md-2" md={7} lg={8}>
+      <div className="d-flex justify-content-center">
+        <div
+          className="py-2 p-0 p-md-2"
+          style={{ maxWidth: "800px", width: "100%" }}
+        >
           <div
             className={`${appStyles.Content} d-flex flex-column justify-content-center`}
           >

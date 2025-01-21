@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/Profile.module.css";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { id } = useParams();
@@ -89,7 +90,12 @@ const Profile = () => {
               )}
             </div>
           ) : (
-            <p>No tracks uploaded yet.</p>
+            <p className="text-center">
+              No tracks uploaded yet. Add a track{" "}
+              <Link to="/tracks/create" className="btn btn-primary btn-lg">
+                here!
+              </Link>
+            </p>
           )}
         </Col>
       </Row>
@@ -109,7 +115,12 @@ const Profile = () => {
               ))}
             </div>
           ) : (
-            <p>No events listed yet.</p>
+            <p className="text-center">
+              No events uploaded yet. Add an event{" "}
+              <Link to="/events/create" className="btn btn-primary btn-lg">
+                here!
+              </Link>
+            </p>
           )}
         </Col>
       </Row>
@@ -118,9 +129,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-
-
-
-
-

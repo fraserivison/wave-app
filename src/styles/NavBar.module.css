@@ -10,47 +10,21 @@
 
 .NavLink {
   padding: 5px;
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 .Active i {
   color: #2142b2;
 }
 
-.NavLink {
-  padding: 5px;
-  font-size: 1rem;
-}
-
-@media (max-width: 576px) {
-  .NavLink {
-    font-size: 0.8rem;
-    padding: 3px;
-  }
-
-  .NavBar {
-    padding-top: 5px;
-  }
-}
-
 @media (min-width: 576px) and (max-width: 768px) {
   .NavLink {
-    font-size: 0.9rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .NavLink {
-    font-size: 1rem;
+    font-size: 0.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .NavLink {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
-}
-
-.Active i {
-  color: #2142b2;
 }
