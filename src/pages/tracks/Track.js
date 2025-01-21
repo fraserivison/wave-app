@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import {
-  Media,
-  OverlayTrigger,
-  Tooltip,
-  DropdownButton,
-  Dropdown,
-} from "react-bootstrap";
+import { Media, OverlayTrigger, Tooltip, DropdownButton, Dropdown } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -138,21 +132,27 @@ const Track = (props) => {
         style={{ backgroundImage: `url(${album_cover})` }}
       >
         <div className={styles.TrackHeader}>
-          <Link to={`/profiles/${profile_id}`} className={styles.TrackOwner}>
-            {owner}
-          </Link>
-          <span className={styles.TrackTitle}>{title}</span>
-          <div
-            className="d-flex align-items-center"
-          >
-            <span>{updated_at}</span>
-            {is_owner && trackPage && (
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
+          <Media className="align-items-center justify-content-between">
+            {/* Profile Name */}
+            {is_owner ? (
+              <span className={styles.TrackOwner}>{owner}</span> // Display plain text for owner
+            ) : (
+              <Link to={`/profiles/${profile_id}`} className={styles.TrackOwner}>
+                {owner}
+              </Link> // Non-owner, clickable link
             )}
-          </div>
+            <div className="d-flex align-items-center">
+              <span>{updated_at}</span>
+              {is_owner && (
+                // Simplified to test if dropdown is rendered
+                <MoreDropdown
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
+                />
+              )}
+            </div>
+          </Media>
+          <span className={styles.TrackTitle}>{title}</span>
         </div>
 
         <div className={styles.TrackCenter}>
@@ -226,4 +226,7 @@ const Track = (props) => {
 };
 
 export default Track;
+
+
+
 
