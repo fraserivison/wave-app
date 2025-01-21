@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/Profile.module.css";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Profile = () => {
   const { id } = useParams();
@@ -30,7 +30,7 @@ const Profile = () => {
     fetchProfileData();
   }, [id]);
 
-  const handlePlayPause = (track) => {
+  const togglePlayPause = (track) => {
     if (currentTrack?.id === track.id && isPlaying) {
       // Pause current track
       audioRef.current.pause();
@@ -61,18 +61,26 @@ const Profile = () => {
                     className={styles.TrackImage}
                     style={{ backgroundImage: `url(${track.album_cover})` }}
                   >
-                    <div className={styles.TrackDetails}>
-                      <h5>{track.title}</h5>
-                      <Button
-                        onClick={() => handlePlayPause(track)}
+                    <div className={styles.TrackCenter}>
+                      <button
                         className={styles.PlayButton}
+                        onClick={() => togglePlayPause(track)}
                       >
-                        {currentTrack?.id === track.id && isPlaying
-                          ? "Pause"
-                          : "Play"}
-                      </Button>
+                        {currentTrack?.id === track.id && isPlaying ? (
+                          <i
+                            className="fas fa-pause-circle"
+                            style={{ fontSize: "2.5rem", color: "#ffffff" }}
+                          />
+                        ) : (
+                          <i
+                            className="fas fa-play-circle"
+                            style={{ fontSize: "2.5rem", color: "#ffffff" }}
+                          />
+                        )}
+                      </button>
                     </div>
                   </div>
+                  <h5>{track.title}</h5>
                 </div>
               ))}
               {currentTrack && (

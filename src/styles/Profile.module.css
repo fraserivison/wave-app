@@ -116,17 +116,31 @@
 }
 
 .PlayButton {
-  margin-top: 10px;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.0);
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 15px;
+  font-size: 2.5rem;
   cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease;
 }
 
 .PlayButton:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
+.PlayButton i {
+  transition: transform 0.2s ease;
+}
 
+.PlayButton:hover i {
+  transform: scale(1.1);
+}

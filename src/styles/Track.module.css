@@ -65,9 +65,32 @@
 }
 
 .PlayButton {
-  background: none;
+  background-color: rgba(0, 0, 0, 0.0);
   border: none;
+  padding: 15px;
+  font-size: 2.5rem;
   cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease;
+}
+
+.PlayButton:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.PlayButton i {
+  transition: transform 0.2s ease;
+}
+
+.PlayButton:hover i {
+  transform: scale(1.1);
 }
 
 .TrackFooter {
