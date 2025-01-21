@@ -33,6 +33,7 @@ function TrackPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <h1>Track Preview</h1>
         <Track {...track.results[0]} setTracks={setTrack} trackPage />
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">

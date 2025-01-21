@@ -87,6 +87,7 @@ function TrackEditForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group>
+        <h2> Update a track</h2>
         <Form.Label>Title</Form.Label>
         <Form.Control
           type="text"
@@ -136,9 +137,9 @@ function TrackEditForm() {
         <Form.Label>Album Cover</Form.Label>
         <div>
           {album_cover ? (
-            <Image src={album_cover} rounded className={appStyles.Image} />
+            <Image src={album_cover} rounded className={styles.ImageSmall} />
           ) : (
-            <Image src={Upload} rounded className={appStyles.Image} />
+            <Image src={Upload} rounded className={styles.ImageSmall} />
           )}
         </div>
         <Form.File
@@ -164,20 +165,20 @@ function TrackEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Container>
+      <Container className={styles.FormContainer}>
         <Row>
           <Col>{textFields}</Col>
           <Col>{fileInputs}</Col>
         </Row>
-        <Row className="text-center">
+        <Row className="text-center mt-3">
           <Button
-            className={`${btnStyles.Button} ${btnStyles.Blue}`}
+            className={`${btnStyles.Button} ${btnStyles.Blue} mx-2`}
             onClick={() => history.goBack()}
           >
             Cancel
           </Button>
           <Button
-            className={`${btnStyles.Button} ${btnStyles.Blue}`}
+            className={`${btnStyles.Button} ${btnStyles.Blue} mx-2`}
             type="submit"
           >
             Save
@@ -189,5 +190,8 @@ function TrackEditForm() {
 }
 
 export default TrackEditForm;
+
+
+
 
 
