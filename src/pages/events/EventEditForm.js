@@ -60,6 +60,7 @@ function EventEditForm() {
 
   const textFields = (
     <div className="text-center">
+      <h2>Update an event</h2>
       <Form.Group>
         <Form.Label>Event Name</Form.Label>
         <Form.Control
@@ -172,5 +173,3 @@ function EventEditForm() {
 }
 
 export default EventEditForm;
-
-

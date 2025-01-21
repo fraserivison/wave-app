@@ -1,27 +1,16 @@
 import React, { useRef, useState, useEffect } from "react";
-
+import { useHistory, useParams } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
-
-import Asset from "../../components/Asset";
-
-import Upload from "../../assets/upload.png";
-
-import styles from "../../styles/TrackCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
-
-import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import styles from "../../styles/TrackCreateEditForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import Upload from "../../assets/upload.png";
 
 function TrackEditForm() {
   const [errors, setErrors] = useState({});
-
   const [trackData, setTrackData] = useState({
     title: "",
     genre: "",
@@ -86,8 +75,9 @@ function TrackEditForm() {
 
   const textFields = (
     <div className="text-center">
+      <h2>Update a track</h2>
+      {/* Title Field */}
       <Form.Group>
-        <h2> Update a track</h2>
         <Form.Label>Title</Form.Label>
         <Form.Control
           type="text"
@@ -102,6 +92,7 @@ function TrackEditForm() {
         </Alert>
       ))}
 
+      {/* Genre Field */}
       <Form.Group>
         <Form.Label>Genre</Form.Label>
         <Form.Control
@@ -128,11 +119,8 @@ function TrackEditForm() {
           {message}
         </Alert>
       ))}
-    </div>
-  );
 
-  const fileInputs = (
-    <div className="text-center">
+      {/* Album Cover Upload */}
       <Form.Group>
         <Form.Label>Album Cover</Form.Label>
         <div>
@@ -165,12 +153,9 @@ function TrackEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Container className={styles.FormContainer}>
-        <Row>
-          <Col>{textFields}</Col>
-          <Col>{fileInputs}</Col>
-        </Row>
-        <Row className="text-center mt-3">
+      <div className="d-flex flex-column justify-content-center">
+        {textFields}
+        <div className="text-center mt-3">
           <Button
             className={`${btnStyles.Button} ${btnStyles.Blue} mx-2`}
             onClick={() => history.goBack()}
@@ -183,13 +168,17 @@ function TrackEditForm() {
           >
             Save
           </Button>
-        </Row>
-      </Container>
+        </div>
+      </div>
     </Form>
   );
 }
 
 export default TrackEditForm;
+
+
+
+
 
 
 
