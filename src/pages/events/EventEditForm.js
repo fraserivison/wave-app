@@ -92,6 +92,7 @@ function EventEditForm() {
         </Alert>
       ))}
 
+      {/* Genre Field */}
       <Form.Group>
         <Form.Label>Genre</Form.Label>
         <Form.Control
@@ -101,7 +102,16 @@ function EventEditForm() {
           onChange={handleChange}
         >
           <option value="">Select a genre</option>
-          {/* Add genre options */}
+          <option value="house">House</option>
+          <option value="tech_house">Tech House</option>
+          <option value="trance">Trance</option>
+          <option value="dubstep">Dubstep</option>
+          <option value="drum_and_bass">Drum and Bass</option>
+          <option value="techno">Techno</option>
+          <option value="electro">Electro</option>
+          <option value="progressive_house">Progressive House</option>
+          <option value="chillout">Chillout</option>
+          <option value="other">Other</option>
         </Form.Control>
       </Form.Group>
       {errors?.genre?.map((message, idx) => (

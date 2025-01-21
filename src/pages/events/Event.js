@@ -2,8 +2,7 @@ import React from "react";
 import styles from "../../styles/Event.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";  // useHistory for v5
-import Avatar from "../../components/Avatar";
+import { Link, useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
@@ -12,6 +11,7 @@ const Event = (props) => {
     id,
     owner,
     profile_id,
+    name, // Use 'name' as the event title
     genre,
     updated_at,
     date,
@@ -36,7 +36,17 @@ const Event = (props) => {
       console.log(err);
     }
   };
-  console.log({ eventPage, is_owner, currentUser, owner });
+
+  // Format the genre to be more readable (e.g., "dub_step" -> "Dubstep")
+  const formattedGenre = genre
+    ? genre.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")
+    : "";
+
+  // Format the date to be more readable
+  const formattedDate = date ? new Date(date).toLocaleString() : "";
+
+  // Format the location (you can add more logic if needed to simplify or modify the location format)
+  const formattedLocation = location || "";
 
   return (
     <Card className={styles.Event}>
@@ -56,22 +66,26 @@ const Event = (props) => {
           </div>
         </Media>
       </Card.Body>
-      <Link to={`/events/${id}`}></Link>
+      <Link to={`/events/${id}`} />
       <Card.Body>
+        {/* Display the event name */}
+        {name && (
+          <Card.Title>{name}</Card.Title>
+        )}
         {description && <Card.Text>{description}</Card.Text>}
-        {genre && (
+        {formattedGenre && (
           <Card.Text>
-            <strong>Genre:</strong> {genre}
+            <strong>Genre:</strong> {formattedGenre}
           </Card.Text>
         )}
-        {date && (
+        {formattedDate && (
           <Card.Text>
-            <strong>Date:</strong> {date}
+            <strong>Date:</strong> {formattedDate}
           </Card.Text>
         )}
-        {location && (
+        {formattedLocation && (
           <Card.Text>
-            <strong>Location:</strong> {location}
+            <strong>Location:</strong> {formattedLocation}
           </Card.Text>
         )}
         <div className={styles.EventBar}></div>
@@ -81,5 +95,6 @@ const Event = (props) => {
 };
 
 export default Event;
+
 
 
