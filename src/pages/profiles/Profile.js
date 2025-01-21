@@ -32,13 +32,11 @@ const Profile = () => {
 
   const togglePlayPause = (track) => {
     if (currentTrack?.id === track.id && isPlaying) {
-      // Pause current track
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      // Play new track or resume
       if (audioRef.current) {
-        audioRef.current.pause(); // Stop the currently playing track
+        audioRef.current.pause();
       }
       setCurrentTrack(track);
       setIsPlaying(true);
@@ -61,6 +59,7 @@ const Profile = () => {
                     className={styles.TrackImage}
                     style={{ backgroundImage: `url(${track.album_cover})` }}
                   >
+                    <h5 className={styles.TrackTitle}>{track.title}</h5>
                     <div className={styles.TrackCenter}>
                       <button
                         className={styles.PlayButton}
@@ -80,7 +79,6 @@ const Profile = () => {
                       </button>
                     </div>
                   </div>
-                  <h5>{track.title}</h5>
                 </div>
               ))}
               {currentTrack && (
@@ -101,6 +99,7 @@ const Profile = () => {
 };
 
 export default Profile;
+
 
 
 
