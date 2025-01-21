@@ -45,14 +45,13 @@ The primary strategy for the Wave app is to create an engaging platform for DJs 
 ### Scope
 Wave will have the following functionalities:
 - User registration and profile management
-- Music sharing capabilities
-- Collaboration tools, including real-time feedback and communication
-- Integrated system to follow other users
+- Music playing, rating and sharing capabilities
+- Event sharing capabilities
 
 ### Structure
 The app will be structured into key components:
 - **Navbar**: For navigation between pages
-- **Main Content Area**: To display project details, user profiles, and collaboration tools
+- **Main Content Area**: To display project details, user profiles, tracks and events.
 
 ### Skeleton
 A wireframe of the application is designed to visualise the layout of each component, highlighting how users will navigate between different sections and access features.
@@ -194,5 +193,6 @@ Key files:
 ---
 
 [Back to TOP](#table-of-contents)
+
 
 

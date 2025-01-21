@@ -21,7 +21,7 @@ const Track = (props) => {
     rating_id,
     title,
     genre,
-    audio_file,
+    audio_file_url, // changed to audio_file_url
     album_cover,
     updated_at,
     setTracks,
@@ -188,7 +188,7 @@ const Track = (props) => {
             )}
           </button>
           {/* Audio element for playing the track */}
-          <audio ref={audioRef} src={audio_file} />
+          <audio ref={audioRef} src={audio_file_url} /> {/* Changed to audio_file_url */}
         </div>
 
         <div className={styles.TrackFooter}>
