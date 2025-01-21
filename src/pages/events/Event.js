@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { Card } from "react-bootstrap";
@@ -15,12 +15,33 @@ const Event = (props) => {
     location,
     date,
     description,
-    setEvents,  // Added to update the events list after delete
+    setEvents,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
+
+  const [eventData, setEventData] = useState({
+    name,
+    genre,
+    location,
+    date,
+    description,
+  });
+
+  // Fetch event data on load
+  useEffect(() => {
+    const fetchEventData = async () => {
+      try {
+        const response = await axiosRes.get(`/events/${id}/`);
+        setEventData(response.data);
+      } catch (err) {
+        console.error("Error fetching event data:", err);
+      }
+    };
+    fetchEventData();
+  }, [id]);
 
   const handleEdit = () => {
     history.push(`/events/${id}/edit`);
@@ -30,35 +51,57 @@ const Event = (props) => {
     try {
       await axiosRes.delete(`/events/${id}/`);
       if (setEvents) {
-        setEvents(prevEvents => ({
+        setEvents((prevEvents) => ({
           ...prevEvents,
-          results: prevEvents.results.filter(event => event.id !== id)
+          results: prevEvents.results.filter((event) => event.id !== id),
         }));
       }
-      history.push('/events');
+      history.push("/events");
     } catch (err) {
       console.log("Error deleting event:", err);
     }
   };
 
   const formattedGenre = genre
-    ? genre.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")
+    ? genre
+        .split("_")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")
     : "";
 
   const formattedDate = date ? new Date(date).toLocaleString() : "";
 
   const getRandomColor = () => {
-    const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#F1C40F", "#8E44AD"];
+    const colors = [
+      "#FF5733",
+      "#33FF57",
+      "#3357FF",
+      "#FF33A1",
+      "#F1C40F",
+      "#8E44AD",
+    ];
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
+  // Ensure no click event occurs by preventing default
+  const preventClick = (event) => {
+    event.preventDefault();  // Prevents any default action (like routing)
+    event.stopPropagation(); // Prevents any parent click handlers
+  };
+
   return (
-    <div className={styles.EventCardWrapper}>
-      <Card className={styles.EventCard} style={{ backgroundColor: getRandomColor() }}>
+    <div
+      className={styles.EventCardWrapper}
+      onClick={preventClick} // Prevent click event entirely
+    >
+      <Card
+        className={styles.EventCard}
+        style={{ backgroundColor: getRandomColor() }}
+      >
         <Card.Body className={styles.CardBody}>
           <div className={styles.EventHeader}>
             <div className={styles.EventTitle}>
-              <span className={styles.EventName}>{name}</span>
+              <span className={styles.EventName}>{eventData.name}</span>
             </div>
 
             <div className={styles.EventDate}>
@@ -80,10 +123,10 @@ const Event = (props) => {
               <strong>Genre:</strong> {formattedGenre}
             </div>
             <div className={styles.EventLocation}>
-              <strong>Location:</strong> {location}
+              <strong>Location:</strong> {eventData.location}
             </div>
             <div className={styles.EventDescription}>
-              <strong>Description:</strong> {description}
+              <strong>Description:</strong> {eventData.description}
             </div>
           </div>
         </Card.Body>
@@ -93,6 +136,8 @@ const Event = (props) => {
 };
 
 export default Event;
+
+
 
 
 

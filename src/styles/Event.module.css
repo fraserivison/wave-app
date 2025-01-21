@@ -90,10 +90,6 @@
   transition: background-color 0.3s ease;
 }
 
-.EventButton:hover {
-  background-color: #0056b3;
-  cursor: pointer;
-}
 
 .DropdownWrapper {
   position: absolute;

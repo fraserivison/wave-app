@@ -62,7 +62,7 @@ function EventsPage({ message, filter = "" }) {
             onChange={(event) => setQuery(event.target.value)}
             type="text"
             className="mr-sm-2"
-            placeholder="Search events"
+            placeholder="Search event name, location, genre..."
           />
         </Form>
 

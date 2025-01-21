@@ -58,7 +58,7 @@ function TracksPage({ message, filter = "" }) {
             onChange={(event) => setQuery(event.target.value)}
             type="text"
             className="mr-sm-2"
-            placeholder="Search tracks"
+            placeholder="Search tracks, genre, artist..."
           />
         </Form>
 
