@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
+import Container from "react-bootstrap/Container";
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import styles from "../../styles/EventCreateEditForm.module.css";
 
 function EventEditForm() {
   const [errors, setErrors] = useState({});
@@ -60,7 +62,7 @@ function EventEditForm() {
 
   const textFields = (
     <div className="text-center">
-      <h2>Update an event</h2>
+      <h1>Update an event</h1>
       <Form.Group>
         <Form.Label>Event Name</Form.Label>
         <Form.Control
@@ -169,17 +171,14 @@ function EventEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <div className="d-md-flex">
-        <div className="py-2 p-0 p-md-2">
-          <div
-            className={`${appStyles.Content} d-flex flex-column justify-content-center`}
-          >
-            {textFields}
-          </div>
-        </div>
-      </div>
+      <Container
+        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`} // Apply the same container styles
+      >
+        {textFields}
+      </Container>
     </Form>
   );
 }
 
 export default EventEditForm;
+

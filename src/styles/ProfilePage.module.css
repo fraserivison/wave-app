@@ -89,8 +89,8 @@
 }
 
 .EditProfileButton:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: scale(1.05); /* Slight scale-up effect */
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 .EditProfileButton:focus {
@@ -114,4 +114,29 @@
 
 .Bio {
   margin-bottom: 0;
+}
+
+@media (min-width: 769px) {
+  .ProfileContainer {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .ProfileImage {
+    height: 200px;
+  }
+
+  .ProfileName {
+    font-size: 1.5rem;
+  }
+
+  .ProfileFooter {
+    font-size: 0.6rem;
+  }
+
+  .ProfileCenter {
+    top: 70%;
+  }
 }
