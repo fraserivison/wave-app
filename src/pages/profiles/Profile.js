@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/Profile.module.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const Profile = () => {
   const { id } = useParams();
@@ -10,6 +10,9 @@ const Profile = () => {
     profile: {},
     tracks: [],
   });
+  const [currentTrack, setCurrentTrack] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = React.useRef(null);
 
   const { tracks } = profileData;
 
@@ -27,6 +30,24 @@ const Profile = () => {
     fetchProfileData();
   }, [id]);
 
+  const handlePlayPause = (track) => {
+    if (currentTrack?.id === track.id && isPlaying) {
+      // Pause current track
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      // Play new track or resume
+      if (audioRef.current) {
+        audioRef.current.pause(); // Stop the currently playing track
+      }
+      setCurrentTrack(track);
+      setIsPlaying(true);
+      setTimeout(() => {
+        audioRef.current.play();
+      }, 0);
+    }
+  };
+
   return (
     <Container className={styles.ProfileContainer}>
       <Row>
@@ -39,16 +60,28 @@ const Profile = () => {
                   <div
                     className={styles.TrackImage}
                     style={{ backgroundImage: `url(${track.album_cover})` }}
-                  ></div>
-                  <div className={styles.TrackDetails}>
-                    <h5>{track.title}</h5>
-                    <audio controls className={styles.AudioPlayer}>
-                      <source src={track.audio_file_url} type="audio/mpeg" />
-                      Your browser does not support the audio element.
-                    </audio>
+                  >
+                    <div className={styles.TrackDetails}>
+                      <h5>{track.title}</h5>
+                      <Button
+                        onClick={() => handlePlayPause(track)}
+                        className={styles.PlayButton}
+                      >
+                        {currentTrack?.id === track.id && isPlaying
+                          ? "Pause"
+                          : "Play"}
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ))}
+              {currentTrack && (
+                <audio
+                  ref={audioRef}
+                  src={currentTrack.audio_file_url}
+                  onEnded={() => setIsPlaying(false)}
+                />
+              )}
             </div>
           ) : (
             <p>No tracks uploaded yet.</p>
@@ -60,6 +93,7 @@ const Profile = () => {
 };
 
 export default Profile;
+
 
 
 
