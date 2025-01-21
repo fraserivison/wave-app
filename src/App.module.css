@@ -5,7 +5,7 @@
 }
 
 .Main {
-  padding-top: 81px;
+  padding-top: 120px;
 }
 
 .Content {
@@ -39,6 +39,7 @@ h1 {
   background-clip: text;
   animation: glowAnimation 1.5s ease-in-out infinite alternate;
   margin-bottom: 20px;
+  padding-left: 10px;
 }
 
 @keyframes glowAnimation {

@@ -45,8 +45,8 @@ function TracksPage({ message, filter = "" }) {
   }, [filter, query, pathname]);
 
   return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+    <Row className={`h-100 ${styles.TracksPageContainer}`}>
+      <Col className="py-2 p-0 p-lg-2" lg={12} md={10} xs={12}>
         <h1>Discover</h1>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
@@ -66,14 +66,26 @@ function TracksPage({ message, filter = "" }) {
           <>
             {tracks.results.length ? (
               <InfiniteScroll
-                children={tracks.results.map((track) => (
-                  <Track key={track.id} {...track} setTracks={setTracks} />
-                ))}
                 dataLength={tracks.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!tracks.next}
                 next={() => fetchMoreData(tracks, setTracks)}
-              />
+              >
+                <Row className={styles.TrackContainerRow}>
+                  {tracks.results.map((track) => (
+                    <Col
+                      key={track.id}
+                      xs={6} // 2 items per row on mobile (small devices)
+                      sm={6} // 2 items per row on small screens
+                      md={4} // 3 items per row on medium screens
+                      lg={3} // 4 items per row on large screens
+                      className={`mb-2 ${styles.TrackCol}`}
+                    >
+                      <Track {...track} setTracks={setTracks} />
+                    </Col>
+                  ))}
+                </Row>
+              </InfiniteScroll>
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
@@ -91,4 +103,6 @@ function TracksPage({ message, filter = "" }) {
 }
 
 export default TracksPage;
+
+
 
