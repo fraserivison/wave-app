@@ -6,22 +6,16 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Profile = () => {
   const { id } = useParams();
-  const [profileData, setProfileData] = useState({
-    profile: {},
-    tracks: [],
-  });
+  const [profile, setProfile] = useState(null);
   const [currentTrack, setCurrentTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = React.useRef(null);
 
-  const { tracks } = profileData;
-
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const { data: profile } = await axiosReq.get(`/profiles/${id}/`);
-        const { data: tracks } = await axiosReq.get(`/tracks/?profile=${id}`);
-        setProfileData({ profile, tracks: tracks.results });
+        const { data } = await axiosReq.get(`/profiles/${id}/`);
+        setProfile(data);
       } catch (err) {
         console.error("Error fetching profile data:", err);
       }
@@ -46,14 +40,33 @@ const Profile = () => {
     }
   };
 
+  if (!profile) {
+    return <div>Loading profile...</div>;
+  }
+
   return (
     <Container className={styles.ProfileContainer}>
       <Row>
+        <Col md={{ span: 8, offset: 2 }} className={styles.ProfileHeader}>
+          <div className="text-center">
+            <img
+              src={profile.image}
+              alt={`${profile.dj_name}'s avatar`}
+              className={styles.Avatar}
+            />
+            <h2>{profile.dj_name}</h2>
+            <p>{profile.bio}</p>
+          </div>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Tracks Section */}
         <Col md={{ span: 8, offset: 2 }} className={styles.TracksSection}>
           <h4 className={styles.SectionHeader}>Tracks</h4>
-          {tracks.length ? (
+          {profile.tracks?.length ? (
             <div className={styles.TracksList}>
-              {tracks.map((track) => (
+              {profile.tracks.map((track) => (
                 <div key={track.id} className={styles.TrackItem}>
                   <div
                     className={styles.TrackImage}
@@ -94,11 +107,32 @@ const Profile = () => {
           )}
         </Col>
       </Row>
+
+      {/* Events Section */}
+      <Row>
+        <Col md={{ span: 8, offset: 2 }} className={styles.EventsSection}>
+          <h4 className={styles.SectionHeader}>Events</h4>
+          {profile.events?.length ? (
+            <div className={styles.EventsList}>
+              {profile.events.map((event) => (
+                <div key={event.id} className={styles.EventItem}>
+                  <h5 className={styles.EventTitle}>{event.name}</h5>
+                  <p>Date: {new Date(event.date).toLocaleDateString()}</p>
+                  <p>Location: {event.location}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No events listed yet.</p>
+          )}
+        </Col>
+      </Row>
     </Container>
   );
 };
 
 export default Profile;
+
 
 
 
