@@ -75,7 +75,7 @@ function TrackEditForm() {
 
   const textFields = (
     <div className="text-center">
-      <h2>Update a track</h2>
+      <h1>Update a track</h1>
       {/* Title Field */}
       <Form.Group>
         <Form.Label>Title</Form.Label>
@@ -123,7 +123,7 @@ function TrackEditForm() {
       {/* Album Cover Upload */}
       <Form.Group>
         <Form.Label>Album Cover</Form.Label>
-        <div>
+        <div className="d-flex justify-content-center">
           {album_cover ? (
             <Image src={album_cover} rounded className={styles.ImageSmall} />
           ) : (
@@ -152,7 +152,7 @@ function TrackEditForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className={`${styles.FormContainer}`}>
       <div className="d-flex flex-column justify-content-center">
         {textFields}
         <div className="text-center mt-3">
@@ -175,9 +175,6 @@ function TrackEditForm() {
 }
 
 export default TrackEditForm;
-
-
-
 
 
 
