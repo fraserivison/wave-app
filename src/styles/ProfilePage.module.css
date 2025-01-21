@@ -1,35 +1,117 @@
-.ProfileImage {
-    object-fit: cover;
-    height: 120px;
-    width: 120px; 
-    border-radius: 50%;
-    margin-bottom: 1rem;
-  }
-  
-  @media screen and (max-width: 991px) {
-    .ProfileImage {
-      width: 200px;
-      height: 200px;
-    }
-  }
+.ProfileContainerRow {
+  margin-left: -5px;
+  margin-right: -5px;
+}
 
-  .ProfilePage {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .ProfilePage .text-center {
-    text-align: center;
-  }
-  
-  .Details {
-    margin-top: 20px;
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  
+.ProfileCol {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.ProfileContainer {
+  position: relative;
+  max-width: 100%;
+  margin: 5px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  color: white;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.ProfileImage {
+  background-size: cover;
+  background-position: top center;
+  height: 250px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.ProfileHeader {
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.ProfileTitle {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50px;
+}
+
+.ProfileCenter {
+  position: absolute;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 15px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.ProfileName {
+  font-family: 'Impact', sans-serif;
+  text-align: left;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+
+.ProfileTitleWrapper {
+  flex: 2;
+  text-align: center;
+}
+
+.EditProfileButton {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 25px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1;
+}
+
+.EditProfileButton:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight scale-up effect */
+}
+
+.EditProfileButton:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.ProfileFooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.Bio {
+  margin-bottom: 0;
+}
