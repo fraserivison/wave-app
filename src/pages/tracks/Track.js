@@ -21,7 +21,7 @@ const Track = (props) => {
     rating_id,
     title,
     genre,
-    audio_file_url, // changed to audio_file_url
+    audio_file_url,
     album_cover,
     updated_at,
     setTracks,
@@ -56,7 +56,13 @@ const Track = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/tracks/${id}/`);
-      history.goBack();
+      if (setTracks) {
+        setTracks((prevTracks) => ({
+          ...prevTracks,
+          results: prevTracks.results.filter((track) => track.id !== id),
+        }));
+      }
+      history.push('/discover');
     } catch (err) {
       console.log("Error deleting track:", err);
     }
@@ -137,7 +143,6 @@ const Track = (props) => {
       >
         <div className={styles.TrackHeader}>
           <Media className="d-flex align-items-center justify-content-between">
-            {/* Profile Name */}
             <div className={styles.ProfileName}>
               {is_owner ? (
                 <span className={styles.TrackOwner}>{owner}</span>
@@ -151,17 +156,14 @@ const Track = (props) => {
               )}
             </div>
 
-            {/* Title */}
             <div className={styles.TrackTitleWrapper}>
               <span className={styles.TrackTitle}>{title}</span>
             </div>
 
-            {/* Updated At */}
             <div className={styles.UpdatedAt}>
               <span>{updated_at}</span>
             </div>
 
-            {/* More Dropdown */}
             {is_owner && (
               <div className={styles.DropdownWrapper}>
                 <MoreDropdown
@@ -187,12 +189,10 @@ const Track = (props) => {
               />
             )}
           </button>
-          {/* Audio element for playing the track */}
-          <audio ref={audioRef} src={audio_file_url} /> {/* Changed to audio_file_url */}
+          <audio ref={audioRef} src={audio_file_url} />
         </div>
 
         <div className={styles.TrackFooter}>
-          {/* Bottom Left - Star Rating */}
           <div className={styles.StarRating}>
             {is_owner ? (
               <OverlayTrigger
@@ -232,7 +232,6 @@ const Track = (props) => {
             {ratings_count}
           </div>
 
-          {/* Bottom Right - Average Rating */}
           <div className={styles.AverageRating}>
             <strong>Avg. Rating:</strong>{" "}
             {averageRating !== null ? averageRating.toFixed(1) : "Loading..."}
@@ -244,3 +243,4 @@ const Track = (props) => {
 };
 
 export default Track;
+
