@@ -47,20 +47,6 @@ const Profile = () => {
   return (
     <Container className={styles.ProfileContainer}>
       <Row>
-        <Col md={{ span: 8, offset: 2 }} className={styles.ProfileHeader}>
-          <div className="text-center">
-            <img
-              src={profile.image}
-              alt={`${profile.dj_name}'s avatar`}
-              className={styles.Avatar}
-            />
-            <h2>{profile.dj_name}</h2>
-            <p>{profile.bio}</p>
-          </div>
-        </Col>
-      </Row>
-
-      <Row>
         {/* Tracks Section */}
         <Col md={{ span: 8, offset: 2 }} className={styles.TracksSection}>
           <h4 className={styles.SectionHeader}>Tracks</h4>
