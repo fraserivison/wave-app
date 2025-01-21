@@ -1,4 +1,4 @@
-# Wave
+# Wave Frontend
 
 ## Table of Contents
 1. [Overview](#overview)

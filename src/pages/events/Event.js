@@ -30,7 +30,6 @@ const Event = (props) => {
     description,
   });
 
-  // Fetch event data on load
   useEffect(() => {
     const fetchEventData = async () => {
       try {
@@ -83,16 +82,15 @@ const Event = (props) => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
-  // Ensure no click event occurs by preventing default
   const preventClick = (event) => {
-    event.preventDefault();  // Prevents any default action (like routing)
-    event.stopPropagation(); // Prevents any parent click handlers
+    event.preventDefault();
+    event.stopPropagation();
   };
 
   return (
     <div
       className={styles.EventCardWrapper}
-      onClick={preventClick} // Prevent click event entirely
+      onClick={preventClick}
     >
       <Card
         className={styles.EventCard}
@@ -136,11 +134,6 @@ const Event = (props) => {
 };
 
 export default Event;
-
-
-
-
-
 
 
 

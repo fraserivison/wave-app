@@ -1,11 +1,16 @@
 .NavBar {
   background-color: #f7f7f7;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .NavLink {
   padding: 5px;
+  font-size: 1rem;
 }
 
 .Active i {
@@ -19,25 +24,30 @@
 
 @media (max-width: 576px) {
   .NavLink {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    padding: 3px;
+  }
+
+  .NavBar {
+    padding-top: 5px;
   }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .NavLink {
-    font-size: 0.5rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (min-width: 768px) {
   .NavLink {
-    font-size: 0.6rem;
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
   .NavLink {
-    font-size: 0.7rem;
+    font-size: 1.1rem;
   }
 }
 
