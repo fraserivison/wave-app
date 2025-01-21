@@ -20,7 +20,6 @@ const Track = (props) => {
     ratings_count,
     rating_id,
     title,
-    genre,
     audio_file_url,
     album_cover,
     updated_at,

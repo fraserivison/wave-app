@@ -1,87 +1,65 @@
-import React from "react";
-import { Card, Row, Col } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/Profile.module.css";
+import { Container, Row, Col } from "react-bootstrap";
 
-// Helper function to format genre (e.g., "house_music" -> "House Music")
-const formatGenre = (genre) => {
-  return genre
-    .split("_")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
+const Profile = () => {
+  const { id } = useParams();
+  const [profileData, setProfileData] = useState({
+    profile: {},
+    tracks: [],
+  });
 
-const Profile = ({ profile }) => {
+  const { tracks } = profileData;
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const { data: profile } = await axiosReq.get(`/profiles/${id}/`);
+        const { data: tracks } = await axiosReq.get(`/tracks/?profile=${id}`);
+        setProfileData({ profile, tracks: tracks.results });
+      } catch (err) {
+        console.error("Error fetching profile data:", err);
+      }
+    };
+
+    fetchProfileData();
+  }, [id]);
+
   return (
-    <div>
-      {/* Tracks Section */}
-      <Card className="mb-4">
-        <Card.Body>
-          <h4>Tracks</h4>
-          {profile.tracks.length ? (
-            <Row xs={1} sm={2} md={2} lg={2} className="g-5"> {/* Increased gap between cards */}
-              {profile.tracks.map((track) => (
-                <Col key={track.id}>
-                  <Card className={`${styles.TrackCard} ${styles.CardTile}`}>
-                    <Card.Body>
-                      <h5 className="text-white">{track.title}</h5>
-                      <p className="text-white">
-                        <strong>Artist:</strong> {track.artist}
-                      </p>
-                      <p className="text-white">
-                        <strong>Genre:</strong> {formatGenre(track.genre)}
-                      </p>
-                      <p className="text-white">
-                        <strong>Rating:</strong> {track.average_rating || "N/A"}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
+    <Container className={styles.ProfileContainer}>
+      <Row>
+        <Col md={{ span: 8, offset: 2 }} className={styles.TracksSection}>
+          <h4 className={styles.SectionHeader}>Tracks</h4>
+          {tracks.length ? (
+            <div className={styles.TracksList}>
+              {tracks.map((track) => (
+                <div key={track.id} className={styles.TrackItem}>
+                  <div
+                    className={styles.TrackImage}
+                    style={{ backgroundImage: `url(${track.album_cover})` }}
+                  ></div>
+                  <div className={styles.TrackDetails}>
+                    <h5>{track.title}</h5>
+                    <audio controls className={styles.AudioPlayer}>
+                      <source src={track.audio_file_url} type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                </div>
               ))}
-            </Row>
+            </div>
           ) : (
-            <p>No tracks available</p>
+            <p>No tracks uploaded yet.</p>
           )}
-        </Card.Body>
-      </Card>
-
-      {/* Events Section */}
-      <Card>
-        <Card.Body>
-          <h4>Events</h4>
-          {profile.events.length ? (
-            <Row xs={1} sm={2} md={2} lg={2} className="g-5"> {/* Increased gap between cards */}
-              {profile.events.map((event) => (
-                <Col key={event.id}>
-                  <Card className={`${styles.EventCard} ${styles.CardTile}`}>
-                    <Card.Body>
-                      <h5 className="text-white">{event.name}</h5>
-                      <p className="text-white">
-                        <strong>Date:</strong>{" "}
-                        {new Date(event.date).toLocaleDateString()}
-                      </p>
-                      <p className="text-white">
-                        <strong>Location:</strong> {event.location}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          ) : (
-            <p>No events available</p>
-          )}
-        </Card.Body>
-      </Card>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
 export default Profile;
-
-
-
-
-
 
 
 

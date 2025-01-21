@@ -1,77 +1,94 @@
-.TrackCard,
-.EventCard {
-  border: none;
-  border-radius: 12px;
+.ProfilePage {
+  padding: 20px;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.TrackContainer {
+  margin: 20px 0;
+}
+
+.TrackCard {
+  background-color: #333;
   color: white;
-  background: linear-gradient(135deg, #f79c42, #f39c12); /* Warm orange-yellow gradient for a music vibe */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  height: 100%;
+  border-radius: 8px;
+  margin: 5px;
+  overflow: hidden;
+  width: 150px; /* Smaller width */
+  height: 200px; /* Adjusted height */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 1rem;
-  padding: 10px;
 }
 
-.TrackCard:hover,
-.EventCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Darker shadow on hover for a cool effect */
+.TrackImage {
+  background-size: cover;
+  background-position: center;
+  height: 100px; /* Smaller height for image */
+  width: 100%;
+  border-radius: 8px 8px 0 0;
 }
 
-h4 {
-  font-size: 1.5rem;  /* Section heading */
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-h5 {
-  font-size: 1.1rem;  /* Track/Event title */
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-p {
-  font-size: 0.875rem;  /* Description */
-  margin: 0.5rem 0;
-  color: #e0e0e0;
-}
-
-p strong {
-  color: #f39c12; /* Highlight strong text (like artist, date, genre) */
-}
-
-.Row {
-  margin: 1rem;
-}
-
-.Row .Col {
+.TrackHeader {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 0.6rem;
 }
 
-.TrackCard .text-white,
-.EventCard .text-white {
+.TrackTitle {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.55rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+
+.ProfileName {
+  font-size: 0.5rem;
   color: white;
 }
 
+.UpdatedAt {
+  font-size: 0.5rem;
+  color: lightgray;
+}
+
 .CardTile {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.CardTile:hover {
-  transform: translateY(-10px);
-}
-
-.WordBreak {
-  word-break: break-all;
+  padding: 5px;
 }
 
 .EventCard {
-  background: linear-gradient(135deg, #6a5acd, #483d8b);
+  background-color: #444;
+  color: white;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 10px;
+  width: 150px; /* Match smaller card size */
+  height: auto;
+  box-sizing: border-box;
+}
+
+.EventCard h5 {
+  font-size: 0.7rem;
+  margin-bottom: 5px;
+}
+
+.EventCard p {
+  font-size: 0.65rem;
+}
+
+.text-white {
+  color: white;
+}
+
+.TrackContainer .d-flex {
+  gap: 10px; /* Add spacing between cards */
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align cards to the left */
 }
