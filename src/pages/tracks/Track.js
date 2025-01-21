@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Media, OverlayTrigger, Tooltip, DropdownButton, Dropdown } from "react-bootstrap";
+import {
+  Media,
+  OverlayTrigger,
+  Tooltip,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
@@ -19,7 +24,6 @@ const Track = (props) => {
     audio_file,
     album_cover,
     updated_at,
-    trackPage,
     setTracks,
   } = props;
 
@@ -132,27 +136,41 @@ const Track = (props) => {
         style={{ backgroundImage: `url(${album_cover})` }}
       >
         <div className={styles.TrackHeader}>
-          <Media className="align-items-center justify-content-between">
+          <Media className="d-flex align-items-center justify-content-between">
             {/* Profile Name */}
-            {is_owner ? (
-              <span className={styles.TrackOwner}>{owner}</span> // Display plain text for owner
-            ) : (
-              <Link to={`/profiles/${profile_id}`} className={styles.TrackOwner}>
-                {owner}
-              </Link> // Non-owner, clickable link
-            )}
-            <div className="d-flex align-items-center">
+            <div className={styles.ProfileName}>
+              {is_owner ? (
+                <span className={styles.TrackOwner}>{owner}</span>
+              ) : (
+                <Link
+                  to={`/profiles/${profile_id}`}
+                  className={styles.TrackOwner}
+                >
+                  {owner}
+                </Link>
+              )}
+            </div>
+
+            {/* Title */}
+            <div className={styles.TrackTitleWrapper}>
+              <span className={styles.TrackTitle}>{title}</span>
+            </div>
+
+            {/* Updated At */}
+            <div className={styles.UpdatedAt}>
               <span>{updated_at}</span>
-              {is_owner && (
-                // Simplified to test if dropdown is rendered
+            </div>
+
+            {/* More Dropdown */}
+            {is_owner && (
+              <div className={styles.DropdownWrapper}>
                 <MoreDropdown
                   handleEdit={handleEdit}
                   handleDelete={handleDelete}
                 />
-              )}
-            </div>
+              </div>
+            )}
           </Media>
-          <span className={styles.TrackTitle}>{title}</span>
         </div>
 
         <div className={styles.TrackCenter}>
@@ -226,7 +244,3 @@ const Track = (props) => {
 };
 
 export default Track;
-
-
-
-

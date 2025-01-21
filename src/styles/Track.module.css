@@ -17,25 +17,21 @@
 }
 
 .TrackHeader {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 4px 10px;
-  font-size: 0.75rem;
   background: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  color: white !important;
-  
+  color: white;
 }
 
 .TrackTitle {
   font-weight: bold;
-  color: white !important;
   text-transform: uppercase;
+  font-size: 0.75rem;
   white-space: nowrap;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50px;
 }
 
 .TrackCenter {
@@ -44,6 +40,17 @@
   align-items: center;
   padding: 60px;
   position: relative;
+}
+
+.ProfileName {
+  flex: 1;
+  text-align: left;
+  font-size: 0.75rem;
+}
+
+.TrackTitleWrapper {
+  flex: 2;
+  text-align: center;
 }
 
 .PlayButton {
@@ -68,6 +75,13 @@
 
 .TrackOwner {
   color: white;
+}
+
+.UpdatedAt {
+  flex: 1;
+  text-align: right;
+  font-size: 0.4rem;
+  color: lightgray;
 }
 
 
@@ -123,4 +137,8 @@
   left: 0 !important;
   right: auto !important;
   transform: translateY(5px);
+}
+
+.DropdownWrapper {
+  flex: 0;
 }
