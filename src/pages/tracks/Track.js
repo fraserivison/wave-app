@@ -8,7 +8,7 @@ import {
   DropdownButton,
   Dropdown,
 } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
@@ -16,7 +16,6 @@ const Track = (props) => {
   const {
     id,
     owner,
-    profile_id,
     ratings_count,
     rating_id,
     title,

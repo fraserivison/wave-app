@@ -103,6 +103,6 @@
 
 @media (max-width: 768px) {
   .EventCard {
-    width: 100%; /* Make cards take up full width on smaller screens */
+    width: 100%;
   }
 }

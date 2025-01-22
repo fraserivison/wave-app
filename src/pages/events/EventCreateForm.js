@@ -166,7 +166,3 @@ function EventCreateForm() {
 }
 
 export default EventCreateForm;
-
-
-
-

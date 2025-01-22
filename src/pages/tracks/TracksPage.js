@@ -75,10 +75,10 @@ function TracksPage({ message, filter = "" }) {
                   {tracks.results.map((track) => (
                     <Col
                       key={track.id}
-                      xs={6} // 2 items per row on mobile (small devices)
-                      sm={6} // 2 items per row on small screens
-                      md={4} // 3 items per row on medium screens
-                      lg={3} // 4 items per row on large screens
+                      xs={6}
+                      sm={6}
+                      md={4}
+                      lg={3}
                       className={`mb-2 ${styles.TrackCol}`}
                     >
                       <Track {...track} setTracks={setTracks} />
@@ -103,6 +103,3 @@ function TracksPage({ message, filter = "" }) {
 }
 
 export default TracksPage;
-
-
-

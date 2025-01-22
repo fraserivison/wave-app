@@ -16,6 +16,7 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
@@ -39,6 +40,7 @@ function SignInForm() {
       console.log("Login successful, received data:", data);
 
       setCurrentUser(data.user);
+      setTokenTimestamp(data);
       console.log("User set in context:", data.user);
 
       history.push("/discover");

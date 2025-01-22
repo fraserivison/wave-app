@@ -74,7 +74,7 @@ function App() {
             {currentUser ? (
               <ProfilePage />
             ) : (
-              <ProfilePage /> // Allow non-authenticated users to view the profile
+              <ProfilePage />
             )}
           </Route>
           <Route exact path="/profiles/:id/edit">
