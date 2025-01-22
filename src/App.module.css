@@ -67,17 +67,6 @@ h1 {
   }
 }
 
-@media (min-width: 768px) {
-  h1 {
-    font-size: 5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 6rem;
-  }
-}
 
 * {
   box-sizing: border-box;

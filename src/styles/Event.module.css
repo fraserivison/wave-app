@@ -1,12 +1,15 @@
 .EventCardWrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start; /* Align items to the start, removes extra space */
   gap: 20px;
+  padding-right: 0; /* Ensure no right padding */
+  margin-right: 0; /* Ensure no right margin */
 }
 
 .EventCard {
-  width: 48%;
+  width: 48%; /* Adjust the width to fit better in the container */
+  max-width: 100%; /* Ensure card doesn't overflow */
   margin-bottom: 20px;
   border: none;
   border-radius: 12px;
@@ -14,6 +17,7 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: #f9f9f9;
+  padding: 0; /* Optional: Remove padding to prevent overflow */
 }
 
 .EventCard:hover {
@@ -29,7 +33,7 @@
 }
 
 .CardBody {
-  padding: 20px;
+  padding: 20px; /* Adjust padding as needed */
   background-color: rgba(255, 255, 255, 0.85);
 }
 
@@ -59,7 +63,7 @@
 .EventDate {
   font-size: 10px;
   color: #5a5a5a;
-  padding-right: 10px
+  padding-right: 20px;
 }
 
 .EventDetails {
@@ -90,7 +94,6 @@
   transition: background-color 0.3s ease;
 }
 
-
 .DropdownWrapper {
   position: absolute;
   top: 10px;
@@ -98,3 +101,8 @@
   z-index: 10;
 }
 
+@media (max-width: 768px) {
+  .EventCard {
+    width: 100%; /* Make cards take up full width on smaller screens */
+  }
+}

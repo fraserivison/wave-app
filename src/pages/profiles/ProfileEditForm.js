@@ -8,7 +8,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { useProfile } from "../../contexts/ProfileContext";
-import styles from "../../styles/ProfileEditForm.module.css";
+import { Spinner } from "react-bootstrap"; // Importing Spinner component
 
 function ProfileEditForm() {
   const [errors, setErrors] = useState({});
@@ -17,6 +17,7 @@ function ProfileEditForm() {
     bio: "",
     image: "",
   });
+  const [isLoading, setIsLoading] = useState(true); // New loading state
   const { dj_name, bio, image } = profileData;
   const imageInput = useRef(null);
   const { id } = useParams();
@@ -34,8 +35,10 @@ function ProfileEditForm() {
           image: data.image,
         });
         setProfile(data);
+        setIsLoading(false); // Set loading to false once data is fetched
       } catch (err) {
         console.log(err);
+        setIsLoading(false); // Set loading to false if there's an error
       }
     };
     fetchProfileData();
@@ -81,6 +84,7 @@ function ProfileEditForm() {
 
   const textFields = (
     <div className="text-center">
+      <h1>Update your Profile</h1>
       {/* Profile Image Upload */}
       <Form.Group className="text-center">
         {image ? (
@@ -177,7 +181,13 @@ function ProfileEditForm() {
           <div
             className={`${appStyles.Content} d-flex flex-column justify-content-center`}
           >
-            {textFields}
+            {isLoading ? (
+              <div className="text-center">
+                <Spinner animation="border" />
+              </div>
+            ) : (
+              textFields
+            )}
           </div>
         </div>
       </div>
@@ -186,4 +196,5 @@ function ProfileEditForm() {
 }
 
 export default ProfileEditForm;
+
 

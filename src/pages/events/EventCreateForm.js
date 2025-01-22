@@ -51,6 +51,8 @@ function EventCreateForm() {
         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
       >
         <h1 className="text-center">Add Event</h1>
+        
+        {/* Event Name Field */}
         <Form.Group>
           <Form.Label>Event Name</Form.Label>
           <Form.Control
@@ -66,6 +68,7 @@ function EventCreateForm() {
           </Alert>
         ))}
 
+        {/* Description Field */}
         <Form.Group>
           <Form.Label>Description</Form.Label>
           <Form.Control
@@ -82,6 +85,7 @@ function EventCreateForm() {
           </Alert>
         ))}
 
+        {/* Genre Field */}
         <Form.Group>
           <Form.Label>Genre</Form.Label>
           <Form.Control
@@ -109,6 +113,7 @@ function EventCreateForm() {
           </Alert>
         ))}
 
+        {/* Date Field */}
         <Form.Group>
           <Form.Label>Date and Time</Form.Label>
           <Form.Control
@@ -124,6 +129,7 @@ function EventCreateForm() {
           </Alert>
         ))}
 
+        {/* Location Field */}
         <Form.Group>
           <Form.Label>Location</Form.Label>
           <Form.Control
@@ -139,6 +145,7 @@ function EventCreateForm() {
           </Alert>
         ))}
 
+        {/* Buttons */}
         <div className="text-center">
           <Button
             className={`${btnStyles.Button} ${btnStyles.Blue}`}

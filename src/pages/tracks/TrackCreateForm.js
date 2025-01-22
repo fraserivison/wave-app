@@ -80,6 +80,14 @@ function TrackCreateForm() {
     }
   };
 
+  const renderErrors = (field) => {
+    return errors?.[field]?.map((message, idx) => (
+      <Alert variant="warning" key={idx}>
+        {message}
+      </Alert>
+    ));
+  };
+
   const textFields = (
     <div className="text-center">
       <h1 className="text-center">Add Track</h1>
@@ -91,12 +99,8 @@ function TrackCreateForm() {
           value={title}
           onChange={handleChange}
         />
+        {renderErrors("title")}
       </Form.Group>
-      {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
 
       <Form.Group>
         <Form.Label>Genre</Form.Label>
@@ -118,12 +122,8 @@ function TrackCreateForm() {
           <option value="chillout">Chillout</option>
           <option value="other">Other</option>
         </Form.Control>
+        {renderErrors("genre")}
       </Form.Group>
-      {errors?.genre?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
 
       <div className="text-center">
         <Button
@@ -241,5 +241,6 @@ function TrackCreateForm() {
 }
 
 export default TrackCreateForm;
+
 
 

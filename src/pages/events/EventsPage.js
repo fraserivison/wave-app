@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";  // Import Alert for error messages
 
 import Event from "./Event";
 import Asset from "../../components/Asset";
@@ -21,8 +22,8 @@ function EventsPage({ message, filter = "" }) {
   const [events, setEvents] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
-
   const [query, setQuery] = useState("");
+  const [errors, setErrors] = useState(null);  // State to hold any errors
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -32,8 +33,15 @@ function EventsPage({ message, filter = "" }) {
         );
         setEvents(data);
         setHasLoaded(true);
+        setErrors(null);  // Reset errors if the request is successful
       } catch (err) {
         console.log(err);
+        setHasLoaded(true);
+        if (err.response) {
+          setErrors(err.response?.data);  // Set errors if the API returns an error
+        } else {
+          setErrors({ detail: "An error occurred while fetching events." });  // Fallback error message
+        }
       }
     };
 
@@ -66,6 +74,13 @@ function EventsPage({ message, filter = "" }) {
               placeholder="Search event name, location, genre..."
             />
           </Form>
+
+          {/* Show error messages if there are any */}
+          {errors && (
+            <Alert variant="danger">
+              {errors.detail || "An error occurred. Please try again later."}
+            </Alert>
+          )}
 
           {hasLoaded ? (
             <>
