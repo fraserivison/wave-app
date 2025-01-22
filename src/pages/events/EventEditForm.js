@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";  // Import the Spinner component
+import Spinner from "react-bootstrap/Spinner"; // Import the Spinner component
 import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -179,7 +179,8 @@ function EventEditForm() {
         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`} // Apply the same container styles
       >
         <div className="d-flex justify-content-center">
-          <Spinner animation="border" variant="primary" /> {/* Loading Spinner */}
+          <Spinner animation="border" variant="primary" />{" "}
+          {/* Loading Spinner */}
         </div>
       </Container>
     );
@@ -197,5 +198,3 @@ function EventEditForm() {
 }
 
 export default EventEditForm;
-
-

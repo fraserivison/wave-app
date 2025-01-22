@@ -26,7 +26,9 @@ function TracksPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchTracks = async () => {
       try {
-        const { data } = await axiosReq.get(`/tracks/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(
+          `/tracks/?${filter}search=${query}`
+        );
         setTracks(data);
         setHasLoaded(true);
       } catch (err) {

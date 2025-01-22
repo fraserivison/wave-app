@@ -86,7 +86,10 @@ describe("TrackCreateForm", () => {
 
     await waitFor(() => {
       expect(axiosReq.post).toHaveBeenCalledTimes(1);
-      expect(axiosReq.post).toHaveBeenCalledWith("/tracks/", expect.any(FormData));
+      expect(axiosReq.post).toHaveBeenCalledWith(
+        "/tracks/",
+        expect.any(FormData)
+      );
     });
   });
 

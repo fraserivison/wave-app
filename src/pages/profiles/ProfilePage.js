@@ -45,7 +45,10 @@ const ProfilePage = () => {
                 <div className={styles.ProfileTitleWrapper}>
                   {/* Conditionally render the Edit Profile button */}
                   {showEditButton && (
-                    <Link to={`/profiles/${id}/edit`} className={styles.EditProfileButton}>
+                    <Link
+                      to={`/profiles/${id}/edit`}
+                      className={styles.EditProfileButton}
+                    >
                       Edit Profile
                     </Link>
                   )}
@@ -57,7 +60,8 @@ const ProfilePage = () => {
           {/* Footer Section */}
           <div className={styles.ProfileFooter}>
             <div className={styles.ProfileOwner}>
-              <strong>Joined:</strong> {new Date(profile.created_at).toLocaleDateString()}
+              <strong>Joined:</strong>{" "}
+              {new Date(profile.created_at).toLocaleDateString()}
             </div>
             <p className={styles.Bio}>{profile.bio}</p>
           </div>

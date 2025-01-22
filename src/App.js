@@ -71,11 +71,7 @@ function App() {
 
           {/* Add routes for ProfilePage and EditProfilePage */}
           <Route exact path="/profiles/:id">
-            {currentUser ? (
-              <ProfilePage />
-            ) : (
-              <ProfilePage />
-            )}
+            {currentUser ? <ProfilePage /> : <ProfilePage />}
           </Route>
           <Route exact path="/profiles/:id/edit">
             {currentUser ? <ProfileEditForm /> : <Redirect to="/signin" />}

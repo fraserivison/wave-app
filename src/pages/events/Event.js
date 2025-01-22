@@ -7,16 +7,8 @@ import { Card } from "react-bootstrap";
 import styles from "../../styles/Event.module.css";
 
 const Event = (props) => {
-  const {
-    id,
-    owner,
-    name,
-    genre,
-    location,
-    date,
-    description,
-    setEvents,
-  } = props;
+  const { id, owner, name, genre, location, date, description, setEvents } =
+    props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -88,10 +80,7 @@ const Event = (props) => {
   };
 
   return (
-    <div
-      className={styles.EventCardWrapper}
-      onClick={preventClick}
-    >
+    <div className={styles.EventCardWrapper} onClick={preventClick}>
       <Card
         className={styles.EventCard}
         style={{ backgroundColor: getRandomColor() }}
@@ -134,7 +123,3 @@ const Event = (props) => {
 };
 
 export default Event;
-
-
-
-
