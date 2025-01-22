@@ -26,7 +26,6 @@ const ProfilePage = () => {
     return <div>Loading profile...</div>;
   }
 
-  // Conditionally show the Edit Profile button if the current user is the owner of the profile
   const showEditButton = profile.is_owner;
 
   return (

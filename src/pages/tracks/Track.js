@@ -61,7 +61,7 @@ const Track = (props) => {
           results: prevTracks.results.filter((track) => track.id !== id),
         }));
       }
-      history.push('/discover');
+      history.push("/discover");
     } catch (err) {
       console.log("Error deleting track:", err);
     }
@@ -143,18 +143,8 @@ const Track = (props) => {
         <div className={styles.TrackHeader}>
           <Media className="d-flex align-items-center justify-content-between">
             <div className={styles.ProfileName}>
-              {is_owner ? (
-                <span className={styles.TrackOwner}>{owner}</span>
-              ) : (
-                <Link
-                  to={`/profiles/${profile_id}`}
-                  className={styles.TrackOwner}
-                >
-                  {owner}
-                </Link>
-              )}
+              <span className={styles.TrackOwner}>{owner}</span>
             </div>
-
             <div className={styles.TrackTitleWrapper}>
               <span className={styles.TrackTitle}>{title}</span>
             </div>
@@ -242,4 +232,3 @@ const Track = (props) => {
 };
 
 export default Track;
-
