@@ -1,6 +1,7 @@
 {
-  "name": "moments",
+  "name": "wave",
   "version": "0.1.0",
+  "homepage": "https://fraserivison.github.io/wave-app/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -9,6 +10,7 @@
     "axios": "^0.21.4",
     "bootstrap": "^4.6.2",
     "date-fns": "^4.1.0",
+    "gh-pages": "^6.3.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.8",
@@ -23,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
