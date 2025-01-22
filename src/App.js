@@ -36,7 +36,11 @@ function App() {
 
           {/* Redirect Root ("/") to "/signin" if user is not authenticated */}
           <Route exact path="/">
-            {currentUser ? <Redirect to="/discover" /> : <Redirect to="/signin" />}
+            {currentUser ? (
+              <Redirect to="/discover" />
+            ) : (
+              <Redirect to="/signin" />
+            )}
           </Route>
 
           {/* Protected Routes */}
@@ -67,7 +71,11 @@ function App() {
 
           {/* Add routes for ProfilePage and EditProfilePage */}
           <Route exact path="/profiles/:id">
-            {currentUser ? <ProfilePage /> : <Redirect to="/signin" />}
+            {currentUser ? (
+              <ProfilePage />
+            ) : (
+              <ProfilePage /> // Allow non-authenticated users to view the profile
+            )}
           </Route>
           <Route exact path="/profiles/:id/edit">
             {currentUser ? <ProfileEditForm /> : <Redirect to="/signin" />}
@@ -84,9 +92,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-

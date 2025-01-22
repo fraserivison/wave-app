@@ -26,6 +26,9 @@ const ProfilePage = () => {
     return <div>Loading profile...</div>;
   }
 
+  // Conditionally show the Edit Profile button if the current user is the owner of the profile
+  const showEditButton = profile.is_owner;
+
   return (
     <div className={styles.ProfileContainerRow}>
       <div className={styles.ProfileCol}>
@@ -41,16 +44,15 @@ const ProfilePage = () => {
                   <h2>{profile.dj_name}</h2>
                 </div>
                 <div className={styles.ProfileTitleWrapper}>
+                  {/* Conditionally render the Edit Profile button */}
+                  {showEditButton && (
+                    <Link to={`/profiles/${id}/edit`} className={styles.EditProfileButton}>
+                      Edit Profile
+                    </Link>
+                  )}
                 </div>
               </Media>
             </div>
-          </div>
-
-          {/* Edit Profile */}
-          <div className={styles.ProfileCenter}>
-            <Link to={`/profiles/${id}/edit`} className={styles.EditProfileButton}>
-              Edit Profile
-            </Link>
           </div>
 
           {/* Footer Section */}
