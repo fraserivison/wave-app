@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/wave-app/static/css/main.158093b1.chunk.css",
-    "main.js": "/wave-app/static/js/main.57a1a184.chunk.js",
-    "main.js.map": "/wave-app/static/js/main.57a1a184.chunk.js.map",
+    "main.js": "/wave-app/static/js/main.127761e6.chunk.js",
+    "main.js.map": "/wave-app/static/js/main.127761e6.chunk.js.map",
     "runtime-main.js": "/wave-app/static/js/runtime-main.a93e46e1.js",
     "runtime-main.js.map": "/wave-app/static/js/runtime-main.a93e46e1.js.map",
-    "static/js/2.b3613b89.chunk.js": "/wave-app/static/js/2.b3613b89.chunk.js",
-    "static/js/2.b3613b89.chunk.js.map": "/wave-app/static/js/2.b3613b89.chunk.js.map",
+    "static/js/2.05e11c80.chunk.js": "/wave-app/static/js/2.05e11c80.chunk.js",
+    "static/js/2.05e11c80.chunk.js.map": "/wave-app/static/js/2.05e11c80.chunk.js.map",
     "static/js/3.e0790da4.chunk.js": "/wave-app/static/js/3.e0790da4.chunk.js",
     "static/js/3.e0790da4.chunk.js.map": "/wave-app/static/js/3.e0790da4.chunk.js.map",
     "index.html": "/wave-app/index.html",
     "static/css/main.158093b1.chunk.css.map": "/wave-app/static/css/main.158093b1.chunk.css.map",
-    "static/js/2.b3613b89.chunk.js.LICENSE.txt": "/wave-app/static/js/2.b3613b89.chunk.js.LICENSE.txt",
+    "static/js/2.05e11c80.chunk.js.LICENSE.txt": "/wave-app/static/js/2.05e11c80.chunk.js.LICENSE.txt",
     "static/media/hero.9a4a513a.png": "/wave-app/static/media/hero.9a4a513a.png",
     "static/media/logo.6c2a8aa7.png": "/wave-app/static/media/logo.6c2a8aa7.png"
   },
   "entrypoints": [
     "static/js/runtime-main.a93e46e1.js",
-    "static/js/2.b3613b89.chunk.js",
+    "static/js/2.05e11c80.chunk.js",
     "static/css/main.158093b1.chunk.css",
-    "static/js/main.57a1a184.chunk.js"
+    "static/js/main.127761e6.chunk.js"
   ]
 }
