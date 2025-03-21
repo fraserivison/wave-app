@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 
 import heroImage from "../../assets/hero.png";
 import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
 import {
@@ -88,7 +87,7 @@ const SignUpForm = () => {
             ))}
 
             <Form.Group controlId="password2">
-              <Form.Label className="d-none">Confirms password</Form.Label>
+              <Form.Label className="d-none">Confirm password</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="password"
@@ -103,11 +102,7 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
-
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-              type="submit"
-            >
+            <Button className={styles.CustomButton} type="submit">
               Sign up
             </Button>
             {errors.non_field_errors?.map((message, idx) => (

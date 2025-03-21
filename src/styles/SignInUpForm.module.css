@@ -44,4 +44,30 @@
   .SignUpCol {
     height: 375px;
   }
+
+  .CustomButton {
+    display: block;
+    width: fit-content;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: linear-gradient(45deg, #ff007a, #7700ff);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 20px auto;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(119, 0, 255, 0.3);
+  }
+  
+  .CustomButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 0, 122, 0.4);
+    background: linear-gradient(45deg, #7700ff, #ff007a);
+  }
+  
   

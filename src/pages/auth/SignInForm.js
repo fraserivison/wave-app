@@ -13,7 +13,6 @@ import Container from "react-bootstrap/Container";
 import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { setTokenTimestamp } from "../../utils/utils";
@@ -109,10 +108,7 @@ function SignInForm() {
                 {message}
               </Alert>
             ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-              type="submit"
-            >
+            <Button className={styles.CustomButton} type="submit">
               Sign in
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
