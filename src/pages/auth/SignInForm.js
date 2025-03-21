@@ -71,12 +71,13 @@ function SignInForm() {
 
   return (
     <Row className={styles.Row}>
-      <Col className="my-auto p-0 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
-          <h2 className={styles.Header}>sign in</h2>
+      {/* Sign In Form */}
+      <Col md={6} className="d-flex justify-content-center">
+        <Container className={styles.SignInCol}>
+          <h2 className={styles.Header}>Sign In</h2>
           <Form onSubmit={handleSubmit}>
+            {/* Username Input */}
             <Form.Group controlId="username">
-              <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Username"
@@ -92,8 +93,8 @@ function SignInForm() {
               </Alert>
             ))}
 
+            {/* Password Input */}
             <Form.Group controlId="password">
-              <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
@@ -108,8 +109,10 @@ function SignInForm() {
                 {message}
               </Alert>
             ))}
+
+            {/* Sign In Button */}
             <Button className={styles.CustomButton} type="submit">
-              Sign in
+              Sign In
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className="mt-3">
@@ -117,36 +120,30 @@ function SignInForm() {
               </Alert>
             ))}
           </Form>
-        </Container>
-        <Container className={`mt-3 ${appStyles.Content}`}>
+
+          {/* Sign Up Link */}
           <Link className={styles.Link} to="/signup">
             Don't have an account? <span>Sign up now!</span>
           </Link>
         </Container>
       </Col>
+
+      {/* Image Section */}
       <Col
         md={6}
-        className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
+        className={`d-none d-md-flex align-items-center ${styles.ImageContainer}`}
       >
-        <Col
-          md={6}
+        <Image
+          className={appStyles.FillerImage}
+          src={heroImage}
+          alt="Hero"
           style={{
-            textAlign: "center",
-            paddingLeft: "150px",
+            width: "250px",
+            height: "250px",
+            borderRadius: "50%",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
           }}
-        >
-          <Image
-            className={appStyles.FillerImage}
-            src={heroImage}
-            alt="Hero"
-            style={{
-              width: "250px",
-              height: "250px",
-              borderRadius: "50%",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
-            }}
-          />
-        </Col>
+        />
       </Col>
     </Row>
   );
