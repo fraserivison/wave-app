@@ -88,7 +88,7 @@ const SignUpForm = () => {
             ))}
 
             <Form.Group controlId="password2">
-              <Form.Label className="d-none">Confirm password</Form.Label>
+              <Form.Label className="d-none">Confirms password</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="password"

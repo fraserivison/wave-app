@@ -4,6 +4,7 @@
   "homepage": "https://fraserivison.github.io/wave-app/",
   "private": true,
   "dependencies": {
+    "16": "^0.0.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
