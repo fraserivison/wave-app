@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import heroImage from "../../assets/hero.png";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 
 import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
-import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { setTokenTimestamp } from "../../utils/utils";
 
@@ -128,22 +125,18 @@ function SignInForm() {
         </Container>
       </Col>
 
-      {/* Image Section */}
       <Col
         md={6}
-        className={`d-none d-md-flex align-items-center ${styles.ImageContainer}`}
+        className={`d-none d-md-flex flex-column align-items-center justify-content-center ${styles.ImageContainer}`}
       >
-        <Image
-          className={appStyles.FillerImage}
-          src={heroImage}
-          alt="Hero"
-          style={{
-            width: "250px",
-            height: "250px",
-            borderRadius: "50%",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
-          }}
-        />
+        <h1 className={styles.Branding}>
+          <i
+            className="fa-solid fa-headphones-simple"
+            style={{ color: "#f7f7f7", marginRight: "20px", fontSize: "4rem"}}
+          ></i>
+          Wave
+        </h1>
+        <p className={styles.Slogan}>The #1 Platform  to listen, share and discover.</p>
       </Col>
     </Row>
   );

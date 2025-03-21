@@ -128,3 +128,7 @@ figure {
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.PageNotFound {
+  color: #ffffff;
+}

@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-
-import heroImage from "../../assets/hero.png";
 import styles from "../../styles/SignInUpForm.module.css";
-import appStyles from "../../App.module.css";
 
 import {
   Form,
   Button,
-  Image,
   Col,
   Row,
   Container,
@@ -65,7 +61,9 @@ const SignUpForm = () => {
     <Row className={styles.Row}>
       {/* Sign Up Form */}
       <Col md={6} className="d-flex justify-content-center">
-        <Container className={styles.SignInCol}>  {/* Made consistent */}
+        <Container className={styles.SignInCol}>
+          {" "}
+          {/* Made consistent */}
           <h2 className={styles.Header}>Sign Up</h2>
           <Form onSubmit={handleSubmit}>
             {/* Username Input */}
@@ -129,7 +127,6 @@ const SignUpForm = () => {
               </Alert>
             ))}
           </Form>
-
           {/* Sign In Link */}
           <Link className={styles.Link} to="/signin">
             Already have an account? <span>Sign in</span>
@@ -140,19 +137,18 @@ const SignUpForm = () => {
       {/* Image Section */}
       <Col
         md={6}
-        className={`d-none d-md-flex align-items-center ${styles.ImageContainer}`}
+        className={`d-none d-md-flex flex-column align-items-center justify-content-center ${styles.ImageContainer}`}
       >
-        <Image
-          className={appStyles.FillerImage}
-          src={heroImage}
-          alt="Hero"
-          style={{
-            width: "250px",
-            height: "250px",
-            borderRadius: "50%",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)",
-          }}
-        />
+        <h1 className={styles.Branding}>
+          <i
+            className="fa-solid fa-headphones-simple"
+            style={{ color: "#f7f7f7", marginRight: "20px", fontSize: "4rem" }}
+          ></i>
+          Wave
+        </h1>
+        <p className={styles.Slogan}>
+          The #1 Platform to listen, share and discover.
+        </p>
       </Col>
     </Row>
   );

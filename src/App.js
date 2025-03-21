@@ -79,7 +79,7 @@ function App() {
 
           {/* Fallback Route for "Page Not Found" */}
           <Route>
-            <p>Page not found!</p>
+            <p className={styles.PageNotFound}>Page not found!</p>
           </Route>
         </Switch>
       </Container>
