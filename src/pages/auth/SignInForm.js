@@ -124,7 +124,6 @@ function SignInForm() {
           </Link>
         </Container>
       </Col>
-
       <Col
         md={6}
         className={`d-none d-md-flex flex-column align-items-center justify-content-center ${styles.ImageContainer}`}

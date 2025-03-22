@@ -144,7 +144,7 @@ const SignUpForm = () => {
             className="fa-solid fa-headphones-simple"
             style={{ color: "#f7f7f7", marginRight: "20px", fontSize: "4rem" }}
           ></i>
-          Wave
+          wave
         </h1>
         <p className={styles.Slogan}>
           The #1 Platform to listen, share and discover.
