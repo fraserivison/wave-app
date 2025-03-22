@@ -68,6 +68,20 @@ function SignInForm() {
 
   return (
     <Row className={styles.Row}>
+      {/* Image Section */}
+      <Col
+        md={6}
+        className={`d-none d-md-flex flex-column align-items-center justify-content-center ${styles.ImageContainer}`}
+      >
+        <h1 className={styles.Branding}>
+          <i
+            className="fa-solid fa-headphones-simple"
+            style={{ color: "#f7f7f7", marginRight: "20px", fontSize: "4rem"}}
+          ></i>
+          Wave
+        </h1>
+        <p className={styles.Slogan}>The #1 Platform  to listen, share and discover.</p>
+      </Col>
       {/* Sign In Form */}
       <Col md={6} className="d-flex justify-content-center">
         <Container className={styles.SignInCol}>
@@ -123,19 +137,6 @@ function SignInForm() {
             Don't have an account? <span>Sign up now!</span>
           </Link>
         </Container>
-      </Col>
-      <Col
-        md={6}
-        className={`d-none d-md-flex flex-column align-items-center justify-content-center ${styles.ImageContainer}`}
-      >
-        <h1 className={styles.Branding}>
-          <i
-            className="fa-solid fa-headphones-simple"
-            style={{ color: "#f7f7f7", marginRight: "20px", fontSize: "4rem"}}
-          ></i>
-          Wave
-        </h1>
-        <p className={styles.Slogan}>The #1 Platform  to listen, share and discover.</p>
       </Col>
     </Row>
   );

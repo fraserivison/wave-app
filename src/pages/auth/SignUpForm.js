@@ -59,6 +59,22 @@ const SignUpForm = () => {
 
   return (
     <Row className={styles.Row}>
+      {/* Image Section */}
+      <Col
+        md={6}
+        className={`d-none d-md-flex flex-column align-items-center justify-content-center ${styles.ImageContainer}`}
+      >
+        <h1 className={styles.Branding}>
+          <i
+            className="fa-solid fa-headphones-simple"
+            style={{ color: "#f7f7f7", marginRight: "20px", fontSize: "4rem" }}
+          ></i>
+          wave
+        </h1>
+        <p className={styles.Slogan}>
+          The #1 Platform to listen, share and discover.
+        </p>
+      </Col>
       {/* Sign Up Form */}
       <Col md={6} className="d-flex justify-content-center">
         <Container className={styles.SignInCol}>
@@ -132,23 +148,6 @@ const SignUpForm = () => {
             Already have an account? <span>Sign in</span>
           </Link>
         </Container>
-      </Col>
-
-      {/* Image Section */}
-      <Col
-        md={6}
-        className={`d-none d-md-flex flex-column align-items-center justify-content-center ${styles.ImageContainer}`}
-      >
-        <h1 className={styles.Branding}>
-          <i
-            className="fa-solid fa-headphones-simple"
-            style={{ color: "#f7f7f7", marginRight: "20px", fontSize: "4rem" }}
-          ></i>
-          wave
-        </h1>
-        <p className={styles.Slogan}>
-          The #1 Platform to listen, share and discover.
-        </p>
       </Col>
     </Row>
   );
