@@ -1,7 +1,8 @@
+import React, { useEffect } from "react";
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
@@ -20,6 +21,14 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
   const currentUser = useCurrentUser();
+  const history = useHistory(); // Hook to use history for redirection
+
+  useEffect(() => {
+    // Check if the current user is authenticated, and redirect if necessary
+    if (!currentUser) {
+      history.push("/signin"); // Redirect to the sign-in page if not authenticated
+    }
+  }, [currentUser, history]); // Runs on initial load and whenever currentUser changes
 
   return (
     <div className={styles.App}>
@@ -36,11 +45,7 @@ function App() {
 
           {/* Redirect Root ("/") to "/signin" if user is not authenticated */}
           <Route exact path="/">
-            {currentUser ? (
-              <Redirect to="/discover" />
-            ) : (
-              <Redirect to="/signin" />
-            )}
+            {currentUser ? <Redirect to="/discover" /> : <Redirect to="/signin" />}
           </Route>
 
           {/* Protected Routes */}
@@ -71,7 +76,7 @@ function App() {
 
           {/* Add routes for ProfilePage and EditProfilePage */}
           <Route exact path="/profiles/:id">
-            {currentUser ? <ProfilePage /> : <ProfilePage />}
+            {currentUser ? <ProfilePage /> : <Redirect to="/signin" />}
           </Route>
           <Route exact path="/profiles/:id/edit">
             {currentUser ? <ProfileEditForm /> : <Redirect to="/signin" />}
