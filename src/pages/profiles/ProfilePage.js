@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-import { Media } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap"; // Updated import
 import styles from "../../styles/ProfilePage.module.css";
 import Profile from "./Profile";
 
@@ -38,11 +38,12 @@ const ProfilePage = () => {
             style={{ backgroundImage: `url(${profile.image})` }}
           >
             <div className={styles.ProfileHeader}>
-              <Media className="d-flex align-items-center justify-content-between">
-                <div className={styles.ProfileName}>
+              {/* Replaced Media with Row and Col */}
+              <Row className="d-flex align-items-center justify-content-between">
+                <Col xs={8} className={styles.ProfileName}>
                   <h2>{profile.dj_name}</h2>
-                </div>
-                <div className={styles.ProfileTitleWrapper}>
+                </Col>
+                <Col xs={4} className={styles.ProfileTitleWrapper}>
                   {/* Conditionally render the Edit Profile button */}
                   {showEditButton && (
                     <Link
@@ -52,8 +53,8 @@ const ProfilePage = () => {
                       Edit Profile
                     </Link>
                   )}
-                </div>
-              </Media>
+                </Col>
+              </Row>
             </div>
           </div>
 
@@ -73,3 +74,4 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+

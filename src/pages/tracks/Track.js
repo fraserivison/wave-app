@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import {
-  Media,
-  OverlayTrigger,
-  Tooltip,
-  DropdownButton,
-  Dropdown,
-} from "react-bootstrap";
+import { Row, Col, OverlayTrigger, Tooltip, DropdownButton, Dropdown } from "react-bootstrap"; // Updated import
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -140,17 +134,17 @@ const Track = (props) => {
         style={{ backgroundImage: `url(${album_cover})` }}
       >
         <div className={styles.TrackHeader}>
-          <Media className="d-flex align-items-center justify-content-between">
-            <div className={styles.ProfileName}>
+          {/* Replaced Media with Row and Col */}
+          <Row className="d-flex align-items-center justify-content-between">
+            <Col xs={6} className={styles.ProfileName}>
               <span className={styles.TrackOwner}>{owner}</span>
-            </div>
-            <div className={styles.TrackTitleWrapper}>
+            </Col>
+            <Col xs={4} className={styles.TrackTitleWrapper}>
               <span className={styles.TrackTitle}>{title}</span>
-            </div>
-
-            <div className={styles.UpdatedAt}>
+            </Col>
+            <Col xs={2} className={styles.UpdatedAt}>
               <span>{updated_at}</span>
-            </div>
+            </Col>
 
             {is_owner && (
               <div className={styles.DropdownWrapper}>
@@ -160,7 +154,7 @@ const Track = (props) => {
                 />
               </div>
             )}
-          </Media>
+          </Row>
         </div>
 
         <div className={styles.TrackCenter}>
