@@ -1,22 +1,15 @@
 {
   "files": {
-    "main.css": "/wave-app/static/css/main.6b77e8a1.chunk.css",
-    "main.js": "/wave-app/static/js/main.3bdf5705.chunk.js",
-    "main.js.map": "/wave-app/static/js/main.3bdf5705.chunk.js.map",
-    "runtime-main.js": "/wave-app/static/js/runtime-main.a93e46e1.js",
-    "runtime-main.js.map": "/wave-app/static/js/runtime-main.a93e46e1.js.map",
-    "static/js/2.9b92928e.chunk.js": "/wave-app/static/js/2.9b92928e.chunk.js",
-    "static/js/2.9b92928e.chunk.js.map": "/wave-app/static/js/2.9b92928e.chunk.js.map",
-    "static/js/3.e0790da4.chunk.js": "/wave-app/static/js/3.e0790da4.chunk.js",
-    "static/js/3.e0790da4.chunk.js.map": "/wave-app/static/js/3.e0790da4.chunk.js.map",
+    "main.css": "/wave-app/static/css/main.e0506b7b.css",
+    "main.js": "/wave-app/static/js/main.1da12bdb.js",
+    "static/js/453.bbe0510e.chunk.js": "/wave-app/static/js/453.bbe0510e.chunk.js",
     "index.html": "/wave-app/index.html",
-    "static/css/main.6b77e8a1.chunk.css.map": "/wave-app/static/css/main.6b77e8a1.chunk.css.map",
-    "static/js/2.9b92928e.chunk.js.LICENSE.txt": "/wave-app/static/js/2.9b92928e.chunk.js.LICENSE.txt"
+    "main.e0506b7b.css.map": "/wave-app/static/css/main.e0506b7b.css.map",
+    "main.1da12bdb.js.map": "/wave-app/static/js/main.1da12bdb.js.map",
+    "453.bbe0510e.chunk.js.map": "/wave-app/static/js/453.bbe0510e.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.a93e46e1.js",
-    "static/js/2.9b92928e.chunk.js",
-    "static/css/main.6b77e8a1.chunk.css",
-    "static/js/main.3bdf5705.chunk.js"
+    "static/css/main.e0506b7b.css",
+    "static/js/main.1da12bdb.js"
   ]
 }
