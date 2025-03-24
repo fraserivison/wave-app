@@ -122,7 +122,7 @@ const NavBar = () => {
                   fontSize: "0.8rem",
                 }}
               ></i>
-              Wave IT WORKED
+              Wave
             </h3>
           </Navbar.Brand>
         </NavLink>
