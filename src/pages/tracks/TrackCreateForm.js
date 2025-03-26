@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import { useHistory } from "react-router-dom"; // Use useHistory for React Router v5
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,16 +7,11 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
-
 import Asset from "../../components/Asset";
-
 import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/TrackCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-
-import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 function TrackCreateForm() {
@@ -32,7 +27,7 @@ function TrackCreateForm() {
   const albumCoverInput = useRef(null);
   const audioFileInput = useRef(null);
 
-  const history = useHistory();
+  const history = useHistory(); // ✅ useHistory for React Router v5
 
   const handleChange = (event) => {
     setTrackData({
@@ -71,11 +66,11 @@ function TrackCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/tracks/", formData);
-      history.push(`/tracks/${data.id}`);
+      history.push(`/tracks/${data.id}`); // ✅ useHistory for navigation
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
-        setErrors(err.response?.data); // Set errors returned from the backend
+        setErrors(err.response?.data);
       }
     }
   };
@@ -128,7 +123,7 @@ function TrackCreateForm() {
       <div className="text-center">
         <Button
           className={`${btnStyles.Button} ${btnStyles.Blue}`}
-          onClick={() => history.goBack()}
+          onClick={() => history.goBack()} // ✅ Use history for going back
         >
           Cancel
         </Button>
@@ -149,7 +144,6 @@ function TrackCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
-            {/* Audio File and Album Cover Uploads Side by Side */}
             <Row className="mb-4">
               <Col md={6} className="text-center">
                 {audio_file ? (
@@ -170,34 +164,17 @@ function TrackCreateForm() {
                     </div>
                   </>
                 ) : (
-                  <Form.Label
-                    className="d-flex justify-content-center"
-                    htmlFor="audio-upload"
-                  >
-                    <Asset
-                      src={Upload}
-                      message="Click or tap to upload an audio file"
-                    />
+                  <Form.Label className="d-flex justify-content-center" htmlFor="audio-upload">
+                    <Asset src={Upload} message="Click or tap to upload an audio file" />
                   </Form.Label>
                 )}
-
-                <Form.File
-                  id="audio-upload"
-                  accept="audio/*"
-                  onChange={handleChangeAudio}
-                  ref={audioFileInput}
-                />
+                <Form.File id="audio-upload" accept="audio/*" onChange={handleChangeAudio} ref={audioFileInput} />
               </Col>
-
               <Col md={6} className="text-center">
                 {album_cover ? (
                   <>
                     <figure>
-                      <Image
-                        className={appStyles.Image}
-                        src={album_cover}
-                        rounded
-                      />
+                      <Image className={appStyles.Image} src={album_cover} rounded />
                     </figure>
                     <div>
                       <Form.Label
@@ -209,26 +186,13 @@ function TrackCreateForm() {
                     </div>
                   </>
                 ) : (
-                  <Form.Label
-                    className="d-flex justify-content-center"
-                    htmlFor="album-cover-upload"
-                  >
-                    <Asset
-                      src={Upload}
-                      message="Click or tap to upload an album cover"
-                    />
+                  <Form.Label className="d-flex justify-content-center" htmlFor="album-cover-upload">
+                    <Asset src={Upload} message="Click or tap to upload an album cover" />
                   </Form.Label>
                 )}
-
-                <Form.File
-                  id="album-cover-upload"
-                  accept="image/*"
-                  onChange={handleChangeImage}
-                  ref={albumCoverInput}
-                />
+                <Form.File id="album-cover-upload" accept="image/*" onChange={handleChangeImage} ref={albumCoverInput} />
               </Col>
             </Row>
-
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
@@ -239,5 +203,5 @@ function TrackCreateForm() {
     </Form>
   );
 }
-
 export default TrackCreateForm;
+
