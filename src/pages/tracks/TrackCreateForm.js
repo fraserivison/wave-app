@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useHistory } from "react-router-dom"; // Use useHistory for React Router v5
+import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -27,7 +27,7 @@ function TrackCreateForm() {
   const albumCoverInput = useRef(null);
   const audioFileInput = useRef(null);
 
-  const history = useHistory(); // ✅ useHistory for React Router v5
+  const history = useHistory();
 
   const handleChange = (event) => {
     setTrackData({
@@ -41,7 +41,7 @@ function TrackCreateForm() {
       URL.revokeObjectURL(album_cover);
       setTrackData({
         ...trackData,
-        album_cover: URL.createObjectURL(event.target.files[0]),
+        album_cover: event.target.files[0],
       });
     }
   };
@@ -50,7 +50,7 @@ function TrackCreateForm() {
     if (event.target.files.length) {
       setTrackData({
         ...trackData,
-        audio_file: event.target.files[0].name,
+        audio_file: event.target.files[0],
       });
     }
   };
@@ -66,7 +66,7 @@ function TrackCreateForm() {
 
     try {
       const { data } = await axiosReq.post("/tracks/", formData);
-      history.push(`/tracks/${data.id}`); // ✅ useHistory for navigation
+      history.push(`/tracks/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -77,7 +77,6 @@ function TrackCreateForm() {
 
   const textFields = (
     <div className="text-center">
-      <h1 className="text-center">Add Track</h1>
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Control
@@ -123,7 +122,7 @@ function TrackCreateForm() {
       <div className="text-center">
         <Button
           className={`${btnStyles.Button} ${btnStyles.Blue}`}
-          onClick={() => history.goBack()} // ✅ Use history for going back
+          onClick={() => history.goBack()}
         >
           Cancel
         </Button>
@@ -144,13 +143,16 @@ function TrackCreateForm() {
           <Container
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
+            {/* Add 'Add Track' Title here */}
+            <h1 className="text-center mb-4">Add Track</h1>
+
             <Row className="mb-4">
               <Col md={6} className="text-center">
                 {audio_file ? (
                   <>
                     <div>
                       <audio controls>
-                        <source src={audio_file} type="audio/mpeg" />
+                        <source src={URL.createObjectURL(audio_file)} type="audio/mpeg" />
                         Your browser does not support the audio element.
                       </audio>
                     </div>
@@ -168,13 +170,14 @@ function TrackCreateForm() {
                     <Asset src={Upload} message="Click or tap to upload an audio file" />
                   </Form.Label>
                 )}
-                <Form.File id="audio-upload" accept="audio/*" onChange={handleChangeAudio} ref={audioFileInput} />
+                {/* Replaced Form.File with Form.Control */}
+                <Form.Control type="file" id="audio-upload" accept="audio/*" onChange={handleChangeAudio} ref={audioFileInput} />
               </Col>
               <Col md={6} className="text-center">
                 {album_cover ? (
                   <>
                     <figure>
-                      <Image className={appStyles.Image} src={album_cover} rounded />
+                      <Image className={appStyles.Image} src={URL.createObjectURL(album_cover)} rounded />
                     </figure>
                     <div>
                       <Form.Label
@@ -190,18 +193,17 @@ function TrackCreateForm() {
                     <Asset src={Upload} message="Click or tap to upload an album cover" />
                   </Form.Label>
                 )}
-                <Form.File id="album-cover-upload" accept="image/*" onChange={handleChangeImage} ref={albumCoverInput} />
+                {/* Replaced Form.File with Form.Control */}
+                <Form.Control type="file" id="album-cover-upload" accept="image/*" onChange={handleChangeImage} ref={albumCoverInput} />
               </Col>
             </Row>
-            <div className="d-md-none">{textFields}</div>
+            {/* Removed d-md-none class to make textFields visible on all screen sizes */}
+            {textFields}
           </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
     </Form>
   );
 }
-export default TrackCreateForm;
 
+export default TrackCreateForm;
