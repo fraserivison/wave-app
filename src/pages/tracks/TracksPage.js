@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -50,6 +51,13 @@ function TracksPage({ message, filter = "" }) {
     <Row className={`h-100 ${styles.TracksPageContainer}`}>
       <Col className="py-2 p-0 p-lg-2" lg={12} md={10} xs={12}>
         <h1>Discover</h1>
+        <p className={styles.infoBox}>
+          Discover, rate and{" "}
+          <Link to="/tracks/create" className={styles.link}>
+            share
+          </Link>{" "}
+          your music with the community here.
+        </p>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
