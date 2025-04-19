@@ -4,8 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert"; // Import Alert for error messages
-
+import Alert from "react-bootstrap/Alert";
 import Event from "./Event";
 import Asset from "../../components/Asset";
 
@@ -23,7 +22,7 @@ function EventsPage({ message, filter = "" }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
-  const [errors, setErrors] = useState(null); // State to hold any errors
+  const [errors, setErrors] = useState(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -33,14 +32,14 @@ function EventsPage({ message, filter = "" }) {
         );
         setEvents(data);
         setHasLoaded(true);
-        setErrors(null); // Reset errors if the request is successful
+        setErrors(null);
       } catch (err) {
         console.log(err);
         setHasLoaded(true);
         if (err.response) {
-          setErrors(err.response?.data); // Set errors if the API returns an error
+          setErrors(err.response?.data);
         } else {
-          setErrors({ detail: "An error occurred while fetching events." }); // Fallback error message
+          setErrors({ detail: "An error occurred while fetching events." });
         }
       }
     };
@@ -60,6 +59,13 @@ function EventsPage({ message, filter = "" }) {
       <Row>
         <Col className="py-2 p-0 p-lg-2" lg={12}>
           <h1>Events</h1>
+          <p className={styles.infoBox}>
+            Discover, attend and{" "}
+            <Link to="/events/create" className={styles.link}>
+              share
+            </Link>{" "}
+            events with the community.
+          </p>
           {/* Search bar */}
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form

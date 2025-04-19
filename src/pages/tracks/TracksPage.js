@@ -56,7 +56,7 @@ function TracksPage({ message, filter = "" }) {
           <Link to="/tracks/create" className={styles.link}>
             share
           </Link>{" "}
-          your music with the community here.
+          your music with the community.
         </p>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form

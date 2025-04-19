@@ -1,3 +1,22 @@
+.infoBox {
+  color: #ffffff !important;
+  text-align: center;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+.link {
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: text-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-shadow: 0 0 10px #0ff;
+  transform: scale(1.05);
+}
+
 .SearchBar input {
     border-radius: 20px;
     color: #242a3d;
