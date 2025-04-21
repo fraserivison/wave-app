@@ -3,12 +3,10 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
-import { Card } from "react-bootstrap";
 import styles from "../../styles/Event.module.css";
 
 const Event = (props) => {
-  const { id, owner, name, genre, location, date, description, setEvents } =
-    props;
+  const { id, owner, name, genre, location, date, description, setEvents } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -63,14 +61,7 @@ const Event = (props) => {
   const formattedDate = date ? new Date(date).toLocaleString() : "";
 
   const getRandomColor = () => {
-    const colors = [
-      "#FF5733",
-      "#33FF57",
-      "#3357FF",
-      "#FF33A1",
-      "#F1C40F",
-      "#8E44AD",
-    ];
+    const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#F1C40F", "#8E44AD"];
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
@@ -80,46 +71,46 @@ const Event = (props) => {
   };
 
   return (
-    <div className={styles.EventCardWrapper} onClick={preventClick}>
-      <Card
-        className={styles.EventCard}
-        style={{ backgroundColor: getRandomColor() }}
-      >
-        <Card.Body className={styles.CardBody}>
-          <div className={styles.EventHeader}>
-            <div className={styles.EventTitle}>
-              <span className={styles.EventName}>{eventData.name}</span>
-            </div>
-
-            <div className={styles.EventDate}>
-              <span>{formattedDate}</span>
-            </div>
-
-            {is_owner && (
-              <div className={styles.DropdownWrapper}>
-                <MoreDropdown
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                />
-              </div>
-            )}
+    <div
+      className={`${styles.CustomCard} ${styles.cardWithBorderRadius}`}
+      onClick={preventClick}
+      style={{ backgroundColor: getRandomColor() }}
+    >
+      <div className={styles.CardBody}>
+        <div className={styles.EventHeader}>
+          <div className={styles.EventTitle}>
+            <span className={styles.EventName}>{eventData.name}</span>
           </div>
 
-          <div className={styles.EventDetails}>
-            <div className={styles.EventGenre}>
-              <strong>Genre:</strong> {formattedGenre}
-            </div>
-            <div className={styles.EventLocation}>
-              <strong>Location:</strong> {eventData.location}
-            </div>
-            <div className={styles.EventDescription}>
-              <strong>Description:</strong> {eventData.description}
-            </div>
+          <div className={styles.EventDate}>
+            <span>{formattedDate}</span>
           </div>
-        </Card.Body>
-      </Card>
+
+          {is_owner && (
+            <div className={styles.DropdownWrapper}>
+              <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+            </div>
+          )}
+        </div>
+
+        <div className={styles.EventDetails}>
+          <div className={styles.EventGenre}>
+            <strong>Genre:</strong> {formattedGenre}
+          </div>
+
+          <div className={styles.EventLocation}>
+            <strong>Location:</strong> {eventData.location}
+          </div>
+
+          <div className={styles.EventDescription}>
+            <strong>Description:</strong> {eventData.description}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Event;
+
+

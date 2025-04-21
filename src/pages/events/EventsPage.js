@@ -92,20 +92,25 @@ function EventsPage({ message, filter = "" }) {
             <>
               {events.results.length ? (
                 <InfiniteScroll
-                  children={events.results.map((event) => (
-                    <Link key={event.id} to={`/events/${event.id}`}>
-                      <Event
-                        {...event}
-                        setEvents={setEvents}
-                        eventPage={false}
-                      />
-                    </Link>
-                  ))}
                   dataLength={events.results.length}
                   loader={<Asset spinner />}
                   hasMore={!!events.next}
                   next={() => fetchMoreData(events, setEvents)}
-                />
+                >
+                  <Row>
+                    {events.results.map((event) => (
+                      <Col key={event.id} xs={12} md={6} className="mb-4">
+                        <Link to={`/events/${event.id}`} className="text-decoration-none">
+                          <Event
+                            {...event}
+                            setEvents={setEvents}
+                            eventPage={false}
+                          />
+                        </Link>
+                      </Col>
+                    ))}
+                  </Row>
+                </InfiniteScroll>
               ) : (
                 <Container className={appStyles.Content}>
                   <Asset src={NoResults} message={message} />
@@ -124,3 +129,5 @@ function EventsPage({ message, filter = "" }) {
 }
 
 export default EventsPage;
+
+
