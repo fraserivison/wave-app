@@ -80,7 +80,7 @@
 }
 
 .EventDescription {
-  font-size: 8px;
+  font-size: 12px;
   color: #333333;
   margin-top: 10px;
   line-height: 1.5;
@@ -100,7 +100,7 @@
 .DropdownWrapper {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 20px;
   z-index: 10;
 }
 
@@ -110,9 +110,9 @@
   }
 }
 
-i {
+.iconStyle {
   font-size: 1.6rem;
-  padding-right: 20px;
+  padding-right: 20px !important;
 }
 
 .cardWithBorderRadius {
