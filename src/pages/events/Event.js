@@ -105,7 +105,7 @@ const Event = (props) => {
             <strong>Location:</strong> {eventData.location}
           </div>
 
-          <div className={styles.EventDescription}>
+          <div className={`${styles.EventDescription} ${styles.truncatedDescription}`}>
             <i className={`fas fa-align-left ${styles.iconStyle}`} />
             <strong>Description:</strong> {eventData.description}
           </div>
@@ -116,5 +116,3 @@ const Event = (props) => {
 };
 
 export default Event;
-
-
