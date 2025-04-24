@@ -106,32 +106,20 @@ const NavBar = () => {
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
-            <h3
-              className={styles.Branding}
-              style={{
-                fontSize: "1rem",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <i
-                className="fa-solid fa-headphones-simple"
-                style={{
-                  color: "#000000",
-                  marginRight: "2px",
-                  fontSize: "0.8rem",
-                }}
-              ></i>
+            <h3 className={styles.Branding}>
+              <i className="fa-solid fa-headphones-simple"></i>
               Wave
             </h3>
           </Navbar.Brand>
         </NavLink>
+
         {currentUser && (
           <>
             {addTrackIcon}
             {addEventIcon}
           </>
         )}
+
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}

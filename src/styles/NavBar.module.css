@@ -14,9 +14,10 @@
 }
 
 .Active i {
-  color: #2142b2;
+  color: 007bff;
 }
 
+/* RESPONSIVE TWEAKS */
 @media (min-width: 576px) and (max-width: 768px) {
   .NavLink {
     font-size: 0.5rem;
@@ -45,7 +46,23 @@
 
 .Branding {
   font-family: "Exo 2", sans-serif;
-  font-size: 1rem !important;
+  font-size: 1.5rem !important;
   font-weight: bold;
   text-transform: lowercase;
+  display: flex;
+  align-items: center;
+  color: #cfced3;
+  transition: color 0.3s ease;
+}
+
+.Branding i {
+  margin-right: 2px;
+  font-size: 1.5rem;
+  color: #cfced3;
+  transition: color 0.3s ease;
+}
+
+.Branding:hover,
+.Branding:hover i {
+  color: #007bff;
 }
