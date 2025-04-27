@@ -202,3 +202,14 @@
     font-size: 0.4rem;
   }
 }
+
+.DropdownWrapper {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.DropdownWrapper:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+

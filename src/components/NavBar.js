@@ -35,7 +35,7 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/tracks/create"
     >
-      <i className="far fa-plus-square"></i>Add track
+      <i className={`far fa-plus-square ${styles.NavIcon}`}></i>Add track
     </NavLink>
   );
 
@@ -45,7 +45,7 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/events/create"
     >
-      <i className="far fa-plus-square"></i>Add event
+      <i className={`far fa-plus-square ${styles.NavIcon}`}></i>Add event
     </NavLink>
   );
 
@@ -56,17 +56,17 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/discover"
       >
-        <i className="fas fa-music"></i>Discover
+        <i className={`fas fa-music ${styles.NavIcon}`}></i>Discover
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/events"
       >
-        <i className="fas fa-calendar-alt"></i>Events
+        <i className={`fas fa-calendar-alt ${styles.NavIcon}`}></i>Events
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
+        <i className={`fas fa-sign-out-alt ${styles.NavIcon}`}></i>Sign out
       </NavLink>
       <NavLink
         className={styles.NavLink}
@@ -84,14 +84,14 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/signin"
       >
-        <i className="fas fa-sign-in-alt"></i>Sign in
+        <i className={`fas fa-sign-in-alt ${styles.NavIcon}`}></i>Sign in
       </NavLink>
       <NavLink
         to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fas fa-user-plus"></i>Sign up
+        <i className={`fas fa-user-plus ${styles.NavIcon}`}></i>Sign up
       </NavLink>
     </>
   );
@@ -136,3 +136,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

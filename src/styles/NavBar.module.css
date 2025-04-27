@@ -13,8 +13,22 @@
   font-size: 0.75rem;
 }
 
+/* Specific icon styles */
+.NavIcon {
+  color: #cfced3;
+  font-size: 1.3rem;
+  padding: 7px;
+  vertical-align: middle;
+}
+
+.NavIcon:hover {
+  cursor: pointer;
+  transition: color ease-in-out 0.3s;
+  color: #007bff;
+}
+
 .Active i {
-  color: 007bff;
+  color: #007bff;
 }
 
 /* RESPONSIVE TWEAKS */
@@ -60,6 +74,7 @@
   font-size: 1.5rem;
   color: #cfced3;
   transition: color 0.3s ease;
+  padding-right: 5px;
 }
 
 .Branding:hover,

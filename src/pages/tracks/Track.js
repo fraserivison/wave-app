@@ -140,9 +140,9 @@ const Track = (props) => {
         <div className={styles.TrackCenter}>
           <button className={styles.PlayButton} onClick={togglePlayPause}>
             {isPlaying ? (
-              <i className="fas fa-pause-circle" style={{ fontSize: "2.5rem", color: "#ffffff" }} />
+              <i className={`fas fa-pause-circle ${styles.Icon}`} />
             ) : (
-              <i className="fas fa-play-circle" style={{ fontSize: "2.5rem", color: "#ffffff" }} />
+              <i className={`fas fa-play-circle ${styles.Icon}`} />
             )}
           </button>
           <audio ref={audioRef} src={audio_file_url} />
@@ -152,11 +152,11 @@ const Track = (props) => {
           <div className={styles.StarRating}>
             {is_owner ? (
               <OverlayTrigger placement="top" overlay={<Tooltip>You can't rate your own track!</Tooltip>}>
-                <i className="far fa-star" />
+                <i className={`far fa-star ${styles.Icon}`} />
               </OverlayTrigger>
             ) : rating_id ? (
               <span onClick={handleUnrate}>
-                <i className={`fas fa-star ${styles.Star}`} />
+                <i className={`fas fa-star ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
               <DropdownButton
@@ -176,7 +176,7 @@ const Track = (props) => {
               </DropdownButton>
             ) : (
               <OverlayTrigger placement="top" overlay={<Tooltip>Log in to rate tracks!</Tooltip>}>
-                <i className="far fa-star" />
+                <i className={`far fa-star ${styles.Icon}`} />
               </OverlayTrigger>
             )}
             {ratings_count}
@@ -193,4 +193,5 @@ const Track = (props) => {
 };
 
 export default Track;
+
 
