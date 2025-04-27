@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Row, Col, OverlayTrigger, Tooltip, DropdownButton, Dropdown } from "react-bootstrap"; // Updated import
+import { OverlayTrigger, Tooltip, DropdownButton, Dropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -31,8 +31,7 @@ const Track = (props) => {
     const fetchTrackData = async () => {
       try {
         const response = await axiosRes.get(`/tracks/${id}/`);
-        const track = response.data;
-        setAverageRating(track.average_rating);
+        setAverageRating(response.data.average_rating);
       } catch (error) {
         console.error("Error fetching track data:", error);
       }
@@ -63,27 +62,19 @@ const Track = (props) => {
   const handleRate = async (rating) => {
     try {
       const { data } = await axiosRes.post("/ratings/", { title: id, rating });
-
       const trackResponse = await axiosRes.get(`/tracks/${id}/`);
       const updatedTrack = trackResponse.data;
 
       setAverageRating(updatedTrack.average_rating);
-      setTracks((prevTracks) => {
-        return {
-          ...prevTracks,
-          results: prevTracks.results.map((track) => {
-            if (track.id === id) {
-              return {
-                ...track,
-                ratings_count: updatedTrack.ratings_count,
-                average_rating: updatedTrack.average_rating,
-                rating_id: data.id,
-              };
-            }
-            return track;
-          }),
-        };
-      });
+      setTracks((prevTracks) => ({
+        ...prevTracks,
+        results: prevTracks.results.map((track) => track.id === id ? {
+          ...track,
+          ratings_count: updatedTrack.ratings_count,
+          average_rating: updatedTrack.average_rating,
+          rating_id: data.id,
+        } : track),
+      }));
     } catch (err) {
       console.log("Error rating track:", err);
     }
@@ -92,27 +83,19 @@ const Track = (props) => {
   const handleUnrate = async () => {
     try {
       await axiosRes.delete(`/ratings/${rating_id}/`);
-
       const trackResponse = await axiosRes.get(`/tracks/${id}/`);
       const updatedTrack = trackResponse.data;
 
       setAverageRating(updatedTrack.average_rating);
-      setTracks((prevTracks) => {
-        return {
-          ...prevTracks,
-          results: prevTracks.results.map((track) => {
-            if (track.id === id) {
-              return {
-                ...track,
-                ratings_count: updatedTrack.ratings_count,
-                average_rating: updatedTrack.average_rating,
-                rating_id: null,
-              };
-            }
-            return track;
-          }),
-        };
-      });
+      setTracks((prevTracks) => ({
+        ...prevTracks,
+        results: prevTracks.results.map((track) => track.id === id ? {
+          ...track,
+          ratings_count: updatedTrack.ratings_count,
+          average_rating: updatedTrack.average_rating,
+          rating_id: null,
+        } : track),
+      }));
     } catch (err) {
       console.log("Error removing rating:", err);
     }
@@ -134,41 +117,32 @@ const Track = (props) => {
         style={{ backgroundImage: `url(${album_cover})` }}
       >
         <div className={styles.TrackHeader}>
-          {/* Replaced Media with Row and Col */}
-          <Row className="d-flex align-items-center justify-content-between">
-            <Col xs={6} className={styles.ProfileName}>
-              <span className={styles.TrackOwner}>{owner}</span>
-            </Col>
-            <Col xs={4} className={styles.TrackTitleWrapper}>
-              <span className={styles.TrackTitle}>{title}</span>
-            </Col>
-            <Col xs={2} className={styles.UpdatedAt}>
-              <span>{updated_at}</span>
-            </Col>
+          <div className={styles.ProfileName}>
+            <span className={styles.TrackOwner}>{owner}</span>
+          </div>
+          <div className={styles.TrackTitleWrapper}>
+            <span className={styles.TrackTitle}>{title}</span>
+          </div>
+          <div className={styles.UpdatedAt}>
+            <span>{updated_at}</span>
+          </div>
 
-            {is_owner && (
-              <div className={styles.DropdownWrapper}>
-                <MoreDropdown
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                />
-              </div>
-            )}
-          </Row>
+          {is_owner && (
+            <div className={styles.DropdownWrapper}>
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            </div>
+          )}
         </div>
 
         <div className={styles.TrackCenter}>
           <button className={styles.PlayButton} onClick={togglePlayPause}>
             {isPlaying ? (
-              <i
-                className="fas fa-pause-circle"
-                style={{ fontSize: "2.5rem", color: "#ffffff" }}
-              />
+              <i className="fas fa-pause-circle" style={{ fontSize: "2.5rem", color: "#ffffff" }} />
             ) : (
-              <i
-                className="fas fa-play-circle"
-                style={{ fontSize: "2.5rem", color: "#ffffff" }}
-              />
+              <i className="fas fa-play-circle" style={{ fontSize: "2.5rem", color: "#ffffff" }} />
             )}
           </button>
           <audio ref={audioRef} src={audio_file_url} />
@@ -177,10 +151,7 @@ const Track = (props) => {
         <div className={styles.TrackFooter}>
           <div className={styles.StarRating}>
             {is_owner ? (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>You can't rate your own track!</Tooltip>}
-              >
+              <OverlayTrigger placement="top" overlay={<Tooltip>You can't rate your own track!</Tooltip>}>
                 <i className="far fa-star" />
               </OverlayTrigger>
             ) : rating_id ? (
@@ -190,7 +161,7 @@ const Track = (props) => {
             ) : currentUser ? (
               <DropdownButton
                 id="rating-dropdown"
-                title={`Select Rating`}
+                title="Select Rating"
                 onSelect={(rating) => handleRate(rating)}
                 variant="link"
                 size="sm"
@@ -204,10 +175,7 @@ const Track = (props) => {
                 ))}
               </DropdownButton>
             ) : (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Log in to rate tracks!</Tooltip>}
-              >
+              <OverlayTrigger placement="top" overlay={<Tooltip>Log in to rate tracks!</Tooltip>}>
                 <i className="far fa-star" />
               </OverlayTrigger>
             )}
@@ -225,3 +193,4 @@ const Track = (props) => {
 };
 
 export default Track;
+

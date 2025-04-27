@@ -28,29 +28,13 @@
 }
 
 .TrackHeader {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 4px 10px;
   background: rgba(0, 0, 0, 0.6);
   color: white;
-}
-
-.TrackTitle {
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.6rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 50px;
-}
-
-.TrackCenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px;
-  position: relative;
+  gap: 10px;
 }
 
 .ProfileName {
@@ -62,6 +46,35 @@
 .TrackTitleWrapper {
   flex: 2;
   text-align: center;
+}
+
+.TrackTitle {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.UpdatedAt {
+  flex: 1;
+  text-align: right;
+  font-size: 0.4rem;
+  color: lightgray;
+}
+
+.DropdownWrapper {
+  flex: 0;
+}
+
+.TrackCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  position: relative;
 }
 
 .PlayButton {
@@ -109,13 +122,6 @@
 
 .TrackOwner {
   color: white;
-}
-
-.UpdatedAt {
-  flex: 1;
-  text-align: right;
-  font-size: 0.4rem;
-  color: lightgray;
 }
 
 .StarRating {
@@ -170,11 +176,24 @@
   transform: translateY(5px);
 }
 
-.DropdownWrapper {
-  flex: 0;
-}
-
+/* ✅ Keep same layout on mobile, just smaller text */
 @media (max-width: 768px) {
+  .TrackHeader {
+    gap: 5px;
+  }
+
+  .ProfileName {
+    font-size: 0.4rem;
+  }
+
+  .TrackTitle {
+    font-size: 0.5rem;
+  }
+
+  .UpdatedAt {
+    font-size: 0.35rem;
+  }
+
   .rating-dropdown .dropdown-item {
     font-size: 0.4rem;
   }
