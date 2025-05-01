@@ -4,8 +4,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .NavLink {
@@ -80,4 +80,17 @@
 .Branding:hover,
 .Branding:hover i {
   color: #007bff;
+}
+
+.NavToggle {
+  font-size: 1rem;
+  padding-right: 0;
+  margin-right: 0;
+  border: none;
+  background: none;
+}
+
+.NavToggle:focus {
+  outline: none;
+  box-shadow: none;
 }
