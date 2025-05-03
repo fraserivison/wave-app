@@ -121,13 +121,13 @@ function TrackCreateForm() {
 
       <div className="text-center">
         <Button
-          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+          className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.CustomButton}`}
           onClick={() => history.goBack()}
         >
           Cancel
         </Button>
         <Button
-          className={`${btnStyles.Button} ${btnStyles.Blue}`}
+          className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.CustomButton}`}
           type="submit"
         >
           Create
@@ -193,11 +193,9 @@ function TrackCreateForm() {
                     <Asset src={Upload} message="Click or tap to upload an album cover" />
                   </Form.Label>
                 )}
-                {/* Replaced Form.File with Form.Control */}
                 <Form.Control type="file" id="album-cover-upload" accept="image/*" onChange={handleChangeImage} ref={albumCoverInput} />
               </Col>
             </Row>
-            {/* Removed d-md-none class to make textFields visible on all screen sizes */}
             {textFields}
           </Container>
         </Col>
@@ -207,3 +205,4 @@ function TrackCreateForm() {
 }
 
 export default TrackCreateForm;
+

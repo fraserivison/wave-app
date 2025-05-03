@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { OverlayTrigger, Tooltip, DropdownButton, Dropdown } from "react-bootstrap";
+import { OverlayTrigger, Tooltip, Dropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -68,12 +68,16 @@ const Track = (props) => {
       setAverageRating(updatedTrack.average_rating);
       setTracks((prevTracks) => ({
         ...prevTracks,
-        results: prevTracks.results.map((track) => track.id === id ? {
-          ...track,
-          ratings_count: updatedTrack.ratings_count,
-          average_rating: updatedTrack.average_rating,
-          rating_id: data.id,
-        } : track),
+        results: prevTracks.results.map((track) =>
+          track.id === id
+            ? {
+                ...track,
+                ratings_count: updatedTrack.ratings_count,
+                average_rating: updatedTrack.average_rating,
+                rating_id: data.id,
+              }
+            : track
+        ),
       }));
     } catch (err) {
       console.log("Error rating track:", err);
@@ -89,12 +93,16 @@ const Track = (props) => {
       setAverageRating(updatedTrack.average_rating);
       setTracks((prevTracks) => ({
         ...prevTracks,
-        results: prevTracks.results.map((track) => track.id === id ? {
-          ...track,
-          ratings_count: updatedTrack.ratings_count,
-          average_rating: updatedTrack.average_rating,
-          rating_id: null,
-        } : track),
+        results: prevTracks.results.map((track) =>
+          track.id === id
+            ? {
+                ...track,
+                ratings_count: updatedTrack.ratings_count,
+                average_rating: updatedTrack.average_rating,
+                rating_id: null,
+              }
+            : track
+        ),
       }));
     } catch (err) {
       console.log("Error removing rating:", err);
@@ -129,10 +137,7 @@ const Track = (props) => {
 
           {is_owner && (
             <div className={styles.DropdownWrapper}>
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
+              <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
             </div>
           )}
         </div>
@@ -159,21 +164,18 @@ const Track = (props) => {
                 <i className={`fas fa-star ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
-              <DropdownButton
-                id="rating-dropdown"
-                title="Select Rating"
-                onSelect={(rating) => handleRate(rating)}
-                variant="link"
-                size="sm"
-                drop="up"
-                className="rating-dropdown"
-              >
-                {[1, 2, 3, 4, 5].map((value) => (
-                  <Dropdown.Item key={value} eventKey={value}>
-                    {value} Star{value > 1 ? "s" : ""}
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
+              <Dropdown className={styles.RatingDropdown}>
+                <Dropdown.Toggle variant="link" className={styles.RateButton}>
+                  Rate
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {[1, 2, 3, 4, 5].map((value) => (
+                    <Dropdown.Item key={value} onClick={() => handleRate(value)}>
+                      {value} Star{value > 1 ? "s" : ""}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
             ) : (
               <OverlayTrigger placement="top" overlay={<Tooltip>Log in to rate tracks!</Tooltip>}>
                 <i className={`far fa-star ${styles.Icon}`} />
@@ -193,5 +195,8 @@ const Track = (props) => {
 };
 
 export default Track;
+
+
+
 
 

@@ -78,32 +78,32 @@
 }
 
 .PlayButton {
-  background-color: rgb(255, 255, 255, 0.3);
-  border: none;
-  padding: 15px;
-  font-size: 2.5rem;
-  cursor: pointer;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 60%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  transition: background-color 0.3s ease;
+  background-color: rgb(255, 255, 255, 0.3) !important;
+  border: none !important;
+  padding: 15px !important;
+  font-size: 2.5rem !important;
+  cursor: pointer !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: absolute !important;
+  top: 60% !important;
+  left: 45% !important;
+  transform: translate(-50%, -50%) !important;
+  transition: background-color 0.3s ease !important;
 }
 
 .PlayButton:hover {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
 }
 
 .PlayButton i {
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease !important;
 }
 
 .PlayButton:hover i {
-  transform: scale(1.1);
+  transform: scale(1.1) !important;
 }
 
 .TrackFooter {
@@ -155,28 +155,55 @@
   margin-right: 5px;
 }
 
-.rating-dropdown {
-  font-size: 0.5rem;
-  padding: 0.25rem 0.5rem;
+.RatingDropdown .dropdown-toggle {
+  font-size: 0.4rem !important;
+  padding: 2px 6px !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: white !important;
 }
 
-.dropdown-item {
-  font-size: 0.25rem;
-  padding: 5px 10px;
+.RatingDropdown .dropdown-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-.btn-link {
-  font-size: 0.5rem;
-  padding: 5px 10px;
+.RatingDropdown .dropdown-toggle::after {
+  margin-left: 4px !important;
+  vertical-align: 0.1em !important;
 }
 
-.rating-dropdown .dropdown-menu {
-  left: 0 !important;
-  right: auto !important;
-  transform: translateY(5px);
+.RatingDropdown .dropdown-menu {
+  font-size: 0.4rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: #222 !important;
 }
 
-/* ✅ Keep same layout on mobile, just smaller text */
+.RatingDropdown .dropdown-item {
+  padding: 4px 10px !important;
+  color: white !important;
+}
+
+/* New RateButton styling */
+.RateButton {
+  font-size: 0.5rem !important;
+  padding: 0px 4px !important;
+  border-radius: 5px;
+  color: white !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.RateButton:hover {
+  transform: scale(1.05) !important;
+}
+
+.RateButton:focus {
+  outline: none !important;
+}
+
+/* Responsive text adjustments */
 @media (max-width: 768px) {
   .TrackHeader {
     gap: 5px;
@@ -194,22 +221,17 @@
     font-size: 0.35rem;
   }
 
-  .rating-dropdown .dropdown-item {
-    font-size: 0.4rem;
+  .RatingDropdown .dropdown-toggle {
+    font-size: 0.35rem;
+    padding: 1px 4px;
   }
 
-  .rating-dropdown {
-    font-size: 0.4rem;
+  .RatingDropdown .dropdown-item {
+    font-size: 0.35rem;
+  }
+
+  .RateButton {
+    font-size: 0.6rem !important;
+    padding: 0px 4px !important;
   }
 }
-
-.DropdownWrapper {
-  font-size: 1rem;
-  color: #ffffff;
-}
-
-.DropdownWrapper:hover {
-  color: #007bff;
-  cursor: pointer;
-}
-

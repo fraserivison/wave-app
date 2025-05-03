@@ -137,7 +137,7 @@ function TrackEditForm() {
           ref={albumCoverInput}
         />
         <Button
-          className={`${btnStyles.Button} ${btnStyles.Blue} mt-2`}
+          className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.CustomButton} mt-2`}
           onClick={() => albumCoverInput.current?.click()}
         >
           Update Album Cover
@@ -157,13 +157,13 @@ function TrackEditForm() {
         {textFields}
         <div className="text-center mt-3">
           <Button
-            className={`${btnStyles.Button} ${btnStyles.Blue} mx-2`}
+            className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.CustomButton} mx-2`}
             onClick={() => history.goBack()}
           >
             Cancel
           </Button>
           <Button
-            className={`${btnStyles.Button} ${btnStyles.Blue} mx-2`}
+            className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.CustomButton} mx-2`}
             type="submit"
           >
             Save
@@ -175,3 +175,4 @@ function TrackEditForm() {
 }
 
 export default TrackEditForm;
+
