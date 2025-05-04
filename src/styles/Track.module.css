@@ -88,8 +88,8 @@
   justify-content: center !important;
   align-items: center !important;
   position: absolute !important;
-  top: 60% !important;
-  left: 45% !important;
+  top: 70% !important;
+  left: 50% !important;
   transform: translate(-50%, -50%) !important;
   transition: background-color 0.3s ease !important;
 }
