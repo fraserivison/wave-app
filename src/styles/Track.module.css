@@ -163,6 +163,7 @@
 
 .RatingDropdown {
   background: none !important;
+  width: 6px;
 }
 
 .RatingDropdown .dropdown-toggle {
@@ -173,7 +174,7 @@
   background-color: transparent !important;
   border: none !important;
   color: white !important;
-  font-family: Arial, sans-serif !important; /* Solid font for better rendering */
+  font-family: Arial, sans-serif !important;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
 }
@@ -228,6 +229,18 @@
   border-radius: 5px;
   color: white !important;
   transition: background-color 0.3s ease, transform 0.2s ease !important;
+  align-self: flex-start !important;
+}
+
+.RateButton::after {
+  content: "";
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  vertical-align: middle !important;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .RateButton:hover {

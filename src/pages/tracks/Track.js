@@ -164,7 +164,7 @@ const Track = (props) => {
                 <i className={`fas fa-star ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
-              <Dropdown className={styles.RatingDropdown}>
+              <Dropdown className={`${styles.RatingDropdown} dropup`}>
                 <Dropdown.Toggle variant="link" className={styles.RateButton}>
                   Rate
                 </Dropdown.Toggle>
@@ -220,10 +220,4 @@ const Track = (props) => {
 };
 
 export default Track;
-
-
-
-
-
-
 
