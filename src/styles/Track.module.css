@@ -161,6 +161,10 @@
   margin-right: 5px;
 }
 
+.RatingDropdown {
+  background: none !important;
+}
+
 .RatingDropdown .dropdown-toggle {
   font-size: 0.4rem !important;
   padding: 2px 6px !important;
@@ -169,6 +173,9 @@
   background-color: transparent !important;
   border: none !important;
   color: white !important;
+  font-family: Arial, sans-serif !important; /* Solid font for better rendering */
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 
 .RatingDropdown .dropdown-toggle:hover {
@@ -180,19 +187,41 @@
   vertical-align: 0.1em !important;
 }
 
-.RatingDropdown .dropdown-menu {
-  font-size: 0.4rem !important;
+.RatingDropdown :global(.dropdown-menu) {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-size: 0.5rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
   padding: 0 !important;
   margin: 0 !important;
-  background-color: #222 !important;
+  min-width: 50% !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+  font-family: Arial, sans-serif !important;
 }
 
-.RatingDropdown .dropdown-item {
-  padding: 4px 10px !important;
-  color: white !important;
+.RatingDropdown :global(.dropdown-item) {
+  padding: 10px 10px !important;
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  font-size: 0.75rem !important;
+  line-height: 1.2 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+  font-family: "Poppins", sans-serif!important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 0px rgba(0, 0, 0) !important;
+  transform: none !important;
 }
 
-/* New RateButton styling */
+.RatingDropdown :global(.dropdown-item:hover) {
+  background-color: #444 !important;
+  color: #ffd700 !important;
+}
+
+/* RateButton styling */
 .RateButton {
   font-size: 0.5rem !important;
   padding: 0px 4px !important;
@@ -232,7 +261,7 @@
     padding: 1px 4px;
   }
 
-  .RatingDropdown .dropdown-item {
+  .RatingDropdown :global(.dropdown-item) {
     font-size: 0.35rem;
   }
 

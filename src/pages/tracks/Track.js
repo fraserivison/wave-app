@@ -168,9 +168,34 @@ const Track = (props) => {
                 <Dropdown.Toggle variant="link" className={styles.RateButton}>
                   Rate
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
+                <Dropdown.Menu
+                  style={{
+                    fontSize: "0.75rem",
+                    padding: 0,
+                    margin: 0,
+                    backgroundColor: "#ffffff",
+                    color: "#000",
+                    fontFamily: "Helvetica Neue, Arial, sans-serif",
+                    fontWeight: "600",
+                    WebkitFontSmoothing: "antialiased",
+                    textRendering: "optimizeLegibility",
+                    lineHeight: "1.4",
+                    transform: "scale(1.02)",
+                  }}
+                >
                   {[1, 2, 3, 4, 5].map((value) => (
-                    <Dropdown.Item key={value} onClick={() => handleRate(value)}>
+                    <Dropdown.Item
+                      key={value}
+                      onClick={() => handleRate(value)}
+                      style={{
+                        color: "#000000",
+                        fontSize: "0.75rem",
+                        fontFamily: "Helvetica Neue, Arial, sans-serif",
+                        fontWeight: "600",
+                        textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)",
+                        lineHeight: "1.4",
+                      }}
+                    >
                       {value} Star{value > 1 ? "s" : ""}
                     </Dropdown.Item>
                   ))}
@@ -195,6 +220,8 @@ const Track = (props) => {
 };
 
 export default Track;
+
+
 
 
 
