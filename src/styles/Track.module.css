@@ -199,6 +199,8 @@
   -webkit-font-smoothing: antialiased !important;
   text-rendering: optimizeLegibility !important;
   font-family: Arial, sans-serif !important;
+  bottom: 5px !important;
+  left: -11px !important;
 }
 
 .RatingDropdown :global(.dropdown-item) {
@@ -206,7 +208,7 @@
   color: #000000 !important;
   background-color: #ffffff !important;
   font-size: 0.75rem !important;
-  line-height: 1.2 !important;
+  line-height: 1.5 !important;
   cursor: pointer !important;
   white-space: nowrap !important;
   -webkit-font-smoothing: antialiased !important;
