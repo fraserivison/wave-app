@@ -201,6 +201,17 @@
   font-family: Arial, sans-serif !important;
   bottom: 5px !important;
   left: -11px !important;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: block !important; /* prevent flicker */
+  pointer-events: none; /* prevents interaction while hidden */
+}
+
+.RatingDropdown :global(.show.dropdown-menu) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .RatingDropdown :global(.dropdown-item) {
