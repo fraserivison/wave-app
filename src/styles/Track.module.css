@@ -204,8 +204,8 @@
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  display: block !important; /* prevent flicker */
-  pointer-events: none; /* prevents interaction while hidden */
+  display: block !important;
+  pointer-events: none;
 }
 
 .RatingDropdown :global(.show.dropdown-menu) {
