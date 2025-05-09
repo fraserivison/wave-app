@@ -166,7 +166,7 @@ const Track = (props) => {
             ) : currentUser ? (
               <Dropdown className={`${styles.RatingDropdown} dropup`}>
                 <Dropdown.Toggle variant="link" className={styles.RateButton}>
-                  Rate
+                  <i className="fas fa-star" style={{ fontSize: "10px", color: "transparent" }} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu className={styles.RatingMenu}>
                   {[1, 2, 3, 4, 5].map((value) => (
@@ -199,6 +199,9 @@ const Track = (props) => {
 };
 
 export default Track;
+
+
+
 
 
 
