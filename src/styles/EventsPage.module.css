@@ -36,3 +36,8 @@
     cursor: default;
     color: #cfced3;
   }
+
+  .rowNudge {
+    margin-left: -5px;
+    margin-right: -5px;
+  }

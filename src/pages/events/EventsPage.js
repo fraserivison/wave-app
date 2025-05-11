@@ -97,7 +97,7 @@ function EventsPage({ message, filter = "" }) {
                   hasMore={!!events.next}
                   next={() => fetchMoreData(events, setEvents)}
                 >
-                  <Row>
+                  <Row className={styles.rowNudge}>
                     {events.results.map((event) => (
                       <Col key={event.id} xs={12} md={6} className="mb-4">
                         <Link to={`/events/${event.id}`} className="text-decoration-none">
@@ -129,5 +129,6 @@ function EventsPage({ message, filter = "" }) {
 }
 
 export default EventsPage;
+
 
 
