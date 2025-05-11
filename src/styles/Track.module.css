@@ -67,6 +67,7 @@
 
 .DropdownWrapper {
   flex: 0;
+  cursor: pointer !important;
 }
 
 .TrackCenter {
@@ -178,8 +179,14 @@
 }
 
 .RatingDropdown .dropdown-toggle::after {
+  content: "..." !important; /* If you're using three dots */
   margin-left: 4px !important;
   vertical-align: 0.1em !important;
+  transition: transform 0.3s ease;
+}
+
+.RatingDropdown .dropdown-toggle:hover::after {
+  transform: rotate(180deg);
 }
 
 .RatingDropdown :global(.dropdown-menu) {

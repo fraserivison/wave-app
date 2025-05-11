@@ -40,9 +40,7 @@ const Track = (props) => {
     fetchTrackData();
   }, [id]);
 
-  const handleEdit = () => {
-    history.push(`/tracks/${id}/edit`);
-  };
+  const handleEdit = () => history.push(`/tracks/${id}/edit`);
 
   const handleDelete = async () => {
     try {
@@ -62,9 +60,7 @@ const Track = (props) => {
   const handleRate = async (rating) => {
     try {
       const { data } = await axiosRes.post("/ratings/", { title: id, rating });
-      const trackResponse = await axiosRes.get(`/tracks/${id}/`);
-      const updatedTrack = trackResponse.data;
-
+      const updatedTrack = (await axiosRes.get(`/tracks/${id}/`)).data;
       setAverageRating(updatedTrack.average_rating);
       setTracks((prevTracks) => ({
         ...prevTracks,
@@ -87,9 +83,7 @@ const Track = (props) => {
   const handleUnrate = async () => {
     try {
       await axiosRes.delete(`/ratings/${rating_id}/`);
-      const trackResponse = await axiosRes.get(`/tracks/${id}/`);
-      const updatedTrack = trackResponse.data;
-
+      const updatedTrack = (await axiosRes.get(`/tracks/${id}/`)).data;
       setAverageRating(updatedTrack.average_rating);
       setTracks((prevTracks) => ({
         ...prevTracks,
@@ -164,7 +158,26 @@ const Track = (props) => {
                 <i className={`fas fa-star ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
-              <Dropdown className={`${styles.RatingDropdown} dropup`}>
+              <Dropdown
+                className={`${styles.RatingDropdown}`}
+                drop="up"
+                popperConfig={{
+                  modifiers: [
+                    {
+                      name: "offset",
+                      options: {
+                        offset: [0, 4], // vertical offset
+                      },
+                    },
+                    {
+                      name: "preventOverflow",
+                      options: {
+                        boundary: "viewport",
+                      },
+                    },
+                  ],
+                }}
+              >
                 <Dropdown.Toggle variant="link" className={styles.RateButton}>
                   <i className="fas fa-star" style={{ fontSize: "10px", color: "transparent" }} />
                 </Dropdown.Toggle>
