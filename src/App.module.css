@@ -88,10 +88,10 @@ a:hover {
   text-decoration: none;
 }
 
-a:hover i {
+/* a:hover i {
   color: #007bff;
   transition: color ease-in-out 0.3s;
-}
+} */
 
 input[type="file"] {
   display: none;
