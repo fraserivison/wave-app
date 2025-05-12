@@ -179,7 +179,7 @@
 }
 
 .RatingDropdown .dropdown-toggle::after {
-  content: "..." !important; /* If you're using three dots */
+  content: "..." !important;
   margin-left: 4px !important;
   vertical-align: 0.1em !important;
   transition: transform 0.3s ease;
@@ -253,6 +253,11 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.RatingDropdown.show .RateButton::after {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .RateButton:hover {
