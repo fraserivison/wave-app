@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { OverlayTrigger, Tooltip, Dropdown } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -150,11 +150,12 @@ const Track = (props) => {
         <div className={styles.TrackFooter}>
           <div className={styles.StarRating}>
             {is_owner ? (
-              <OverlayTrigger placement="top" overlay={<Tooltip>You can't rate your own track!</Tooltip>}>
-                <i className={`far fa-star ${styles.Icon}`} />
-              </OverlayTrigger>
+              <i className={`far fa-star ${styles.Icon}`} />
             ) : rating_id ? (
-              <span onClick={handleUnrate}>
+              <span
+                onClick={handleUnrate}
+                className={`${styles.CanChangeRating} ${styles.DebugTooltipVisible}`}
+              >
                 <i className={`fas fa-star ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
@@ -166,7 +167,7 @@ const Track = (props) => {
                     {
                       name: "offset",
                       options: {
-                        offset: [0, 4], // vertical offset
+                        offset: [0, 4],
                       },
                     },
                     {
@@ -194,9 +195,7 @@ const Track = (props) => {
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
-              <OverlayTrigger placement="top" overlay={<Tooltip>Log in to rate tracks!</Tooltip>}>
-                <i className={`far fa-star ${styles.Icon}`} />
-              </OverlayTrigger>
+              <i className={`far fa-star ${styles.Icon}`} />
             )}
             {ratings_count}
           </div>
@@ -212,10 +211,4 @@ const Track = (props) => {
 };
 
 export default Track;
-
-
-
-
-
-
 
