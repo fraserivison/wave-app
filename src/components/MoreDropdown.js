@@ -10,17 +10,24 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
       e.preventDefault();
       onClick(e);
     }}
+    role="button"
+    style={{ cursor: "pointer" }}
   />
 ));
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
-    <Dropdown className="ml-auto" drop="left">
+    <Dropdown className="ml-auto" drop="down" align="end">
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
         className="text-center"
-        popperConfig={{ strategy: "fixed" }}
+        popperConfig={{
+          modifiers: [
+            { name: "preventOverflow", options: { boundary: "viewport" } },
+            { name: "offset", options: { offset: [0, 8] } },
+          ],
+        }}
       >
         <Dropdown.Item
           className={styles.DropdownItem}
