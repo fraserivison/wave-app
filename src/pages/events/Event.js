@@ -6,7 +6,18 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import styles from "../../styles/Event.module.css";
 
 const Event = (props) => {
-  const { id, owner, name, genre, location, date, description, setEvents } = props;
+  const {
+    id,
+    owner,
+    name,
+    genre,
+    location,
+    date,
+    description,
+    setEvents,
+    openDropdownId,
+    setOpenDropdownId,
+  } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -45,7 +56,6 @@ const Event = (props) => {
           results: prevEvents.results.filter((event) => event.id !== id),
         }));
       }
-      history.push("/events");
     } catch (err) {
       console.log("Error deleting event:", err);
     }
@@ -65,15 +75,15 @@ const Event = (props) => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
-  const preventClick = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const isDropdownOpen = openDropdownId === id;
+  const handleDropdownClick = (e) => {
+    e.stopPropagation(); // Prevent triggering card click
+    setOpenDropdownId(isDropdownOpen ? null : id);
   };
 
   return (
     <div
       className={`${styles.CustomCard} ${styles.cardWithBorderRadius}`}
-      onClick={preventClick}
       style={{ backgroundColor: getRandomColor() }}
     >
       <div className={styles.CardBody}>
@@ -89,7 +99,12 @@ const Event = (props) => {
 
           {is_owner && (
             <div className={styles.DropdownWrapper}>
-              <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+                isOpen={isDropdownOpen}
+                onToggle={handleDropdownClick}
+              />
             </div>
           )}
         </div>

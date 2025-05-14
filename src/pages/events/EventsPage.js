@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
+import { axiosReq } from "../../api/axiosDefaults";
 import Event from "./Event";
 import Asset from "../../components/Asset";
-
+import { useLocation } from "react-router";
+import { fetchMoreData } from "../../utils/utils";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/EventsPage.module.css";
-import { useLocation } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-
+import { Form, Col, Row, Container, Alert } from "react-bootstrap";
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
 
 function EventsPage({ message, filter = "" }) {
   const [events, setEvents] = useState({ results: [] });
@@ -23,6 +16,7 @@ function EventsPage({ message, filter = "" }) {
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
   const [errors, setErrors] = useState(null);
+  const [openDropdownId, setOpenDropdownId] = useState(null); // Track which dropdown is open
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -54,6 +48,16 @@ function EventsPage({ message, filter = "" }) {
     };
   }, [filter, query, pathname]);
 
+  // Function to handle opening and closing dropdowns
+  const handleDropdownToggle = (id) => {
+    // If the clicked dropdown is already open, close it; otherwise, open it
+    if (openDropdownId === id) {
+      setOpenDropdownId(null); // Close the dropdown
+    } else {
+      setOpenDropdownId(id); // Open the clicked dropdown
+    }
+  };
+
   return (
     <Container className="py-3">
       <Row>
@@ -61,9 +65,9 @@ function EventsPage({ message, filter = "" }) {
           <h1>Events</h1>
           <p className={styles.infoBox}>
             Discover, attend and{" "}
-            <Link to="/events/create" className={styles.link}>
+            <a href="/events/create" className={styles.link}>
               share
-            </Link>{" "}
+            </a>{" "}
             events with the community.
           </p>
           {/* Search bar */}
@@ -100,13 +104,14 @@ function EventsPage({ message, filter = "" }) {
                   <Row className={styles.rowNudge}>
                     {events.results.map((event) => (
                       <Col key={event.id} xs={12} md={6} className="mb-4">
-                        <Link to={`/events/${event.id}`} className="text-decoration-none">
-                          <Event
-                            {...event}
-                            setEvents={setEvents}
-                            eventPage={false}
-                          />
-                        </Link>
+                        {/* Pass handleDropdownToggle to each Event component */}
+                        <Event
+                          {...event}
+                          setEvents={setEvents}
+                          eventPage={false}
+                          openDropdownId={openDropdownId}
+                          setOpenDropdownId={handleDropdownToggle}
+                        />
                       </Col>
                     ))}
                   </Row>
@@ -129,6 +134,3 @@ function EventsPage({ message, filter = "" }) {
 }
 
 export default EventsPage;
-
-
-
