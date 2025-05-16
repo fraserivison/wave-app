@@ -1,0 +1,12 @@
+.statsSection {
+    padding: 1rem;
+    background-color: #fff5e6;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .statCard {
+    margin: 0.5rem 0;
+    font-weight: bold;
+  }
+  

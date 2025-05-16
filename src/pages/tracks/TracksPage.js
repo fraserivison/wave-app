@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -8,7 +7,6 @@ import Container from "react-bootstrap/Container";
 
 import Track from "./Track";
 import Asset from "../../components/Asset";
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/TracksPage.module.css";
 import { useLocation } from "react-router";
@@ -17,6 +15,11 @@ import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+
+import TopTracks from "../../components/TopTracks";
+import ArtistSpotlight from "../../components/ArtistSpotlight";
+import StatsSection from "../../components/StatsSection";
+import Testimonials from "../../components/Testimonials";
 
 function TracksPage({ message, filter = "" }) {
   const [tracks, setTracks] = useState({ results: [] });
@@ -27,9 +30,7 @@ function TracksPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchTracks = async () => {
       try {
-        const { data } = await axiosReq.get(
-          `/tracks/?${filter}search=${query}`
-        );
+        const { data } = await axiosReq.get(`/tracks/?${filter}search=${query}`);
         setTracks(data);
         setHasLoaded(true);
       } catch (err) {
@@ -49,64 +50,56 @@ function TracksPage({ message, filter = "" }) {
 
   return (
     <Row className={`h-100 ${styles.TracksPageContainer}`}>
-      <Col className="py-2 p-0 p-lg-2" lg={12} md={10} xs={12}>
+      <Col xs={12} lg={8} className="py-2 p-0 p-lg-2">
         <h1>Discover</h1>
         <p className={styles.infoBox}>
           Discover, rate and{" "}
-          <Link to="/tracks/create" className={styles.link}>
-            share
-          </Link>{" "}
+          <Link to="/tracks/create" className={styles.link}>share</Link>{" "}
           your music with the community.
         </p>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
+        <Form className={styles.SearchBar} onSubmit={(e) => e.preventDefault()}>
           <Form.Control
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
             type="text"
-            className="mr-sm-2"
             placeholder="Search tracks, genre, artist..."
           />
         </Form>
 
         {hasLoaded ? (
-          <>
-            {tracks.results.length ? (
-              <InfiniteScroll
-                dataLength={tracks.results.length}
-                loader={<Asset spinner />}
-                hasMore={!!tracks.next}
-                next={() => fetchMoreData(tracks, setTracks)}
-              >
-                <Row className={styles.TrackContainerRow}>
-                  {tracks.results.map((track) => (
-                    <Col
-                      key={track.id}
-                      xs={6}
-                      sm={6}
-                      md={4}
-                      lg={3}
-                      className={`mb-2 ${styles.TrackCol}`}
-                    >
-                      <Track {...track} setTracks={setTracks} />
-                    </Col>
-                  ))}
-                </Row>
-              </InfiniteScroll>
-            ) : (
-              <Container className={appStyles.Content}>
-                <Asset src={NoResults} message={message} />
-              </Container>
-            )}
-          </>
+          tracks.results.length ? (
+            <InfiniteScroll
+              dataLength={tracks.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!tracks.next}
+              next={() => fetchMoreData(tracks, setTracks)}
+            >
+              <Row className={styles.TrackContainerRow}>
+                {tracks.results.map((track) => (
+                  <Col key={track.id} xs={6} sm={6} md={4} lg={4}>
+                    <Track {...track} setTracks={setTracks} />
+                  </Col>
+                ))}
+              </Row>
+            </InfiniteScroll>
+          ) : (
+            <Container className={appStyles.Content}>
+              <Asset src={NoResults} message={message} />
+            </Container>
+          )
         ) : (
           <Container className={appStyles.Content}>
             <Asset spinner />
           </Container>
         )}
+      </Col>
+
+      <Col xs={12} lg={4} className="py-2 p-0 p-lg-2">
+        <TopTracks />
+        <ArtistSpotlight />
+        <StatsSection />
+        <Testimonials />
       </Col>
     </Row>
   );
