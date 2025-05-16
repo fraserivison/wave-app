@@ -11,7 +11,11 @@ const ArtistSpotlight = () => {
   return (
     <div className={styles.artistSpotlightSection}>
       <h3>Artist Spotlight</h3>
-      <img src={featuredArtist.image} alt={featuredArtist.name} />
+      <img
+        src={featuredArtist.image}
+        alt={featuredArtist.name}
+        className={styles.artistImage}
+      />
       <h4>{featuredArtist.name}</h4>
       <p>{featuredArtist.bio}</p>
     </div>
@@ -19,3 +23,4 @@ const ArtistSpotlight = () => {
 };
 
 export default ArtistSpotlight;
+
