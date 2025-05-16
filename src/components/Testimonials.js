@@ -9,10 +9,10 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className={styles.testimonialsSection}>
+    <div className={styles.testimonialSection}>
       <h3>What Our Users Say</h3>
       {feedback.map((item) => (
-        <blockquote key={item.id}>
+        <blockquote key={item.id} className={styles.testimonialCard}>
           <p>"{item.quote}"</p>
           <footer>- {item.name}</footer>
         </blockquote>
