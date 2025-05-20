@@ -1,14 +1,16 @@
 .App {
   font-family: "Poppins", sans-serif;
-  background-color: #f8f8f8;
-  background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1742571730/background-image3_sbbmos.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1747753016/speaker-5_anyalo.jpg");
+  background-repeat: repeat;
+  background-size: 300px;
   background-attachment: fixed;
+  background-position: center;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
+
 
 .Main {
   padding-top: 100px;
