@@ -73,8 +73,15 @@ function TracksPage({ message, filter = "" }) {
           <div className={styles.infoCard}>
             <h5>Explore Trending Genres</h5>
             <p>
-              Stay updated with the latest sounds in hip-hop, lo-fi,
-              synthwave, and more.
+              Stay updated with the latest sounds in hip-hop, lo-fi, synthwave,
+              and more.
+            </p>
+          </div>
+          <div className={styles.infoCard}>
+            <h5>Promote Your Tracks</h5>
+            <p>
+              Boost your reach by submitting your music to playlists and
+              featured spots.
             </p>
           </div>
         </Col>
@@ -87,6 +94,20 @@ function TracksPage({ message, filter = "" }) {
               Rate tracks, leave feedback, and build your network in the music
               community.
             </p>
+          </div>
+          <div className={styles.infoCard}>
+            <h5>Join Weekly Challenges</h5>
+            <p>
+              Participate in genre-themed challenges to get featured and sharpen
+              your skills.
+            </p>
+          </div>
+          <div className={styles.infoCard}>
+            <img
+              src="https://res.cloudinary.com/dmylma7bf/image/upload/v1747780000/music-banner-example.jpg"
+              alt="Music promotion"
+              className={styles.infoImage}
+            />
           </div>
         </Col>
 
@@ -109,7 +130,10 @@ function TracksPage({ message, filter = "" }) {
       <Row className="mt-4">
         <Col>
           <i className={`fas fa-search ${styles.SearchIcon}`} />
-          <Form className={styles.SearchBar} onSubmit={(e) => e.preventDefault()}>
+          <Form
+            className={styles.SearchBar}
+            onSubmit={(e) => e.preventDefault()}
+          >
             <Form.Control
               value={query}
               onChange={(e) => setQuery(e.target.value)}
