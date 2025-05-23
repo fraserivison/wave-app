@@ -53,19 +53,20 @@ function TracksPage({ message, filter = "" }) {
   return (
     <Container fluid className={styles.pageWrapper}>
       {/* Header */}
-      <Row>
+      <Row className={styles.heroSection}>
         <Col>
-          <h1>Discover</h1>
-          <p className={styles.infoBox}>
-            Discover, rate and{" "}
-            <Link to="/tracks/create" className={styles.link}>
-              share
-            </Link>{" "}
-            your music with the community.
-          </p>
+          <div className={styles.heroContent}>
+            <h1>Discover</h1>
+            <p className={styles.infoBox}>
+              Discover, rate and{" "}
+              <Link to="/tracks/create" className={styles.link}>
+                share
+              </Link>{" "}
+              your music with the community.
+            </p>
+          </div>
         </Col>
       </Row>
-
       {/* Info + Sidebar Section */}
       <Row className="mt-3">
         {/* Trending Genres */}
