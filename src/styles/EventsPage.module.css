@@ -18,26 +18,80 @@
 }
 
 .SearchBar input {
-    border-radius: 20px;
-    color: #242a3d;
-    padding-left: 40px;
-    margin-bottom: 16px;
-    font-size: 0.75rem;
-  }
-  
-  .SearchIcon {
-    position: absolute;
-    font-size: 0.75rem;
-    padding: 9px;
-    padding-left: 17px;
-  }
-  
-  .SearchIcon:hover {
-    cursor: default;
-    color: #cfced3;
-  }
+  border-radius: 20px;
+  color: #242a3d;
+  padding-left: 40px;
+  margin-bottom: 16px;
+  font-size: 0.75rem;
+}
 
-  .rowNudge {
-    margin-left: -5px;
-    margin-right: -5px;
+.SearchIcon {
+  position: absolute;
+  font-size: 0.75rem;
+  padding: 9px;
+  padding-left: 17px;
+}
+
+.SearchIcon:hover {
+  cursor: default;
+  color: #cfced3;
+}
+
+.rowNudge {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.heroSection {
+  position: relative;
+  padding: 4rem 1rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1748020281/hero-7_gz6fp3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  opacity: 0.99;
+  z-index: 0;
+  filter: blur(3px);
+  mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.heroText,
+.heroSubtext {
+  position: relative;
+  z-index: 1;
+}
+
+.heroText {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.heroSubtext {
+  color: #e0e0e0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  .heroSection::before {
+    background-position: center 30%;
   }
+}
