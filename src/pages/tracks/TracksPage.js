@@ -67,48 +67,46 @@ function TracksPage({ message, filter = "" }) {
           </div>
         </Col>
       </Row>
+
       {/* Info + Sidebar Section */}
-      <Row className="mt-3">
+      <Row className="mt-3" style={{ alignItems: "stretch" }}>
         {/* Trending Genres */}
-        <Col xs={12} md={4}>
-          <div className={styles.infoCard}>
-            <h5>Explore Trending Genres</h5>
-            <p>
-              Stay updated with the latest sounds in hip-hop, lo-fi, synthwave,
-              and more.
-            </p>
-          </div>
-          <div className={styles.infoCard}>
-            <h5>Promote Your Tracks</h5>
-            <p>
-              Boost your reach by submitting your music to playlists and
-              featured spots.
-            </p>
+        <Col xs={12} md={4} className={styles.infoCol}>
+          <div className={styles.infoCardWrapper}>
+            <div className={styles.infoCard}>
+              <h5>Explore Trending Genres</h5>
+              <p>
+                Stay updated with the latest sounds in hip-hop, lo-fi,
+                synthwave, and more.
+              </p>
+            </div>
+            <div className={styles.infoCard}>
+              <h5>Promote Your Tracks</h5>
+              <p>
+                Boost your reach by submitting your music to playlists and
+                featured spots.
+              </p>
+            </div>
           </div>
         </Col>
 
         {/* Connect with Artists */}
-        <Col xs={12} md={4}>
-          <div className={styles.infoCard}>
-            <h5>Connect with Artists</h5>
-            <p>
-              Rate tracks, leave feedback, and build your network in the music
-              community.
-            </p>
-          </div>
-          <div className={styles.infoCard}>
-            <h5>Join Weekly Challenges</h5>
-            <p>
-              Participate in genre-themed challenges to get featured and sharpen
-              your skills.
-            </p>
-          </div>
-          <div className={styles.infoCard}>
-            <img
-              src="https://res.cloudinary.com/dmylma7bf/image/upload/v1747780000/music-banner-example.jpg"
-              alt="Music promotion"
-              className={styles.infoImage}
-            />
+        <Col xs={12} md={4} className={styles.infoCol}>
+          <div className={styles.infoCardWrapper}>
+            <div className={styles.infoCard}>
+              <h5>Connect with Artists</h5>
+              <p>
+                Rate tracks, leave feedback, and build your network in the
+                music community.
+              </p>
+            </div>
+            <div className={styles.infoCard}>
+              <h5>Join Weekly Challenges</h5>
+              <p>
+                Participate in genre-themed challenges to get featured and
+                sharpen your skills.
+              </p>
+            </div>
           </div>
         </Col>
 
@@ -117,6 +115,13 @@ function TracksPage({ message, filter = "" }) {
           <TopTracks />
           <ArtistSpotlight />
           <StatsSection />
+        </Col>
+      </Row>
+
+      {/* Full-width Image */}
+      <Row className="mt-3">
+        <Col>
+          <div className={styles.infoImage} aria-label="Music promotion" />
         </Col>
       </Row>
 
