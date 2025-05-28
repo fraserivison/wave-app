@@ -74,15 +74,15 @@ function TracksPage({ message, filter = "" }) {
         <Col xs={12} md={4} className={styles.infoCol}>
           <div className={styles.infoCardWrapper}>
             <div className={styles.infoCard}>
-              <h5>Explore Trending Genres</h5>
-              <p>
-                Stay updated with the latest sounds in hip-hop, lo-fi,
-                synthwave, and more.
+              <h5 className={styles.infoHeader}>Explore Trending Genres</h5>
+              <p className={styles.infoText}>
+                Stay updated with the latest sounds and filter through your
+                favourites.
               </p>
             </div>
             <div className={styles.infoCard}>
-              <h5>Promote Your Tracks</h5>
-              <p>
+              <h5 className={styles.infoHeader}>Promote Your Tracks</h5>
+              <p className={styles.infoText}>
                 Boost your reach by submitting your music to playlists and
                 featured spots.
               </p>
@@ -94,17 +94,16 @@ function TracksPage({ message, filter = "" }) {
         <Col xs={12} md={4} className={styles.infoCol}>
           <div className={styles.infoCardWrapper}>
             <div className={styles.infoCard}>
-              <h5>Connect with Artists</h5>
-              <p>
-                Rate tracks, leave feedback, and build your network in the
-                music community.
+              <h5 className={styles.infoHeader}>Connect with Artists</h5>
+              <p className={styles.infoText}>
+                Rate tracks, leave feedback and build your network.
               </p>
             </div>
             <div className={styles.infoCard}>
-              <h5>Join Weekly Challenges</h5>
-              <p>
-                Participate in genre-themed challenges to get featured and
-                sharpen your skills.
+              <h5 className={styles.infoHeader}>Get Artist Support</h5>
+              <p className={styles.infoText}>
+                Access resources, tips, and feedback to help you grow your music
+                career and reach new audiences.
               </p>
             </div>
           </div>

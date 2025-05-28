@@ -265,7 +265,7 @@
 
 .infoCard {
   flex: 1;
-  background: #f78383;
+  background: #ffffff;
   border-radius: 12px;
   padding: 1rem;
   backdrop-filter: blur(8px);
@@ -294,6 +294,18 @@
   -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
 }
 
+.infoCol {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+.infoHeader {
+  color: red;
+}
+
+.infoText {
+  color: red;
+}
 
 .heroSection {
   position: relative;
