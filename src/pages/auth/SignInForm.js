@@ -67,6 +67,7 @@ function SignInForm() {
   };
 
   return (
+    <div className={styles.heroSection}>
     <Row className={styles.Row}>
       {/* Image Section */}
       <Col
@@ -139,6 +140,7 @@ function SignInForm() {
         </Container>
       </Col>
     </Row>
+  </div>
   );
 }
 

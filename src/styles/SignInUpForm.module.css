@@ -6,6 +6,27 @@
   height: calc(100vh - 81px);
 }
 
+.heroSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1748014410/hero-2_xmpjli.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  opacity: 0.99;
+  z-index: 0;
+  filter: blur(3px);
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+}
+
+@media (min-width: 992px) {
+  .heroSection::before {
+    background-position: center 30%;
+  }
+}
+
 /* Container for form */
 .Container {
   display: flex;
