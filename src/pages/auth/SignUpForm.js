@@ -58,6 +58,7 @@ const SignUpForm = () => {
   };
 
   return (
+    <div className={styles.heroSection}>
     <Row className={styles.Row}>
       {/* Image Section */}
       <Col
@@ -150,6 +151,7 @@ const SignUpForm = () => {
         </Container>
       </Col>
     </Row>
+  </div>
   );
 };
 
