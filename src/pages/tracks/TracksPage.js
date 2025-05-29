@@ -21,6 +21,72 @@ import ArtistSpotlight from "../../components/ArtistSpotlight";
 import StatsSection from "../../components/StatsSection";
 import Testimonials from "../../components/Testimonials";
 
+const infoCardData = [
+  {
+    icon: "🎧",
+    shortTitle: "Explore",
+    fullTitle: "Explore Trending Genres",
+    description:
+      "Stay updated with the latest sounds and filter through your favourites."
+  },
+  {
+    icon: "📢",
+    shortTitle: "Promote",
+    fullTitle: "Promote Your Tracks",
+    description:
+      "Boost your reach by submitting your music to playlists and featured spots."
+  },
+  {
+    icon: "🤝",
+    shortTitle: "Connect",
+    fullTitle: "Connect with Artists",
+    description:
+      "Rate tracks, leave feedback and build your network."
+  },
+  {
+    icon: "💡",
+    shortTitle: "Support",
+    fullTitle: "Get Artist Support",
+    description:
+      "Access resources, tips, and feedback to help you grow your music career and reach new audiences."
+  }
+];
+
+function InfoCard({ icon, shortTitle, fullTitle, description }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className={styles.infoCard}>
+      {!expanded ? (
+        <>
+          <div style={{ fontSize: "2rem", textAlign: "center" }}>{icon}</div>
+          <h5 className={styles.infoHeader} style={{ textAlign: "center" }}>
+            {shortTitle}
+          </h5>
+        </>
+      ) : (
+        <>
+          <h5 className={styles.infoHeader}>{fullTitle}</h5>
+          <p className={styles.infoText}>{description}</p>
+        </>
+      )}
+      <div
+        onClick={() => setExpanded((prev) => !prev)}
+        style={{
+          textAlign: "right",
+          fontSize: "0.8rem",
+          color: "#007bff",
+          cursor: "pointer",
+          marginTop: "0.5rem"
+        }}
+      >
+        {expanded ? "Show less" : "Learn more"}
+      </div>
+    </div>
+  );
+}
+
+
 function TracksPage({ message, filter = "" }) {
   const [tracks, setTracks] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -30,9 +96,7 @@ function TracksPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchTracks = async () => {
       try {
-        const { data } = await axiosReq.get(
-          `/tracks/?${filter}search=${query}`
-        );
+        const { data } = await axiosReq.get(`/tracks/?${filter}search=${query}`);
         setTracks(data);
         setHasLoaded(true);
       } catch (err) {
@@ -52,64 +116,28 @@ function TracksPage({ message, filter = "" }) {
 
   return (
     <Container fluid className={styles.pageWrapper}>
-      {/* Header */}
       <Row className={styles.heroSection}>
         <Col>
           <div className={styles.heroContent}>
             <h1>Discover</h1>
             <p className={styles.infoBox}>
-              Discover, rate and{" "}
-              <Link to="/tracks/create" className={styles.link}>
-                share
-              </Link>{" "}
-              your music with the community.
+              Discover, rate and <Link to="/tracks/create" className={styles.link}>share</Link> your music with the community.
             </p>
           </div>
         </Col>
       </Row>
 
-      {/* Info + Sidebar Section */}
       <Row className="mt-3" style={{ alignItems: "stretch" }}>
-        {/* Trending Genres */}
-        <Col xs={12} md={4} className={styles.infoCol}>
-          <div className={styles.infoCardWrapper}>
-            <div className={styles.infoCard}>
-              <h5 className={styles.infoHeader}>Explore Trending Genres</h5>
-              <p className={styles.infoText}>
-                Stay updated with the latest sounds and filter through your
-                favourites.
-              </p>
+        {[0, 2].map((startIndex) => (
+          <Col key={startIndex} xs={12} md={4} className={styles.infoCol}>
+            <div className={styles.infoCardWrapper}>
+              {infoCardData.slice(startIndex, startIndex + 2).map((card, idx) => (
+                <InfoCard key={idx} {...card} />
+              ))}
             </div>
-            <div className={styles.infoCard}>
-              <h5 className={styles.infoHeader}>Promote Your Tracks</h5>
-              <p className={styles.infoText}>
-                Boost your reach by submitting your music to playlists and
-                featured spots.
-              </p>
-            </div>
-          </div>
-        </Col>
+          </Col>
+        ))}
 
-        {/* Connect with Artists */}
-        <Col xs={12} md={4} className={styles.infoCol}>
-          <div className={styles.infoCardWrapper}>
-            <div className={styles.infoCard}>
-              <h5 className={styles.infoHeader}>Connect with Artists</h5>
-              <p className={styles.infoText}>
-                Rate tracks, leave feedback and build your network.
-              </p>
-            </div>
-            <div className={styles.infoCard}>
-              <h5 className={styles.infoHeader}>Get Artist Support</h5>
-              <p className={styles.infoText}>
-                Access resources, tips, and feedback to help you grow your music
-                career and reach new audiences.
-              </p>
-            </div>
-          </div>
-        </Col>
-
-        {/* Sidebar */}
         <Col xs={12} md={4}>
           <TopTracks />
           <ArtistSpotlight />
@@ -117,28 +145,22 @@ function TracksPage({ message, filter = "" }) {
         </Col>
       </Row>
 
-      {/* Full-width Image */}
       <Row className="mt-3">
         <Col>
           <div className={styles.infoImage} aria-label="Music promotion" />
         </Col>
       </Row>
 
-      {/* Testimonials */}
       <Row className="mt-4">
         <Col>
           <Testimonials />
         </Col>
       </Row>
 
-      {/* Search + Track Results */}
       <Row className="mt-4">
         <Col>
           <i className={`fas fa-search ${styles.SearchIcon}`} />
-          <Form
-            className={styles.SearchBar}
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <Form className={styles.SearchBar} onSubmit={(e) => e.preventDefault()}>
             <Form.Control
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -180,3 +202,4 @@ function TracksPage({ message, filter = "" }) {
 }
 
 export default TracksPage;
+
