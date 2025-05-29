@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "../../styles/Track.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Dropdown } from "react-bootstrap";
+import { OverlayTrigger, Tooltip, Dropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -131,7 +131,10 @@ const Track = (props) => {
 
           {is_owner && (
             <div className={styles.DropdownWrapper}>
-              <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
             </div>
           )}
         </div>
@@ -150,12 +153,16 @@ const Track = (props) => {
         <div className={styles.TrackFooter}>
           <div className={styles.StarRating}>
             {is_owner ? (
-              <i className={`far fa-star ${styles.Icon}`} />
-            ) : rating_id ? (
-              <span
-                onClick={handleUnrate}
-                className={`${styles.CanChangeRating} ${styles.DebugTooltipVisible}`}
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't rate your own track!</Tooltip>}
               >
+                <span className={styles.DisabledStar}>
+                  <i className={`far fa-star ${styles.Icon}`} />
+                </span>
+              </OverlayTrigger>
+            ) : rating_id ? (
+              <span onClick={handleUnrate} className={styles.CanChangeRating}>
                 <i className={`fas fa-star ${styles.Icon}`} />
               </span>
             ) : currentUser ? (
@@ -180,7 +187,10 @@ const Track = (props) => {
                 }}
               >
                 <Dropdown.Toggle variant="link" className={styles.RateButton}>
-                  <i className="fas fa-star" style={{ fontSize: "10px", color: "transparent" }} />
+                  <i
+                    className="fas fa-star"
+                    style={{ fontSize: "10px", color: "transparent" }}
+                  />
                 </Dropdown.Toggle>
                 <Dropdown.Menu className={styles.RatingMenu}>
                   {[1, 2, 3, 4, 5].map((value) => (
@@ -189,13 +199,20 @@ const Track = (props) => {
                       onClick={() => handleRate(value)}
                       className={styles.RatingItem}
                     >
-                      <span className={styles.DropdownStar}>{"★".repeat(value)}</span>
+                      <span className={styles.DropdownStar}>
+                        {"★".repeat(value)}
+                      </span>
                     </Dropdown.Item>
                   ))}
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
-              <i className={`far fa-star ${styles.Icon}`} />
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to rate tracks!</Tooltip>}
+              >
+                <i className={`far fa-star ${styles.Icon}`} />
+              </OverlayTrigger>
             )}
             {ratings_count}
           </div>
@@ -211,4 +228,3 @@ const Track = (props) => {
 };
 
 export default Track;
-
