@@ -349,3 +349,17 @@
   opacity: 0.5;
   display: inline-block;
 }
+
+:global(.track-tooltip .tooltip-inner) {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  max-width: 220px;
+  text-align: center;
+}
+
+:global(.track-tooltip.bs-tooltip-top .tooltip-arrow::before) {
+  border-top-color: #333;
+}

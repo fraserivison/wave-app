@@ -155,11 +155,13 @@ const Track = (props) => {
             {is_owner ? (
               <OverlayTrigger
                 placement="top"
-                overlay={<Tooltip>You can't rate your own track!</Tooltip>}
+                overlay={
+                  <Tooltip id={`tooltip-${id}`} className="track-tooltip">
+                    You can't rate your own track!
+                  </Tooltip>
+                }
               >
-                <span className={styles.DisabledStar}>
-                  <i className={`far fa-star ${styles.Icon}`} />
-                </span>
+                <i className={`far fa-star ${styles.Icon} ${styles.DisabledStar}`} />
               </OverlayTrigger>
             ) : rating_id ? (
               <span onClick={handleUnrate} className={styles.CanChangeRating}>
