@@ -59,8 +59,8 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
     <div className={styles.infoCard}>
       {!expanded ? (
         <>
-          <div style={{ fontSize: "2rem", textAlign: "center" }}>{icon}</div>
-          <h5 className={styles.infoHeader} style={{ textAlign: "center" }}>
+          <div className={styles.iconCenter}>{icon}</div>
+          <h5 className={`${styles.infoHeader} ${styles.titleCenter}`}>
             {shortTitle}
           </h5>
         </>
@@ -71,14 +71,8 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
         </>
       )}
       <div
+        className={styles.learnMoreLink}
         onClick={() => setExpanded((prev) => !prev)}
-        style={{
-          textAlign: "right",
-          fontSize: "0.8rem",
-          color: "#007bff",
-          cursor: "pointer",
-          marginTop: "0.5rem"
-        }}
       >
         {expanded ? "Show less" : "Learn more"}
       </div>

@@ -363,3 +363,24 @@
   .infoCol:last-child {
     margin-bottom: 0;
   }
+
+  .iconCenter {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .titleCenter {
+    text-align: center;
+  }
+  
+  .learnMoreLink {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #007bff;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+  
+  .alignStretch {
+    align-items: stretch;
+  }
