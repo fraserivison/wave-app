@@ -353,11 +353,18 @@
 :global(.track-tooltip .tooltip-inner) {
   background-color: #333;
   color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-size: 0.85rem;
+  border-radius: 4px;
+  font-size: 8px;
   max-width: 220px;
   text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  transform: translate(10px, 5px);
+}
+
+@media (min-width: 768px) {
+  :global(.track-tooltip .tooltip-inner) {
+    transform: translate(45px, 6px);
+  }
 }
 
 :global(.track-tooltip.bs-tooltip-top .tooltip-arrow::before) {
