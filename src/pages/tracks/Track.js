@@ -157,7 +157,7 @@ const Track = (props) => {
                 placement="top"
                 overlay={
                   <Tooltip id={`tooltip-${id}`} className="track-tooltip">
-                    You can't rate your own track!
+                    You can't rate your own track.
                   </Tooltip>
                 }
               >
