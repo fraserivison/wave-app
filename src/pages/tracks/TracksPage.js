@@ -5,6 +5,14 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeadphones,
+  faBullhorn,
+  faHandshake,
+  faLightbulb,
+} from "@fortawesome/free-solid-svg-icons";
+
 import Track from "./Track";
 import Asset from "../../components/Asset";
 import appStyles from "../../App.module.css";
@@ -23,33 +31,33 @@ import Testimonials from "../../components/Testimonials";
 
 const infoCardData = [
   {
-    icon: "🎧",
+    icon: faHeadphones,
     shortTitle: "Explore",
     fullTitle: "Explore Trending Genres",
     description:
-      "Stay updated with the latest sounds and filter through your favourites."
+      "Stay updated with the latest sounds and filter through your favourites.",
   },
   {
-    icon: "📢",
+    icon: faBullhorn,
     shortTitle: "Promote",
     fullTitle: "Promote Your Tracks",
     description:
-      "Boost your reach by submitting your music to playlists and featured spots."
+      "Boost your reach by submitting your music to playlists and featured spots.",
   },
   {
-    icon: "🤝",
+    icon: faHandshake,
     shortTitle: "Connect",
     fullTitle: "Connect with Artists",
     description:
-      "Rate tracks, leave feedback and build your network."
+      "Rate tracks, leave feedback and build your network.",
   },
   {
-    icon: "💡",
+    icon: faLightbulb,
     shortTitle: "Support",
     fullTitle: "Get Artist Support",
     description:
-      "Access resources, tips, and feedback to help you grow your music career and reach new audiences."
-  }
+      "Access resources, tips, and feedback to help you grow your music career and reach new audiences.",
+  },
 ];
 
 function InfoCard({ icon, shortTitle, fullTitle, description }) {
@@ -59,7 +67,9 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
     <div className={styles.infoCard}>
       {!expanded ? (
         <>
-          <div className={styles.iconCenter}>{icon}</div>
+          <div className={styles.iconCenter}>
+            <FontAwesomeIcon icon={icon} size="2x" />
+          </div>
           <h5 className={`${styles.infoHeader} ${styles.titleCenter}`}>
             {shortTitle}
           </h5>
@@ -79,7 +89,6 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
     </div>
   );
 }
-
 
 function TracksPage({ message, filter = "" }) {
   const [tracks, setTracks] = useState({ results: [] });
@@ -115,7 +124,11 @@ function TracksPage({ message, filter = "" }) {
           <div className={styles.heroContent}>
             <h1>Discover</h1>
             <p className={styles.infoBox}>
-              Discover, rate and <Link to="/tracks/create" className={styles.link}>share</Link> your music with the community.
+              Discover, rate and{" "}
+              <Link to="/tracks/create" className={styles.link}>
+                share
+              </Link>{" "}
+              your music with the community.
             </p>
           </div>
         </Col>
@@ -125,9 +138,11 @@ function TracksPage({ message, filter = "" }) {
         {[0, 2].map((startIndex) => (
           <Col key={startIndex} xs={12} md={4} className={styles.infoCol}>
             <div className={styles.infoCardWrapper}>
-              {infoCardData.slice(startIndex, startIndex + 2).map((card, idx) => (
-                <InfoCard key={idx} {...card} />
-              ))}
+              {infoCardData
+                .slice(startIndex, startIndex + 2)
+                .map((card, idx) => (
+                  <InfoCard key={idx} {...card} />
+                ))}
             </div>
           </Col>
         ))}
@@ -154,7 +169,10 @@ function TracksPage({ message, filter = "" }) {
       <Row className="mt-4">
         <Col>
           <i className={`fas fa-search ${styles.SearchIcon}`} />
-          <Form className={styles.SearchBar} onSubmit={(e) => e.preventDefault()}>
+          <Form
+            className={styles.SearchBar}
+            onSubmit={(e) => e.preventDefault()}
+          >
             <Form.Control
               value={query}
               onChange={(e) => setQuery(e.target.value)}
