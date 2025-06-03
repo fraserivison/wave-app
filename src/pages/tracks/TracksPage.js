@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHeadphones,
+  faPlay,
   faBullhorn,
   faHandshake,
   faLightbulb,
@@ -31,7 +31,7 @@ import Testimonials from "../../components/Testimonials";
 
 const infoCardData = [
   {
-    icon: faHeadphones,
+    icon: faPlay,
     shortTitle: "Explore",
     fullTitle: "Explore Trending Genres",
     description:
