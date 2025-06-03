@@ -67,8 +67,8 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
     <div className={styles.infoCard}>
       {!expanded ? (
         <>
-          <div className={styles.iconCenter}>
-            <FontAwesomeIcon icon={icon} size="2x" />
+          <div className={styles.iconBackground}>
+            <FontAwesomeIcon icon={icon} />
           </div>
           <h5 className={`${styles.infoHeader} ${styles.titleCenter}`}>
             {shortTitle}

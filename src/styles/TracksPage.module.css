@@ -264,6 +264,7 @@
 }
 
 .infoCard {
+  position: relative;
   flex: 1;
   background: #ffffff;
   border-radius: 12px;
@@ -276,6 +277,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+}
+
+.iconBackground {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: rgba(0, 0, 0, 0.05);
+  z-index: 0; /* Sit behind text */
+  pointer-events: none;
+}
+
+.infoHeader,
+.infoText,
+.learnMoreLink {
+  position: relative;
+  z-index: 1;
 }
 
 .infoImage {
@@ -370,15 +390,22 @@
   }
   
   .titleCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    z-index: 2;
   }
   
   .learnMoreLink {
-    text-align: right;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
     font-size: 0.8rem;
     color: #007bff;
     cursor: pointer;
-    margin-top: 0.5rem;
+    text-align: left;
   }
   
   .alignStretch {
