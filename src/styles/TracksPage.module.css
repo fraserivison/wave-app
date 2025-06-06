@@ -417,6 +417,8 @@
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
+    text-transform: uppercase;
+    font-family: 'Exo 2', sans-serif;
   }
   
   .learnMoreLink {
@@ -432,3 +434,5 @@
   .alignStretch {
     align-items: stretch;
   }
+
+  
