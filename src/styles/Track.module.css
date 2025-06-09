@@ -19,12 +19,22 @@
   box-sizing: border-box;
 }
 
+.TrackContainer:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
 .TrackImage {
   background-size: cover;
   background-position: center;
   height: 250px;
   position: relative;
   border-radius: 8px;
+}
+
+.TrackImage:hover {
+  box-shadow: 0 0 8px rgb(255, 255, 255) !important;
+  transition: box-shadow 0.3s ease !important;
 }
 
 .TrackHeader {

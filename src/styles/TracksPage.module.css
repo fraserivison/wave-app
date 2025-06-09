@@ -66,14 +66,6 @@
   box-sizing: border-box;
 }
 
-.TrackImage {
-  background-size: cover;
-  background-position: center;
-  height: 250px;
-  position: relative;
-  border-radius: 8px;
-}
-
 .TrackHeader {
   display: flex;
   justify-content: space-between;
@@ -132,7 +124,7 @@
 }
 
 .TrackOwner {
-  color: white;
+  color: red;
 }
 
 .UpdatedAt {
