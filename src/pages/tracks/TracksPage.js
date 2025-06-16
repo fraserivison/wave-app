@@ -35,30 +35,31 @@ const infoCardData = [
     shortTitle: "Explore",
     fullTitle: "Explore Trending Genres",
     description:
-      "Stay updated with the latest sounds and filter through your favourites.",
+      "Stay updated with the latest sounds and filter your favourites to find inspiration and new ideas.",
   },
   {
     icon: faBullhorn,
     shortTitle: "Promote",
     fullTitle: "Promote Your Tracks",
     description:
-      "Boost your reach by submitting your music to playlists and featured spots.",
+      "Boost your reach by submitting your music to playlists, features, and grow your audience.",
   },
   {
     icon: faHandshake,
     shortTitle: "Connect",
     fullTitle: "Connect with Artists",
     description:
-      "Rate tracks, leave feedback and build your network.",
+      "Rate tracks, leave feedback, message other artists and make yourself known.",
   },
   {
     icon: faLightbulb,
     shortTitle: "Support",
     fullTitle: "Get Artist Support",
     description:
-      "Access resources, tips, and feedback to help you grow your music career and reach new audiences.",
+      "Access resources, tips, and feedback to boost your music career.",
   },
 ];
+
 
 function InfoCard({ icon, shortTitle, fullTitle, description }) {
   const [expanded, setExpanded] = useState(false);
