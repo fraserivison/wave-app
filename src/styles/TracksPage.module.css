@@ -319,10 +319,15 @@
 
 .infoHeader {
   color: black;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Exo 2' sans-serif;
+  text-transform: uppercase;
 }
 
 .infoText {
   color: black;
+  font-size: 0.75rem;
 }
 
 .heroSection {
@@ -423,7 +428,7 @@
     position: absolute;
     bottom: 1rem;
     right: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: black;
     cursor: pointer;
     text-align: left;

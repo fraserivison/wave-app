@@ -84,7 +84,15 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
         className={styles.learnMoreLink}
         onClick={() => setExpanded((prev) => !prev)}
       >
-        {expanded ? "Show less" : "Learn more"}
+        {expanded ? (
+    <>
+      ← Show less
+    </>
+  ) : (
+    <>
+      Learn more →
+    </>
+  )}
       </div>
     </div>
   );
