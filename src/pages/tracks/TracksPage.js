@@ -56,7 +56,7 @@ const infoCardData = [
     shortTitle: "Support",
     fullTitle: "Get Artist Support",
     description:
-      "Access resources, tips, and feedback to boost your music career.",
+      "Access resources, tips and feedback to boost your music career.",
   },
 ];
 
