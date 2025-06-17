@@ -49,7 +49,7 @@ const infoCardData = [
     shortTitle: "Connect",
     fullTitle: "Connect with Artists",
     description:
-      "Rate tracks, leave feedback, message other artists and make yourself known.",
+      "Rate tracks, leave feedback, message other artists- make yourself known.",
   },
   {
     icon: faLightbulb,
