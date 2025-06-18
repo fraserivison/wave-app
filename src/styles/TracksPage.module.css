@@ -258,7 +258,7 @@
 .infoCard {
   position: relative;
   flex: 1;
-  background: #ffffff;
+  background-image: url('https://res.cloudinary.com/dmylma7bf/image/upload/v1750278968/wave-1_yttdem.jpg');
   border-radius: 12px;
   padding: 1rem;
   backdrop-filter: blur(8px);
