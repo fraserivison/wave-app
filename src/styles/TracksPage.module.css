@@ -258,7 +258,7 @@
 .infoCard {
   position: relative;
   flex: 1;
-  background: red;
+  background: white;
   border-radius: 12px;
   padding: 1rem;
   backdrop-filter: blur(8px);
