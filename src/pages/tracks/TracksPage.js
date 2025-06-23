@@ -35,7 +35,7 @@ const infoCardData = [
     shortTitle: "Explore",
     fullTitle: "Explore Trending Genres",
     description:
-      "Stay updated with the latest sounds and filter your favourites to find inspiration and new ideas.",
+      "Stay updated with the latest sounds and find your favourites, inspiration and new ideas.",
   },
   {
     icon: faBullhorn,
@@ -60,7 +60,6 @@ const infoCardData = [
   },
 ];
 
-
 function InfoCard({ icon, shortTitle, fullTitle, description }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -71,13 +70,15 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
           <div className={styles.iconBackground}>
             <FontAwesomeIcon icon={icon} />
           </div>
-          <h5 className={`${styles.infoHeader} ${styles.titleCenter}`}>
+          <h5 className={`${styles.infoHeader} ${styles.titleCenter} ${styles.shortTitle}`}>
             {shortTitle}
           </h5>
         </>
       ) : (
         <>
-          <h5 className={styles.infoHeader}>{fullTitle}</h5>
+          <h5 className={`${styles.infoHeader} ${styles.fullTitle}`}>
+            {fullTitle}
+          </h5>
           <p className={styles.infoText}>{description}</p>
         </>
       )}
@@ -85,15 +86,7 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
         className={styles.learnMoreLink}
         onClick={() => setExpanded((prev) => !prev)}
       >
-        {expanded ? (
-    <>
-      ← Show less
-    </>
-  ) : (
-    <>
-      Learn more →
-    </>
-  )}
+        {expanded ? <>← Show less</> : <>Learn more →</>}
       </div>
     </div>
   );
@@ -108,7 +101,9 @@ function TracksPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchTracks = async () => {
       try {
-        const { data } = await axiosReq.get(`/tracks/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(
+          `/tracks/?${filter}search=${query}`
+        );
         setTracks(data);
         setHasLoaded(true);
       } catch (err) {
@@ -223,4 +218,3 @@ function TracksPage({ message, filter = "" }) {
 }
 
 export default TracksPage;
-

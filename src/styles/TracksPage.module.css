@@ -258,7 +258,7 @@
 .infoCard {
   position: relative;
   flex: 1;
-  background: green;
+  background: white;
   border-radius: 12px;
   padding: 1rem;
   backdrop-filter: blur(8px);
@@ -317,13 +317,25 @@
   padding-right: 7.5px;
 }
 
-.infoHeader {
+/* .infoHeader {
   color: black;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 400;
   font-family: 'Exo 2' sans-serif;
   text-transform: uppercase;
 }
+*/
+
+.shortTitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.fullTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 
 .infoText {
   color: black;
@@ -437,5 +449,6 @@
   .alignStretch {
     align-items: stretch;
   }
+
 
   
