@@ -258,18 +258,36 @@
 .infoCard {
   position: relative;
   flex: 1;
-  background: white;
+  background: linear-gradient(145deg, #f9f9f9, #e0e0e0); /* Soft gradient */
   border-radius: 12px;
   padding: 1rem;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05), inset 0 0 8px rgba(255, 255, 255, 0.3);
   color: #252525;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.infoCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff, #dddddd);
+}
+
+.infoCard:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3), rgba(0,0,0,0.05));
+  pointer-events: none;
+  z-index: 0;
 }
 
 .iconBackground {
@@ -327,15 +345,16 @@
 */
 
 .shortTitle {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
 .fullTitle {
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
-
 
 .infoText {
   color: black;
