@@ -33,30 +33,30 @@ const infoCardData = [
   {
     icon: faPlay,
     shortTitle: "Explore",
-    fullTitle: "Explore Trending Genres",
+    fullTitle: "Explore Trends",
     description:
-      "Stay updated with the latest sounds and find your favourites, inspiration and new ideas.",
+      "Stay updated with the latest sounds across multiple genres. Discover trending tracks, filter by mood or style, and uncover hidden gems to spark your creativity and fuel your next project.",
   },
   {
     icon: faBullhorn,
     shortTitle: "Promote",
     fullTitle: "Promote Your Tracks",
     description:
-      "Boost your reach by submitting your music to playlists, features, and grow your audience.",
+      "Get your music heard by the right people. Submit your tracks to curated playlists, get featured across the platform, and grow your audience through strategic promotion tools and exposure.",
   },
   {
     icon: faHandshake,
     shortTitle: "Connect",
     fullTitle: "Connect with Artists",
     description:
-      "Rate tracks, leave feedback, message other artists- make yourself known.",
+      "Build your network within the music community. Leave feedback, message other artists, collaborate on projects, and gain support while sharing your own insights and ideas.",
   },
   {
     icon: faLightbulb,
     shortTitle: "Support",
     fullTitle: "Get Artist Support",
     description:
-      "Access resources, tips and feedback to boost your music career.",
+      "Access valuable resources, industry tips, and direct feedback to improve your music and strategy. Whether you're just starting out or leveling up, we’ve got tools to support your journey.",
   },
 ];
 

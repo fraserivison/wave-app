@@ -350,7 +350,7 @@
 }
 
 .fullTitle {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: 500;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -358,7 +358,7 @@
 
 .infoText {
   color: black;
-  font-size: 0.75rem;
+  font-size: 0.5rem;
 }
 
 .heroSection {
