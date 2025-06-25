@@ -267,7 +267,7 @@
   overflow: hidden;
 }
 
-.infoCard:hover {
+/*.infoCard:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
   background: linear-gradient(145deg, #ffffff, #dddddd);
@@ -283,15 +283,24 @@
   z-index: 0;
 }
 
+*/
+
 .iconBackground {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 5rem;
-  color: rgba(0, 0, 0, 0.05);
+  font-size: 6rem;
+  color: rgba(0, 0, 0, 0.1);
   z-index: 0;
   pointer-events: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Assuming .infoCard wraps .iconBackground */
+.infoCard:hover .iconBackground {
+  transform: translate(-50%, -50%) scale(1.05);
+  filter: brightness(1.2);
 }
 
 @media (min-width: 992px) {
