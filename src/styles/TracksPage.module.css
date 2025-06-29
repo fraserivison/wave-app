@@ -257,7 +257,10 @@
 .infoCard {
   position: relative;
   flex: 1;
-  background: transparent;
+  background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1751143668/pic-5_dq37p4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 12px;
   padding: 0.5rem;
   color: #252525;
@@ -266,6 +269,14 @@
   overflow: hidden;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
+}
+
+.infoCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 0;
 }
 
 /*.infoCard:hover {
@@ -465,7 +476,8 @@
 
   .infoCard {
     min-height: 150px;
-    background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1751143668/pic-5_dq37p4.jpg");
+  }
+    /* background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1751143668/pic-5_dq37p4.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -477,7 +489,7 @@
     inset: 0;
     background: rgba(255, 255, 255, 0.6);
     z-index: 0;
-  }
+  } */
 
   .heroSection {
     margin-bottom: -0.5rem;
