@@ -276,6 +276,8 @@
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.6);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
   z-index: 0;
 }
 
@@ -398,7 +400,7 @@
   font-size: 0.5rem;
   margin: 5px;
   padding-top: 8px;
-  text-shadow: 3px 4px 8px rgba(0, 0, 0, 0.4);
+  text-shadow: 8px 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 .heroSection {
