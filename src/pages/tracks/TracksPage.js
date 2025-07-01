@@ -34,29 +34,45 @@ const infoCardData = [
     icon: faPlay,
     shortTitle: "Explore",
     fullTitle: "Explore Trends",
-    description:
-      "Stay updated with the latest sounds across multiple genres. Discover trending tracks, filter by mood or style, and uncover hidden gems to spark your creativity and fuel your next project.",
+    description: [
+      "Latest sounds across genres.",
+      "Trending tracks by mood.",
+      "Find hidden gems.",
+      "Inspire your projects.",
+    ],
   },
   {
     icon: faBullhorn,
     shortTitle: "Promote",
     fullTitle: "Promote Your Tracks",
-    description:
-      "Get your music heard by the right people. Submit your tracks to curated playlists, get featured across the platform, and grow your audience through strategic promotion tools and exposure.",
+    description: [
+      "Reach the right audience.",
+      "Submit to playlists.",
+      "Get featured.",
+      "Boost your exposure.",
+    ],
   },
   {
     icon: faHandshake,
     shortTitle: "Connect",
     fullTitle: "Connect with Artists",
-    description:
-      "Build your network within the music community. Leave feedback, message other artists, collaborate on projects, and gain support while sharing your own insights and ideas.",
+    description: [
+      "Grow your network.",
+      "Give and get feedback.",
+      "Collaborate on projects.",
+      "Share ideas.",
+    ],
   },
   {
     icon: faLightbulb,
     shortTitle: "Support",
     fullTitle: "Get Artist Support",
-    description:
-      "Access valuable resources, industry tips, and direct feedback to improve your music and strategy. Whether you're just starting out or leveling up, we’ve got tools to support your journey.",
+    description: [
+      "Access resources.",
+      "Receive feedback.",
+      "Use helpful tools.",
+      "Improve your skills.",
+    ],
   },
 ];
 
@@ -79,7 +95,11 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
           <h5 className={`${styles.infoHeader} ${styles.fullTitle}`}>
             {fullTitle}
           </h5>
-          <p className={styles.infoText}>{description}</p>
+          <ul className={styles.infoText}>
+            {description.map((point, index) => (
+              <li key={index}>{point}</li>
+            ))}
+          </ul>
         </>
       )}
       <div
