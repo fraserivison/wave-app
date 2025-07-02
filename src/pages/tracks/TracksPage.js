@@ -97,7 +97,9 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
           </h5>
           <ul className={styles.infoText}>
             {description.map((point, index) => (
-              <li key={index}>{point}</li>
+              <li key={index}>
+                <span className={styles.bullet}>▹</span> {point}
+              </li>
             ))}
           </ul>
         </>
