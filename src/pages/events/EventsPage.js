@@ -71,11 +71,11 @@ function EventsPage({ message, filter = "" }) {
           <div className={styles.heroContent}>
             <h1>Events</h1>
             <p className={styles.infoBox}>
-              Discover, attend and
+              Promote, attend and
               <Link to="/events/create" className={styles.link}>
                 {" share "}
               </Link>
-              events with the community.
+              events.
             </p>
           </div>
         </Col>

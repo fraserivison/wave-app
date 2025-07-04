@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -15,6 +15,7 @@ const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const history = useHistory();
+  const location = useLocation();
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
@@ -96,6 +97,9 @@ const NavBar = () => {
     </>
   );
 
+  // Determine if current path is homepage
+  const isHomePage = location.pathname === "/";
+
   return (
     <Navbar
       expanded={expanded}
@@ -106,7 +110,9 @@ const NavBar = () => {
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
-            <h3 className={styles.Branding}>
+            <h3
+              className={`${styles.Branding} ${isHomePage ? styles.active : ""}`}
+            >
               <i className="fa-solid fa-headphones-simple"></i>
               Wave
             </h3>
@@ -137,5 +143,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
 
 

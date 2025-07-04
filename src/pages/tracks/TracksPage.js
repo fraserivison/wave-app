@@ -154,7 +154,7 @@ function TracksPage({ message, filter = "" }) {
               <Link to="/tracks/create" className={styles.link}>
                 share
               </Link>{" "}
-              your music with the community.
+              your music.
             </p>
           </div>
         </Col>

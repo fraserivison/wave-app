@@ -1,6 +1,11 @@
 .NavBar {
-  background-color: #f7f7f7;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #808080;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 5px 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -77,9 +82,26 @@
   padding-right: 5px;
 }
 
+.Branding,
+.Branding i {
+  transition: all 1.5s ease;
+}
+
 .Branding:hover,
-.Branding:hover i {
-  color: #007bff;
+.Branding:hover i,
+.Branding.active,
+.Branding.active i {
+  color: #cfced3;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.05), 0 0 1px rgba(255, 255, 255, 0.5),
+    0 0 5px rgba(200, 255, 255, 0.3), 0 0 9px rgba(200, 255, 255, 0.1);
+  background: linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.7),
+    rgba(255, 0, 255, 0.7)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .NavToggle {

@@ -3,6 +3,8 @@
   text-align: center;
   margin: 30px auto;
   max-width: 600px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
 }
 
 .link {
