@@ -1,10 +1,28 @@
+@keyframes dotsShine {
+  0% {
+    background-position: 0 0, center center;
+  }
+  100% {
+    background-position: 100% 0, center center;
+  }
+}
+
 .NavBar {
   background-color: #808080;
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.05) 1px,
-    transparent 1px
-  );
-  background-size: 5px 5px;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), /* dots */
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 30%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.05) 70%,
+      rgba(255, 255, 255, 0) 100%
+    ); /* shine */
+  background-size: 5px 5px, 200% 100%;
+  background-repeat: repeat, no-repeat;
+  background-position: 0 0, center center; /* start positions */
+  animation: dotsShine 40s linear infinite;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-between;
