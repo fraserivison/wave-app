@@ -21,8 +21,8 @@
     ); /* shine */
   background-size: 5px 5px, 200% 100%;
   background-repeat: repeat, no-repeat;
-  background-position: 0 0, center center; /* start positions */
-  animation: dotsShine 40s linear infinite;
+  background-position: 0 0, center center;
+  animation: dotsShine 120s linear infinite;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-between;
