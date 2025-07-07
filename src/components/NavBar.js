@@ -111,7 +111,9 @@ const NavBar = () => {
         <NavLink to="/">
           <Navbar.Brand>
             <h3
-              className={`${styles.Branding} ${isHomePage ? styles.active : ""}`}
+              className={`${styles.Branding} ${
+                isHomePage ? styles.active : ""
+              }`}
             >
               <i className="fa-solid fa-headphones-simple"></i>
               Wave
@@ -131,7 +133,9 @@ const NavBar = () => {
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
           className={styles.NavToggle}
-        />
+        >
+          <i className="fas fa-bars"></i>
+        </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
             {currentUser ? loggedInIcons : loggedOutIcons}
@@ -143,7 +147,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-
-
-
