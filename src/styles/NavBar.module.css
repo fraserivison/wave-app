@@ -114,8 +114,8 @@
   .NavBar {
     flex-direction: column;
     align-items: center;
-    padding-left: 10px;
-    padding-right: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .NavLink {
@@ -188,6 +188,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  padding: 0 !important;
 }
 
 .NavToggle:hover {
@@ -202,7 +203,6 @@
 .NavToggle i {
   color: inherit;
 }
-
 
 
 .NavToggle:focus {
