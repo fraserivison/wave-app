@@ -35,9 +35,9 @@ const infoCardData = [
     shortTitle: "Explore",
     fullTitle: "Explore Trends",
     description: [
-      "Latest sounds across genres.",
+      "Find the latest sounds.",
       "Trending tracks by mood.",
-      "Find hidden gems.",
+      "Discover hidden gems.",
       "Inspire your projects.",
     ],
   },
