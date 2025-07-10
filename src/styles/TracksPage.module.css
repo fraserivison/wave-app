@@ -273,6 +273,15 @@
   border-radius: 12px;
 }
 
+@keyframes moveDots {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
 .infoCard::before {
   content: "";
   position: absolute;
@@ -283,6 +292,8 @@
     transparent 1px
   );
   background-size: 4px 4px;
+  background-repeat: repeat;
+  animation: moveDots 220s linear infinite;
   z-index: 0;
 }
 

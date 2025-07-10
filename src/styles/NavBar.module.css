@@ -22,7 +22,7 @@
   background-size: 5px 5px, 200% 100%;
   background-repeat: repeat, no-repeat;
   background-position: 0 0, center center;
-  animation: dotsShine 120s linear infinite;
+  animation: dotsShine 420s linear infinite;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-between;
