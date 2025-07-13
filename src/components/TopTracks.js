@@ -20,21 +20,28 @@ const TopTracks = () => {
       <h3>Top 10 Tracks of the Day</h3>
       <div className={styles.columnsWrapper}>
         <div className={styles.column}>
-          {dummyTracks.slice(0, 5).map((track) => (
-            <div key={track.id} className={styles.trackCard}>
-              <div className={styles.trackTitle}>{track.title}</div>
-              <div className={styles.trackArtist}>
-                {track.artist.toUpperCase()}
+          {dummyTracks.slice(0, 5).map((track, index) => (
+            <div key={track.id} className={styles.trackWrapper}>
+              <div className={styles.trackNumber}>{index + 1}</div>
+              <div className={styles.trackCard}>
+                <div className={styles.trackTitle}>{track.title}</div>
+                <div className={styles.trackArtist}>
+                  {track.artist.toUpperCase()}
+                </div>
               </div>
             </div>
           ))}
         </div>
+
         <div className={styles.column}>
-          {dummyTracks.slice(5).map((track) => (
-            <div key={track.id} className={styles.trackCard}>
-              <div className={styles.trackTitle}>{track.title}</div>
-              <div className={styles.trackArtist}>
-                {track.artist.toUpperCase()}
+          {dummyTracks.slice(5).map((track, index) => (
+            <div key={track.id} className={styles.trackWrapper}>
+              <div className={styles.trackNumber}>{index + 6}</div>
+              <div className={styles.trackCard}>
+                <div className={styles.trackTitle}>{track.title}</div>
+                <div className={styles.trackArtist}>
+                  {track.artist.toUpperCase()}
+                </div>
               </div>
             </div>
           ))}

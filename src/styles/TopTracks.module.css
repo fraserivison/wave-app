@@ -43,10 +43,58 @@
     margin: 0;
   }
   
-  /* Individual Card Styling */
+  /* Columns wrapper for 2 sets of 5 tracks */
+  .columnsWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Wrapper for numbered track */
+  .trackWrapper {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Number column */
+  .trackNumber {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    border-radius: 8px 0 0 8px;
+    color: #cfced3;
+    text-shadow:
+      1px 2px 2px rgba(0, 0, 0, 0.05),
+      0 0 1px rgba(255, 255, 255, 0.5),
+      0 0 5px rgba(200, 255, 255, 0.3),
+      0 0 9px rgba(200, 255, 255, 0.1);
+    background: linear-gradient(
+      45deg,
+      rgba(0, 255, 255, 0.7),
+      rgba(255, 0, 255, 0.7)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  
+  /* Individual track card */
   .trackCard {
-    padding: 0.5rem;
-    border-radius: 10px;
+    flex: 1;
+    padding: 0.25rem;
+    border-radius: 0 10px 10px 0;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(5px);
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
@@ -63,7 +111,7 @@
   .trackTitle {
     color: #00ffff;
     font-weight: bold;
-    font-size: 0.7rem;
+    font-size: 0.59rem;
   }
   
   .trackArtist {
@@ -77,16 +125,5 @@
     padding: 0;
     margin: 0;
   }
-
-  .columnsWrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-  }
   
-  .column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
   
