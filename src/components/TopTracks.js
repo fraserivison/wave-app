@@ -17,7 +17,7 @@ const TopTracks = () => {
 
   return (
     <div className={styles.topTracksSection}>
-      <h3>Top 10 Tracks of the Day</h3>
+      <h3>Today's Top 10</h3>
       <div className={styles.columnsWrapper}>
         <div className={styles.column}>
           {dummyTracks.slice(0, 5).map((track, index) => (
