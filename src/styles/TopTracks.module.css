@@ -31,7 +31,8 @@
   font-family: "Exo 2", sans-serif;
   /* font-size: 1.3rem; */
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2), 0 0 50px rgba(0, 255, 255, 0.2);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2),
+    0 0 50px rgba(0, 255, 255, 0.2);
   text-align: center;
   color: #ffffff;
   text-transform: uppercase;
@@ -118,7 +119,7 @@
 .trackArtist {
   text-transform: uppercase;
   font-size: 0.6rem;
-  color: #dddddd;
+  color: #f11c1c;
 }
 
 .topTracksSection ul {
