@@ -23,7 +23,6 @@
     );
   background-size: 6px 6px, 200% 100%;
   color: #cfced3;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Title Styling */
@@ -119,7 +118,7 @@
 .trackArtist {
   text-transform: uppercase;
   font-size: 0.6rem;
-  color: #f11c1c;
+  color: #ffffff;
 }
 
 .topTracksSection ul {
