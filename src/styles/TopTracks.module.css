@@ -8,51 +8,54 @@
 }
 
 .topTracksSection {
-    position: relative;
-    padding-left: 1rem;
-    padding: 0.5rem;
-    border-radius: 12px;
-    color: #cfced3;
-    overflow: hidden;
-    background-color: #909090; /* fallback */
-  }
-  
-  /* Blurred background image */
-  .topTracksSection::before {
+  position: relative;
+  padding-left: 1rem;
+  padding: 0.5rem;
+  border-radius: 12px;
+  color: #cfced3;
+  overflow: hidden;
+  background-color: #909090; /* fallback */
+}
+
+/* Blurred background image */
+.topTracksSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('https://res.cloudinary.com/dmylma7bf/image/upload/v1753207962/top-track-1_ycfrhr.avif');
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+  z-index: 0;
+}
+
+/* Overlay with radial dots and faint linear highlight */
+.topTracksSection::after {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('https://res.cloudinary.com/dmylma7bf/image/upload/v1753140850/dj-12_vrt0fm.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: blur(3px);
-    z-index: 0;
-  }
-  
-  /* Overlay with radial dots and gradients */
-  .topTracksSection::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-      radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    inset: 0;
+    background: rgba(255, 255, 255, 0.5);
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(
         120deg,
         rgba(255, 255, 255, 0) 0%,
         rgba(255, 255, 255, 0.07) 50%,
         rgba(255, 255, 255, 0) 100%
       );
-    background-size: 4px 4px;
+    background-size: 4px 4px, 200% 100%;
     background-repeat: repeat, no-repeat;
+    animation: moveDots 220s linear infinite;
     pointer-events: none;
     z-index: 1;
   }
   
-  /* Content above all */
-  .topTracksSection > * {
-    position: relative;
-    z-index: 2;
-  }
+
+/* Content stays on top */
+.topTracksSection > * {
+  position: relative;
+  z-index: 2;
+}
   
   
 /* Title Styling */
@@ -81,7 +84,7 @@
 .columnsWrapper {
   display: flex;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 2rem;
 }
 
 .column {
