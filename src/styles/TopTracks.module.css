@@ -7,6 +7,15 @@
   }
 }
 
+@keyframes moveDots {
+    0% {
+      background-position: 0 0, 0 0;
+    }
+    100% {
+      background-position: 200% 0, 200% 0;
+    }
+  }
+
 .topTracksSection {
   position: relative;
   padding-left: 1rem;
@@ -22,7 +31,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('https://res.cloudinary.com/dmylma7bf/image/upload/v1753207962/top-track-1_ycfrhr.avif');
+  background-image: url('https://res.cloudinary.com/dmylma7bf/image/upload/v1753248718/top-track-7_nrkgzn.avif');
   background-size: cover;
   background-position: center;
   filter: blur(3px);
@@ -34,7 +43,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.2);
     background-image:
       radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(
@@ -145,7 +154,7 @@
 .trackTitle {
   color: #ffffff;
   font-weight: bold;
-  font-size: 0.61rem;
+  font-size: 0.59rem;
 }
 
 .trackArtist {
