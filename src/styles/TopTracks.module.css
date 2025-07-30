@@ -36,6 +36,7 @@
   background-position: center;
   filter: blur(3px);
   z-index: 0;
+  margin: 5px;
 }
 
 /* Overlay with radial dots and faint linear highlight */

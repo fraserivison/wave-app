@@ -265,7 +265,7 @@
   background-repeat: no-repeat;
   border-radius: 12px;
   padding: 0.5rem;
-  color: #252525;
+  background-color: #3a3a3a;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
