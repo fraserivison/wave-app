@@ -145,7 +145,7 @@
 /* Number column */
 .trackNumber {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -194,12 +194,12 @@
 .trackTitle {
   color: #ffffff;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .trackArtist {
   text-transform: uppercase;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: #ffffff;
 }
 

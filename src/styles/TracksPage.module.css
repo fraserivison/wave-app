@@ -263,6 +263,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border: 5px solid rgba(207, 206, 211, 0.871);
   border-radius: 12px;
   padding: 0.5rem;
   background-color: #3a3a3a;
@@ -272,7 +273,6 @@
   box-shadow:
     0 0 10px rgba(0, 255, 255, 0.1),
     0 4px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
 }
 
 @keyframes moveDots {
@@ -402,7 +402,7 @@
 
 .fullTitle {
   font-family: "Exo 2", sans-serif;
-  font-size: 0.79rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   color: #ffffff;
@@ -424,7 +424,7 @@
 
 .infoText {
   color: #ffffff;
-  font-size: 0.64rem;
+  font-size: 0.6rem;
   font-weight: 600;
   margin: 5px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.2),
