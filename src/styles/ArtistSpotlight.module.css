@@ -82,28 +82,32 @@
 }
 
 .artistSpotlightSection h4 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-family: "Exo 2", sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-top: 0.5rem;
   color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2), 0 0 50px rgba(0, 255, 255, 0.2);
   letter-spacing: 1px;
   font-weight: 400;
   animation: fadeIn 1.5s ease-in-out 0.5s forwards;
   opacity: 0;
+  top: 1.5rem;
 }
 
 .artistSpotlightSection p {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   margin-top: 0.25rem;
-  color: #dcd8d8;
+  color: #ebeaea;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2), 0 0 50px rgba(0, 255, 255, 0.2);
   font-weight: 300;
   max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeIn 1.5s ease-in-out 1s forwards;
+  margin-left: 20px;
+  margin-right: 20px;
+  animation: fadeIn 1.5s ease-in-out 0.5s forwards;
   opacity: 0;
+  top: 2rem;
 }
 
 .artistSpotlightSection::before {
