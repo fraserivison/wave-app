@@ -18,7 +18,6 @@
 
 .topTracksSection {
   position: relative;
-  padding-left: 1rem;
   padding-bottom: 0.7rem;
   border-radius: 12px;
   color: #cfced3;
@@ -127,7 +126,15 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin-left: 15px;
 }
+
+@media (min-width: 1024px) {
+    .column {
+      margin-left: 22px;
+    }
+  }
+
 
 /* Wrapper for numbered track */
 .trackWrapper {
