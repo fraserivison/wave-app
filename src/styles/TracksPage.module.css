@@ -508,6 +508,13 @@
   font-size: 0.7rem;
 }
 
+@media (min-width: 1024px) {
+  .bullet {
+    font-size: 0.9rem;
+  }
+
+} 
+
 .heroSection {
   position: relative;
   text-align: center;
@@ -624,7 +631,6 @@
   letter-spacing: 2px;
   color: #ffffff;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
-
   opacity: 0;
   transform: translate(-50%, -50%);
   animation: fadeSlideIn 1.5s ease-out forwards;
@@ -633,6 +639,7 @@
 @media (min-width: 1024px) {
   .titleCenter {
     font-size: 2.5rem;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   }
 } 
 
@@ -657,6 +664,14 @@
 
 .learnMoreLink:hover {
   transform: translateY(-5px);
+}
+
+@media (min-width: 1024px) {
+  .learnMoreLink {
+    font-size: 3rem;
+    bottom: 0.2rem;
+    right: 2rem;
+  }
 }
 
 .alignStretch {
