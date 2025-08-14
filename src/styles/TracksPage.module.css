@@ -630,6 +630,12 @@
   animation: fadeSlideIn 1.5s ease-out forwards;
 }
 
+@media (min-width: 1024px) {
+  .titleCenter {
+    font-size: 2.5rem;
+  }
+} 
+
 @keyframes fadeSlideIn {
   to {
     opacity: 1;
