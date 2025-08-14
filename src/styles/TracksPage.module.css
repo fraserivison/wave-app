@@ -421,6 +421,15 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .fullTitle {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
 
 .infoText {
   color: #ffffff;
@@ -438,6 +447,15 @@
 @media (max-width: 375px) {
   .infoText {
     font-size: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .infoText {
+    font-size: 1rem;
+    line-height: 3.5;
+    margin-left: 10px;
+
   }
 }
 
