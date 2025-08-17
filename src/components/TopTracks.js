@@ -8,7 +8,7 @@ const TopTracks = () => {
     { id: 3, title: "Reel Vibes", artist: "Andy Lumen" },
     { id: 4, title: "Come get it!", artist: "McArthur" },
     { id: 5, title: "H2o Dweller", artist: "Ryan McCurrie" },
-    { id: 6, title: "Dancing Clown", artist: "Paul Beck" },
+    { id: 6, title: "Dance Clown", artist: "Paul Beck" },
     { id: 7, title: "Tailor Swifty", artist: "DJ Bob Clarke" },
     { id: 8, title: "Business Trip", artist: "Duski" },
     { id: 9, title: "3's a crowd", artist: "Phillipe Noir" },
