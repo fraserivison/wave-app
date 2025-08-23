@@ -119,11 +119,12 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    columns: 2;           /* ✅ split into 2 columns */
-    column-gap: 2rem;     /* space between columns */
+    columns: 2;
+    column-gap: 2rem;
   }
   
   .statsSection li {
     margin-bottom: 0.5rem;
-    break-inside: avoid;  /* prevents li from breaking between columns */
+    break-inside: avoid;
+    text-align: left;
   }
