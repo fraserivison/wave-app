@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/wave-app/static/css/main.a60eb61f.css",
-    "main.js": "/wave-app/static/js/main.e85d8989.js",
+    "main.css": "/wave-app/static/css/main.5e0ea6c6.css",
+    "main.js": "/wave-app/static/js/main.23ca1abe.js",
     "static/js/453.bbe0510e.chunk.js": "/wave-app/static/js/453.bbe0510e.chunk.js",
     "index.html": "/wave-app/index.html",
-    "main.a60eb61f.css.map": "/wave-app/static/css/main.a60eb61f.css.map",
-    "main.e85d8989.js.map": "/wave-app/static/js/main.e85d8989.js.map",
+    "main.5e0ea6c6.css.map": "/wave-app/static/css/main.5e0ea6c6.css.map",
+    "main.23ca1abe.js.map": "/wave-app/static/js/main.23ca1abe.js.map",
     "453.bbe0510e.chunk.js.map": "/wave-app/static/js/453.bbe0510e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a60eb61f.css",
-    "static/js/main.e85d8989.js"
+    "static/css/main.5e0ea6c6.css",
+    "static/js/main.23ca1abe.js"
   ]
 }
