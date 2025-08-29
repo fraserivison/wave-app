@@ -12,6 +12,8 @@ const StatsSection = () => {
         <li><strong>25,000+</strong> Monthly listeners</li>
         <li><strong>800+</strong> Artist collaborations</li>
         <li><strong>50+</strong> Genres represented</li>
+        <li><strong>120+</strong> Playlists created</li>
+        <li><strong>95%</strong> Positive feedback</li>
       </ul>
     </div>
   );

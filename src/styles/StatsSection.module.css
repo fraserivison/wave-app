@@ -84,6 +84,12 @@
     animation: fadeIn 1.5s ease-in-out forwards;
     opacity: 0;
   }
+
+  @media (min-width: 1200px) {
+    .statsSection h3 {
+      font-size: 1.7rem;
+    }
+  }
   
   /* Stats list */
   .statsSection ul {
@@ -114,13 +120,18 @@
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
   }
+
+  @media (min-width: 1200px) {
+    .statsSection strong {
+      font-size: 0.7rem;
+    }
+  }
   
   .statsSection ul {
     list-style: none;
     padding-left: 15px;
     margin: 0;
     columns: 2;
-    column-gap: 2rem;
   }
   
   .statsSection li {
