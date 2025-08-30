@@ -22,7 +22,7 @@
     position: relative;
     padding: 1rem;
     border-radius: 12px;
-    color: #cfced3;
+    color: #ffffffe8;
     overflow: hidden;
     text-align: center;
     min-height: 200px;
@@ -76,7 +76,7 @@
     font-family: "Exo 2", sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #e9e7e7da;
+    color: #ffffffe8;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
                  0 0 25px rgba(0, 255, 255, 0.2),

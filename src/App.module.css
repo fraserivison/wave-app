@@ -47,7 +47,7 @@
 h1 {
   font-family: "Exo 2", sans-serif;
   font-size: 3.5rem;
-  color: #fff;
+  color: #ffffffe8;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2),
     0 0 50px rgba(0, 255, 255, 0.2);
   letter-spacing: 2px;
