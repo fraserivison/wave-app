@@ -193,11 +193,6 @@
     -1px 1px 1px rgba(0, 0, 0, 0.1), 1px -1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.trackCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-}
-
 .trackTitle {
   color: #ffffff;
   font-weight: bold;
