@@ -1,14 +1,103 @@
-.testimonialSection {
-    padding: 1rem;
-    background-color: #f0f0f0;
-    border-radius: 12px;
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
+  .testimonialSection {
+    position: relative;
+    padding: 1rem;
+    border-radius: 12px;
+    color: #ffffff;
+    overflow: hidden;
+    text-align: center;
+    min-height: 200px;
+  }
+  
+  /* Background blur + image */
+  .testimonialSection::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1753383497/top-track-13_rn1cdd.avif");
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px);
+    margin: 5px;
+    z-index: 0;
+  }
+  
+  /* Overlay with soft dots + gradient like stats section */
+  .testimonialSection::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(201, 198, 198, 0.5);
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.07) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    background-size: 4px 4px, 200% 100%;
+    animation: moveDots 220s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  /* Foreground content */
+  .testimonialSection > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Title styling */
+  .testimonialSection h3 {
+    font-size: 1.8rem;
+    font-family: "Exo 2", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffffe8;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
+                 0 0 25px rgba(0, 255, 255, 0.2),
+                 0 0 50px rgba(0, 255, 255, 0.2);
+    animation: fadeIn 1.5s ease-in-out forwards;
+    opacity: 0;
+  }
+  
+  /* Testimonial card */
   .testimonialCard {
     margin-bottom: 1rem;
-    padding: 0.75rem;
-    background-color: #ffffff;
-    border-left: 4px solid #534caf;
-    border-radius: 8px;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ebeaea;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    animation: fadeIn 1.5s ease-in-out 0.5s forwards;
+    opacity: 0;
+  }
+  
+  .testimonialCard p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonialCard footer {
+    font-size: 0.8rem;
+    color: #cfced3;
+    font-style: italic;
+    text-shadow: 0 0 5px rgba(200, 255, 255, 0.3);
   }
   
