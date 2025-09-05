@@ -3,12 +3,12 @@ import styles from "../styles/Testimonials.module.css";
 
 const Testimonials = () => {
   const feedback = [
-    { id: 1, name: "Alex", quote: "WaveApp helped me discover my favourite indie artist." },
-    { id: 2, name: "Jamie", quote: "Uploading my tracks here was the best move for exposure." },
-    { id: 3, name: "Sam", quote: "A vibrant community for music lovers!" },
-    { id: 4, name: "Taylor", quote: "The platform makes finding new genres so easy." },
-    { id: 5, name: "Jordan", quote: "Collaborating with artists here has been amazing." },
-    { id: 6, name: "Riley", quote: "I love how interactive and welcoming the community is." },
+    { id: 1, name: "Alex North", quote: "It's helped me discover new artists to use for my mixes- this is a gamechanger!" },
+    { id: 2, name: "Jamie Jacksyn", quote: "Uploading my music here was the best move to expose me to the world." },
+    { id: 3, name: "DJ Sammi", quote: "Love the community here, it's for electric music lovers!" },
+    { id: 4, name: "Taylor Made", quote: "I can't believe how easy it is to find new tracks here." },
+    { id: 5, name: "Jordi", quote: "Collaborating with artists here has been amazing! BIG things coming soon!" },
+    { id: 6, name: "Prysm", quote: "I love how interactive and welcoming the community is, long-term user right here." },
   ];
 
   return (
@@ -18,7 +18,7 @@ const Testimonials = () => {
         {feedback.map((item) => (
           <blockquote key={item.id} className={styles.testimonialCard}>
             <p>"{item.quote}"</p>
-            <footer>- {item.name}</footer>
+            <footer>{item.name}</footer>
           </blockquote>
         ))}
       </div>
