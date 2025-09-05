@@ -75,7 +75,7 @@
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2),
       0 0 50px rgba(0, 255, 255, 0.2);
     text-align: center;
-    color: #ffffffe8;
+    color: #ffffffbd;
     text-transform: uppercase;
     letter-spacing: 2px;
     opacity: 0;
@@ -96,7 +96,7 @@
   .subtitle {
     font-size: 0.66rem;
     font-weight: 300;
-    color: #dcd8d8;
+    color: #ffffff;
     text-align: center;
     margin-top: -0.5rem;
     margin-bottom: 1rem;
