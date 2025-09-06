@@ -13,7 +13,7 @@
     position: relative;
     padding: 1rem;
     border-radius: 12px;
-    color: #a63131;
+    color: #6b6969;
     overflow: hidden;
     text-align: center;
     min-height: 200px;
@@ -37,7 +37,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(201, 198, 198, 0.5);
+    background: rgba(201, 198, 198, 0.6);
     background-image: radial-gradient(
         rgba(255, 255, 255, 0.05) 1px,
         transparent 1px
@@ -81,7 +81,7 @@
     padding: 0.75rem;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: #ebeaea;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
     animation: fadeIn 1.5s ease-in-out 0.5s forwards;
