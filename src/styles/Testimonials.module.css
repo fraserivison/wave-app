@@ -27,7 +27,7 @@
     background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1757099678/testimonial-1_lvdafl.avif");
     background-size: cover;
     background-position: center;
-    filter: blur(3px);
+    filter: blur(5px);
     margin: 5px;
     z-index: 0;
   }
