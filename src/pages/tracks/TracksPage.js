@@ -86,7 +86,9 @@ function InfoCard({ icon, shortTitle, fullTitle, description }) {
           <div className={styles.iconBackground}>
             <FontAwesomeIcon icon={icon} />
           </div>
-          <h5 className={`${styles.infoHeader} ${styles.titleCenter} ${styles.shortTitle}`}>
+          <h5
+            className={`${styles.infoHeader} ${styles.titleCenter} ${styles.shortTitle}`}
+          >
             {shortTitle}
           </h5>
         </>
@@ -182,7 +184,13 @@ function TracksPage({ message, filter = "" }) {
 
       <Row className="mt-3">
         <Col>
-          <div className={styles.infoImage} aria-label="Music promotion" />
+          <div className={styles.infoImageWrapper}>
+            <div className={styles.infoImage} aria-label="Music promotion" />
+            <div className={styles.infoOverlayText}>
+              <h2>Grow Your Audience</h2>
+              <p>Promote your music and reach fans worldwide.</p>
+            </div>
+          </div>
         </Col>
       </Row>
 
