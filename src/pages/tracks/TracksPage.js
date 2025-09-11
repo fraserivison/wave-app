@@ -145,6 +145,29 @@ function TracksPage({ message, filter = "" }) {
     };
   }, [filter, query, pathname]);
 
+  useEffect(() => {
+    const overlayText = document.querySelector(`.${styles.infoOverlayText}`);
+  
+    if (!overlayText) return;
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            overlayText.classList.add(styles.visible);
+            observer.unobserve(overlayText);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+  
+    observer.observe(overlayText);
+  
+    return () => observer.disconnect();
+  }, []);
+  
+
   return (
     <Container fluid className={styles.pageWrapper}>
       <Row className={styles.heroSection}>

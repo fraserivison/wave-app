@@ -385,7 +385,7 @@
 .infoOverlayText {
   position: absolute;
   top: 40%;
-  left: 50%;
+  left: 10%;
   transform: translateX(-50%);
   width: 80%;
   text-align: center;
@@ -399,15 +399,28 @@
   text-transform: uppercase;
   font-size: 1.6rem;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  color: #ffffffe8;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2),
+    0 0 50px rgba(0, 255, 255, 0.2);
 }
+
 
 .infoOverlayText p {
   font-family: "Poppins", sans-serif;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
-  max-width: 600px;
   font-size: 0.6rem;
   letter-spacing: 1px;
+}
+
+.infoOverlayText {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.infoOverlayText.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 
