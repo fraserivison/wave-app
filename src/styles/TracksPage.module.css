@@ -412,6 +412,33 @@
   letter-spacing: 1px;
 }
 
+@media (min-width: 768px) {
+  .infoOverlayText h2 {
+    font-size: 2rem;
+  }
+  .infoOverlayText p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .infoOverlayText h2 {
+    font-size: 2.4rem;
+  }
+  .infoOverlayText p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .infoOverlayText h2 {
+    font-size: 3rem;
+  }
+  .infoOverlayText p {
+    font-size: 1rem;
+  }
+}
+
 .infoOverlayText {
   opacity: 0;
   transform: translateY(20px);
