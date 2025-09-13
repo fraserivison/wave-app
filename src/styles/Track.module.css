@@ -214,6 +214,7 @@
   width: 6px;
 }
 
+
 .RatingDropdown .dropdown-toggle {
   font-size: 0.4rem !important;
   padding: 2px 6px !important;
@@ -267,6 +268,12 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .RatingDropdown :global(.show.dropdown-menu) {
+    min-height: 280px !important;
+  }
 }
 
 .RatingDropdown :global(.dropdown-item) {
@@ -331,12 +338,24 @@
     font-size: 0.4rem;
   }
 
+  .TrackOwner {
+    font-size: 0.75rem;
+  }
+
+  .StarRating {
+    font-size: 1.5rem;
+  }
+
+  .AverageRating {
+    font-size: 0.75rem;
+  }
+
   .TrackTitle {
     font-size: 1rem;
   }
 
   .UpdatedAt {
-    font-size: 0.35rem;
+    font-size: 0.6rem;
   }
 
   .RatingDropdown .dropdown-toggle {
