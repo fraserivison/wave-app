@@ -147,9 +147,9 @@ function TracksPage({ message, filter = "" }) {
 
   useEffect(() => {
     const overlayText = document.querySelector(`.${styles.infoOverlayText}`);
-  
+
     if (!overlayText) return;
-  
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -161,12 +161,11 @@ function TracksPage({ message, filter = "" }) {
       },
       { threshold: 0.3 }
     );
-  
+
     observer.observe(overlayText);
-  
+
     return () => observer.disconnect();
   }, []);
-  
 
   return (
     <Container fluid className={styles.pageWrapper}>

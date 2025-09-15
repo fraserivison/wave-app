@@ -402,6 +402,11 @@
   color: #ffffffe8;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2),
     0 0 50px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.infoOverlayText h2:hover {
+  transform: translateX(-0%) scale(1.05);
 }
 
 
@@ -410,6 +415,11 @@
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
   font-size: 0.6rem;
   letter-spacing: 1px;
+  transition: transform 0.3s ease;
+}
+
+.infoOverlayText p:hover {
+  transform: translateX(-0%) scale(1.05);
 }
 
 @media (min-width: 768px) {
