@@ -221,6 +221,11 @@ function TracksPage({ message, filter = "" }) {
           <Testimonials />
         </Col>
       </Row>
+      <Row className="mt-4">
+        <Col>
+          <div className={styles.shareImage} aria-label="Music event" />
+        </Col>
+      </Row>
 
       <Row className="mt-4">
         <Col>
