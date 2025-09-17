@@ -223,7 +223,12 @@ function TracksPage({ message, filter = "" }) {
       </Row>
       <Row className="mt-4">
         <Col>
-          <div className={styles.shareImage} aria-label="Music event" />
+          <div className={styles.shareImageWrapper}>
+            <div className={styles.shareImage} aria-label="Music event" />
+            <div className={styles.shareOverlayText}>
+              <h2>Discover</h2>
+            </div>
+          </div>
         </Col>
       </Row>
 
