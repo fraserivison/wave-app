@@ -1,3 +1,28 @@
+.discoverHeading {
+  font-family: "Exo 2", sans-serif;
+  font-size: 4rem;
+  color: #ffffffe8;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2),
+    0 0 50px rgba(0, 255, 255, 0.2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.4),
+    rgba(255, 0, 255, 0.4)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .discoverHeading {
+    font-size: 5rem;
+  }
+}
+
 .infoBox {
   color: #ffffff !important;
   text-align: center;
@@ -799,11 +824,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #fff;
   z-index: 2;
 }
 
 .shareOverlayText h2 {
+  position: relative; /* parent for absolute children */
   font-family: "Exo 2", sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -813,4 +838,27 @@
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3),
     0 0 25px rgba(0, 255, 255, 0.2),
     0 0 50px rgba(0, 255, 255, 0.2);
+  text-align: center;
+  height: 1em;
+}
+
+.shareOverlayText h2 span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeWords 9s infinite;
+}
+
+.shareOverlayText h2 span:nth-child(1) { animation-delay: 0s; }
+.shareOverlayText h2 span:nth-child(2) { animation-delay: 3s; }
+.shareOverlayText h2 span:nth-child(3) { animation-delay: 6s; }
+
+@keyframes fadeWords {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
 }

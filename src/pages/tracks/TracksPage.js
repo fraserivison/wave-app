@@ -172,7 +172,7 @@ function TracksPage({ message, filter = "" }) {
       <Row className={styles.heroSection}>
         <Col>
           <div className={styles.heroContent}>
-            <h1>Discover</h1>
+            <h1 className={styles.discoverHeading}>Discover</h1>
             <p className={styles.infoBox}>
               Discover, rate and{" "}
               <Link to="/tracks/create" className={styles.link}>
@@ -226,7 +226,11 @@ function TracksPage({ message, filter = "" }) {
           <div className={styles.shareImageWrapper}>
             <div className={styles.shareImage} aria-label="Music event" />
             <div className={styles.shareOverlayText}>
-              <h2>Discover</h2>
+              <h2>
+                <span>Discover</span>
+                <span>Rate</span>
+                <span>Share</span>
+              </h2>
             </div>
           </div>
         </Col>
