@@ -792,12 +792,12 @@
 .shareImageWrapper {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 150px;
 }
 
 .shareImage {
   width: 100%;
-  height: 300px;
+  height: 150px;
   background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1758045443/event-1_jrfcs4.jpg");
   background-size: cover;
   background-position: center;
