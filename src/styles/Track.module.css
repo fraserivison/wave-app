@@ -181,6 +181,14 @@
   z-index: 10;
 }
 
+@media (max-width: 768px) {
+  .CanChangeRating::after {
+    font-size: 0.75rem;
+    top: -30px;
+    left: -15px;
+  }
+}
+
 .CanChangeRating:hover::after {
   opacity: 1;
   transform: translateY(0);
@@ -211,7 +219,7 @@
 
 .RatingDropdown {
   background: none !important;
-  width: 6px;
+  width: 10px;
 }
 
 
@@ -268,17 +276,29 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  position: absolute !important;
+  inset: auto auto 0px 0px !important;
+  transform: translate3d(-12px, -22px, 0px) !important;
 }
 
 @media (max-width: 768px) {
   .RatingDropdown :global(.show.dropdown-menu) {
-    min-height: 280px !important;
+    min-height: 276px !important;
+    position: absolute !important;
+    inset: auto auto 0px 0px !important;
+    transform: translate3d(-12px, -38px, 0px) !important;
   }
 }
 
 .RatingDropdown :global(.dropdown-item) {
   padding: 10px 10px !important;
   text-shadow: 0 0 0px rgba(0, 0, 0) !important;
+}
+
+@media (max-width: 768px) {
+  .RatingDropdown :global(.dropdown-item) {
+    padding: 18px 10px !important;
+   }
 }
 
 .RatingDropdown :global(.dropdown-item) {
@@ -407,7 +427,14 @@
 
 @media (min-width: 768px) {
   :global(.track-tooltip .tooltip-inner) {
-    transform: translate(45px, 6px);
+    transform: translate(50px, 5px);
+  }
+}
+
+@media (max-width: 768px) {
+  :global(.track-tooltip .tooltip-inner) {
+    transform: translate(15px, 3px);
+    font-size: 0.75rem;
   }
 }
 
