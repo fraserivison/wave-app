@@ -84,47 +84,51 @@ function EventsPage({ message, filter = "" }) {
       {/* Info Section */}
       <Row className="mt-3">
         <Col xs={12} md={6}>
-          <div className={styles.infoCard}>
-            <h5>Local Community Events</h5>
-            <p>
-              Find events happening near you, from music to community meetups.
+          <div className={styles.eventsCard}>
+            <h5 className={styles.eventsHeading}>Local Community Events</h5>
+            <p className={styles.eventsText}>
+              Discover events happening near you! Connect with local talent and
+              music lovers nearby.
             </p>
           </div>
         </Col>
         <Col xs={12} md={6}>
-          <div className={styles.infoCard}>
-            <h5>Categories for Everyone</h5>
-            <p>
-              From art exhibitions to coding meetups, there's something for
-              everyone.
+          <div className={styles.eventsCard}>
+            <h5 className={styles.eventsHeading}>Strictly Electronic</h5>
+            <p className={styles.eventsText}>
+              Discover DJ sets, underground raves, and electronic music
+              nights—from house and techno to drum & bass and synthwave.
             </p>
           </div>
         </Col>
       </Row>
 
-      <Row>
+      <Row className="mt-3">
         <Col xs={12} md={6}>
-          <div className={styles.infoCard}>
-            <h5>Host Your Own</h5>
-            <p>
-              Want to create an event? Easily share your plans and invite
-              others.
+          <div className={styles.eventsCard}>
+            <h5 className={styles.eventsHeading}>Host Your Own</h5>
+            <p className={styles.eventsText}>
+              Planning a house gig, festival, or DJ night? Share your event and
+              invite fans to join.
             </p>
           </div>
         </Col>
         <Col xs={12} md={6}>
-          <div className={styles.infoCard}>
-            <h5>Stay Informed</h5>
-            <p>Subscribe to get updates on trending and upcoming events.</p>
+          <div className={styles.eventsCard}>
+            <h5 className={styles.eventsHeading}>Stay Informed</h5>
+            <p className={styles.eventsText}>
+              Get updates on trending events and music releases from your
+              favourites.
+            </p>
           </div>
         </Col>
       </Row>
 
-      <Row>
+      <Row className="mt-3">
         <Col xs={12}>
-          <div className={styles.infoCard}>
-            <h5>Get Involved</h5>
-            <p>
+          <div className={styles.eventsCard}>
+            <h5 className={styles.eventsHeading}>Get Involved</h5>
+            <p className={styles.eventsText}>
               Join groups, volunteer, or attend open discussions with peers.
             </p>
           </div>
