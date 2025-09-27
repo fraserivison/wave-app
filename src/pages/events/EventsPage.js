@@ -83,32 +83,50 @@ function EventsPage({ message, filter = "" }) {
 
       {/* Info Section */}
       <Row className="mt-3">
-        <Col xs={12} md={4}>
+        <Col xs={12} md={6}>
           <div className={styles.infoCard}>
             <h5>Local Community Events</h5>
-            <p>Find events happening near you, from music to community meetups.</p>
-          </div>
-          <div className={styles.infoCard}>
-            <h5>Host Your Own</h5>
-            <p>Want to create an event? Easily share your plans and invite others.</p>
+            <p>
+              Find events happening near you, from music to community meetups.
+            </p>
           </div>
         </Col>
-
-        <Col xs={12} md={4}>
+        <Col xs={12} md={6}>
           <div className={styles.infoCard}>
             <h5>Categories for Everyone</h5>
-            <p>From art exhibitions to coding meetups, there's something for everyone.</p>
+            <p>
+              From art exhibitions to coding meetups, there's something for
+              everyone.
+            </p>
           </div>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={12} md={6}>
+          <div className={styles.infoCard}>
+            <h5>Host Your Own</h5>
+            <p>
+              Want to create an event? Easily share your plans and invite
+              others.
+            </p>
+          </div>
+        </Col>
+        <Col xs={12} md={6}>
           <div className={styles.infoCard}>
             <h5>Stay Informed</h5>
             <p>Subscribe to get updates on trending and upcoming events.</p>
           </div>
         </Col>
+      </Row>
 
-        <Col xs={12} md={4}>
+      <Row>
+        <Col xs={12}>
           <div className={styles.infoCard}>
             <h5>Get Involved</h5>
-            <p>Join groups, volunteer, or attend open discussions with peers.</p>
+            <p>
+              Join groups, volunteer, or attend open discussions with peers.
+            </p>
           </div>
         </Col>
       </Row>
