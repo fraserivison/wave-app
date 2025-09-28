@@ -97,7 +97,7 @@ function EventsPage({ message, filter = "" }) {
             <h5 className={styles.eventsHeading}>Strictly Electronic</h5>
             <p className={styles.eventsText}>
               Discover DJ sets, underground raves, and electronic music
-              nights—from house and techno to drum & bass and synthwave.
+              nights— house, techno, the lot!
             </p>
           </div>
         </Col>
