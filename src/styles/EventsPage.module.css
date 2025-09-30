@@ -118,7 +118,7 @@
 .eventsCard {
   position: relative;
   flex: 1;
-  background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1751143668/pic-5_dq37p4.jpg");
+  background-image: url("https://res.cloudinary.com/dmylma7bf/image/upload/v1759258446/blue-6_rmnkxf.avif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -179,6 +179,9 @@
 .eventsText {
   position: relative;
   font-size: 0.75rem;
+  font-family: "Poppins", sans-serif;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.2), -1px 1px 1px rgba(0, 0, 0, 0.2), 1px -1px 1px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.3px;
   line-height: 1.6;
   text-align: center;
   max-width: 600px;
