@@ -103,7 +103,7 @@ function EventsPage({ message, filter = "" }) {
         </Col>
       </Row>
 
-      <Row className="mt-3">
+      <Row className={`mt-3 ${styles.eventsRow}`}>
         <Col xs={12} md={6}>
           <div className={styles.eventsCard}>
             <h5 className={styles.eventsHeading}>Host Your Own</h5>

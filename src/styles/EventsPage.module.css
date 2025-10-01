@@ -194,3 +194,13 @@
   0% { background-position: 0 0; }
   100% { background-position: 100% 100%; }
 }
+
+.eventsRow {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .eventsRow {
+    margin-top: 0 !important; 
+  }
+}
