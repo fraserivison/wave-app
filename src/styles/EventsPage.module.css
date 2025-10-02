@@ -129,9 +129,7 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  box-shadow:
-    0 0 10px rgba(0, 255, 255, 0.1),
-    0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.3);
   color: #fff;
 }
 
@@ -140,14 +138,17 @@
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.5);
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
+  );
   background-size: 4px 4px;
   background-repeat: repeat;
   animation: moveDots 220s linear infinite;
   z-index: 0;
 }
 
-.eventsHeading {
+.eventsSubHeading {
   position: relative;
   font-size: 1.3rem;
   font-weight: 400;
@@ -174,13 +175,12 @@
   }
 }
 
-
-
 .eventsText {
   position: relative;
   font-size: 0.75rem;
   font-family: "Poppins", sans-serif;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.2), -1px 1px 1px rgba(0, 0, 0, 0.2), 1px -1px 1px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.2),
+    -1px 1px 1px rgba(0, 0, 0, 0.2), 1px -1px 1px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.3px;
   line-height: 1.6;
   text-align: center;
@@ -191,8 +191,12 @@
 
 /* Reuse keyframes from discover cards */
 @keyframes moveDots {
-  0% { background-position: 0 0; }
-  100% { background-position: 100% 100%; }
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 
 .eventsRow {
@@ -201,6 +205,31 @@
 
 @media (max-width: 768px) {
   .eventsRow {
-    margin-top: 0 !important; 
+    margin-top: 0 !important;
+  }
+}
+
+.eventsHeading {
+  font-family: "Exo 2", sans-serif;
+  font-size: 4rem;
+  color: #ffffffe8;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 255, 255, 0.2),
+    0 0 50px rgba(0, 255, 255, 0.2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.4),
+    rgba(255, 0, 255, 0.4)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .eventsHeading {
+      font-size: 5rem;
   }
 }

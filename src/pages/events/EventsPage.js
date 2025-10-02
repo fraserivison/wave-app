@@ -69,7 +69,7 @@ function EventsPage({ message, filter = "" }) {
       <Row className={styles.heroSection}>
         <Col>
           <div className={styles.heroContent}>
-            <h1>Events</h1>
+          <h1 className={styles.eventsHeading}>Events</h1>
             <p className={styles.infoBox}>
               Promote, attend and
               <Link to="/events/create" className={styles.link}>
@@ -85,7 +85,7 @@ function EventsPage({ message, filter = "" }) {
       <Row className="mt-3">
         <Col xs={12} md={6}>
           <div className={styles.eventsCard}>
-            <h5 className={styles.eventsHeading}>Local Community Events</h5>
+            <h5 className={styles.eventsSubHeading}>Local Community Events</h5>
             <p className={styles.eventsText}>
               Discover events happening near you! Connect with local talent and
               music lovers nearby.
@@ -94,7 +94,7 @@ function EventsPage({ message, filter = "" }) {
         </Col>
         <Col xs={12} md={6}>
           <div className={styles.eventsCard}>
-            <h5 className={styles.eventsHeading}>Strictly Electronic</h5>
+            <h5 className={styles.eventsSubHeading}>Strictly Electronic</h5>
             <p className={styles.eventsText}>
               Discover DJ sets, underground raves, and electronic music
               nights— house, techno, the lot!
@@ -106,7 +106,7 @@ function EventsPage({ message, filter = "" }) {
       <Row className={`mt-3 ${styles.eventsRow}`}>
         <Col xs={12} md={6}>
           <div className={styles.eventsCard}>
-            <h5 className={styles.eventsHeading}>Host Your Own</h5>
+            <h5 className={styles.eventsSubHeading}>Host Your Own</h5>
             <p className={styles.eventsText}>
               Planning a house gig, festival, or DJ night? Share your event and
               invite fans to join.
@@ -115,10 +115,10 @@ function EventsPage({ message, filter = "" }) {
         </Col>
         <Col xs={12} md={6}>
           <div className={styles.eventsCard}>
-            <h5 className={styles.eventsHeading}>Stay Informed</h5>
+            <h5 className={styles.eventsSubHeading}>Stay Informed</h5>
             <p className={styles.eventsText}>
               Get updates on trending events and music releases from your
-              favourites.
+              favourites- never miss a beat!
             </p>
           </div>
         </Col>
