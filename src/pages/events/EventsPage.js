@@ -128,9 +128,6 @@ function EventsPage({ message, filter = "" }) {
         <Col xs={12}>
           <div className={styles.eventsCard}>
             <h5 className={styles.eventsHeading}>Get Involved</h5>
-            <p className={styles.eventsText}>
-              Join groups, volunteer, or attend open discussions with peers.
-            </p>
           </div>
         </Col>
       </Row>
