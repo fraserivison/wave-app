@@ -134,7 +134,7 @@ figure {
 /* Override Bootstrap column padding to reduce gutter spacing from 15px to 10px */
 @media (max-width: 767.98px) {
   [class*="col"] {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
   }
 }
