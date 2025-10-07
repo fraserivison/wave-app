@@ -124,10 +124,16 @@ function EventsPage({ message, filter = "" }) {
         </Col>
       </Row>
 
-      <Row className="mt-3">
-        <Col xs={12}>
-          <div className={styles.eventsCard}>
-            <h5 className={styles.eventsHeading}>Get Involved</h5>
+      <Row className="mt-4">
+        <Col>
+          <div className={styles.eventImageWrapper}>
+            <div className={styles.eventImage} aria-label="Music event" />
+            <div className={styles.eventOverlayText}>
+              <h2>
+                <span>Get</span>
+                <span>Involved</span>
+              </h2>
+            </div>
           </div>
         </Col>
       </Row>
