@@ -112,17 +112,17 @@ const Event = (props) => {
         <div className={styles.EventDetails}>
           <div className={styles.EventGenre}>
             <i className={`fas fa-music ${styles.iconStyle}`} />
-            <strong>Genre:</strong> {formattedGenre}
+            {formattedGenre}
           </div>
 
           <div className={styles.EventLocation}>
             <i className={`fas fa-map-marker-alt ${styles.iconStyle}`} />
-            <strong>Location:</strong> {eventData.location}
+            {eventData.location}
           </div>
 
           <div className={`${styles.EventDescription} ${styles.truncatedDescription}`}>
             <i className={`fas fa-align-left ${styles.iconStyle}`} />
-            <strong>Description:</strong> {eventData.description}
+            {eventData.description}
           </div>
         </div>
       </div>
