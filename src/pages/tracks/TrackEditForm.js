@@ -76,6 +76,7 @@ function TrackEditForm() {
   const textFields = (
     <div className="text-center">
       <h1>Update a track</h1>
+
       {/* Title Field */}
       <Form.Group>
         <Form.Label>Title</Form.Label>
@@ -130,12 +131,16 @@ function TrackEditForm() {
             <Image src={Upload} rounded className={styles.ImageSmall} />
           )}
         </div>
-        <Form.File
-          id="album-cover-upload"
+
+        {/* ✅ Updated: replaced deprecated Form.File with Form.Control */}
+        <Form.Control
+          type="file"
           accept="image/*"
           onChange={handleChangeImage}
           ref={albumCoverInput}
+          style={{ display: "none" }}
         />
+
         <Button
           className={`${btnStyles.Button} ${btnStyles.Blue} ${btnStyles.CustomButton} mt-2`}
           onClick={() => albumCoverInput.current?.click()}
@@ -152,7 +157,7 @@ function TrackEditForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit} className={`${styles.FormContainer}`}>
+    <Form onSubmit={handleSubmit} className={styles.FormContainer}>
       <div className="d-flex flex-column justify-content-center">
         {textFields}
         <div className="text-center mt-3">
@@ -175,4 +180,5 @@ function TrackEditForm() {
 }
 
 export default TrackEditForm;
+
 
