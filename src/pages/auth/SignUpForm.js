@@ -38,7 +38,6 @@ const SignUpForm = () => {
       await axiosReq.post(
         "/dj-rest-auth/registration/",
         signUpData,
-        { withCredentials: true } // <--- ensures cookies are sent cross-site
       );
       console.log("Registration successful, redirecting to sign-in page");
       history.push("/signin");

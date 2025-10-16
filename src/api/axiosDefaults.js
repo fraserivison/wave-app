@@ -1,10 +1,7 @@
 import axios from "axios";
 
-// Detect environment
-const isLocal = window.location.origin.includes("localhost");
-const baseURL = isLocal
-  ? "http://127.0.0.1:8000"
-  : "https://wave-drf-api-1157a4fa181b.herokuapp.com";
+// Base URL for deployed backend
+const baseURL = "https://wave-drf-api-1157a4fa181b.herokuapp.com";
 
 // Helper to read cookies
 function getCookie(name) {

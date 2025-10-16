@@ -33,7 +33,6 @@ function SignInForm() {
       const { data } = await axiosReq.post(
         "/dj-rest-auth/login/",
         signInData,
-        { withCredentials: true } // ensure cookies are sent/received cross-site
       );
       console.log("Login successful, received data:", data);
 
