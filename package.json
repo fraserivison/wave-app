@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://fraserivison.github.io/wave-app/",
   "private": true,
+  "proxy": "https://wave-drf-api-1157a4fa181b.herokuapp.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
